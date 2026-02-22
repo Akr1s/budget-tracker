@@ -4,6 +4,7 @@ import App from '../App';
 import { RoutesEnum } from './routes.enum';
 import Dashboard from '../views/dashboard';
 import Onboarding from '../views/onboarding';
+import Layout from '@/views/layout';
 
 export const router = createBrowserRouter([
     {
@@ -12,7 +13,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: RoutesEnum.DASHBOARD,
-                Component: Dashboard,
+                Component: Layout,
+                children: [{ index: true, Component: Dashboard }],
             },
             {
                 path: RoutesEnum.ONBOARDING,
