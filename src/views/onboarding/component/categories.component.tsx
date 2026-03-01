@@ -7,7 +7,17 @@ import {
     FieldLegend,
     FieldSet,
 } from '@/components/ui/field';
-import React from 'react';
+import type { IOnboardingForm } from '../onboarding.type';
+import type { FormikErrors } from 'formik';
+
+interface IProps {
+    setFieldValue: (
+        field: keyof IOnboardingForm,
+        value: string[],
+        shouldValidate?: boolean | undefined,
+    ) => Promise<void> | Promise<FormikErrors<IOnboardingForm>>;
+    values: IOnboardingForm;
+}
 
 const categories = [
     {
@@ -41,7 +51,18 @@ const categories = [
     },
 ];
 
-export default function Categories() {
+export default function Categories({ setFieldValue, values }: IProps) {
+    const handleCheckedChange = (checked: boolean, value: string) => {
+        if (checked) {
+            setFieldValue('categories', [...values.categories, value]);
+        } else {
+            setFieldValue(
+                'categories',
+                values.categories.filter((category) => category !== value),
+            );
+        }
+    };
+
     return (
         <div>
             <FieldSet>
@@ -53,7 +74,14 @@ export default function Categories() {
                             <p className="leading-7">{category.label}</p>
                             {category.items.map((item) => (
                                 <Field orientation="horizontal">
-                                    <Checkbox id={item.value} name={item.value} defaultChecked />
+                                    <Checkbox
+                                        id={item.value}
+                                        name={item.value}
+                                        checked={values.categories.includes(item.value)}
+                                        onCheckedChange={(checked) =>
+                                            handleCheckedChange(checked as boolean, item.value)
+                                        }
+                                    />
                                     <FieldLabel htmlFor={item.value} className="font-normal">
                                         {item.label}
                                     </FieldLabel>

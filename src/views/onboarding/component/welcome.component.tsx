@@ -7,7 +7,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import React from 'react';
+import type { IOnboardingForm } from '../onboarding.type';
+import type { FormikErrors } from 'formik';
 
 const languageOptions = [
     { label: 'English', value: 'english' },
@@ -17,15 +18,27 @@ const languageOptions = [
     { label: '中文', value: 'chinese' },
 ];
 
+interface IProps {
+    setFieldValue: (
+        field: keyof IOnboardingForm,
+        value: string,
+        shouldValidate?: boolean | undefined,
+    ) => Promise<void> | Promise<FormikErrors<IOnboardingForm>>;
+    values: IOnboardingForm;
+}
+
 const currency = [{ label: 'USD - US Dollar', value: 'usd' }];
 
-export default function Welcome() {
+export default function Welcome({ setFieldValue, values }: IProps) {
     return (
         <div>
             <p className="leading-7">Let's set up your personal budget tracker!</p>
             <p className="leading-7">This will only take 2-3 minutes.</p>
             <p className="leading-7 mt-4">Select your language:</p>
-            <Select>
+            <Select
+                value={values.language}
+                onValueChange={(value) => setFieldValue('language', value)}
+            >
                 <SelectTrigger className="w-full max-w-48">
                     <SelectValue />
                 </SelectTrigger>
@@ -40,7 +53,10 @@ export default function Welcome() {
             </Select>
 
             <p className="leading-7 mt-4">Select your currency:</p>
-            <Select>
+            <Select
+                value={values.currency}
+                onValueChange={(value) => setFieldValue('currency', value)}
+            >
                 <SelectTrigger className="w-full max-w-48">
                     <SelectValue />
                 </SelectTrigger>
