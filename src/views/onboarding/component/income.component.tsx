@@ -1,8 +1,8 @@
-import { Input } from "@/components/ui/input";
 import CustomSelect from "@/components/custom-select.component";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
+import CurrencyInput from "@/components/currency-input.component";
 
 interface IProps {
   setFieldValue: (
@@ -50,7 +50,8 @@ export default function Income({
       <p className="leading-7 mt-4">
         {t("onboarding.income.monthlyAmountLabel")}
       </p>
-      <Input
+      <CurrencyInput
+        currency={values.currency}
         type="number"
         min={0}
         placeholder={t("onboarding.income.amountPlaceholder")}

@@ -53,17 +53,17 @@
     },
     "budgetGoals": {
       "heading": "Lege monatliche Ausgabenlimits für jede Kategorie fest:",
-      "monthlyIncome": "Monatliches Einkommen: ${{amount}}",
+      "monthlyIncome": "Monatliches Einkommen: {{symbol}}{{amount}}",
       "noCategories": "Keine Kategorien ausgewählt. Gehe zurück zu Schritt 2.",
-      "totalBudgeted": "Gesamt budgetiert: ${{budgeted}} / ${{income}}",
-      "remaining": "Verbleibend: ${{amount}} ({{percentage}}%) für Sparen/Sonstiges"
+      "totalBudgeted": "Gesamt budgetiert: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
+      "remaining": "Verbleibend: {{symbol}}{{amount}} ({{percentage}}%) für Sparen/Sonstiges"
     },
     "summary": {
       "overview": "Hier ist deine Budgetübersicht:",
       "monthlySummaryHeading": "MONATLICHE ZUSAMMENFASSUNG",
-      "income": "Einkommen: ${{amount}} ({{source}})",
-      "budget": "Budget: ${{amount}}",
-      "savingsGoal": "Sparziel: ${{amount}} ({{percentage}}%)",
+      "income": "Einkommen: {{symbol}}{{amount}} ({{source}})",
+      "budget": "Budget: {{symbol}}{{amount}}",
+      "savingsGoal": "Sparziel: {{symbol}}{{amount}} ({{percentage}}%)",
       "categoriesHeading": "KATEGORIEN ({{count}} aktiv)",
       "noCategories": "Keine Kategorien ausgewählt.",
       "startingBalanceHeading": "STARTGUTHABEN",
@@ -78,6 +78,12 @@
         "today": "Heute",
         "monthStart": "Anfang dieses Monats"
       }
+    },
+    "currencies": {
+      "usd": "USD - US-Dollar",
+      "eur": "EUR - Euro",
+      "jpy": "JPY - Japanischer Yen",
+      "sar": "SAR - Saudi-Riyal"
     },
     "footer": {
       "skipSetup": "Einrichtung überspringen",

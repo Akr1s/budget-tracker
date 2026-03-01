@@ -53,17 +53,17 @@
     },
     "budgetGoals": {
       "heading": "各カテゴリの月次支出上限を設定:",
-      "monthlyIncome": "月収: ${{amount}}",
+      "monthlyIncome": "月収: {{symbol}}{{amount}}",
       "noCategories": "カテゴリが選択されていません。ステップ2に戻ってください。",
-      "totalBudgeted": "合計予算: ${{budgeted}} / ${{income}}",
-      "remaining": "残り: ${{amount}}（{{percentage}}%）貯蓄・その他"
+      "totalBudgeted": "合計予算: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
+      "remaining": "残り: {{symbol}}{{amount}}（{{percentage}}%）貯蓄・その他"
     },
     "summary": {
       "overview": "予算の概要です:",
       "monthlySummaryHeading": "月次サマリー",
-      "income": "収入: ${{amount}}（{{source}}）",
-      "budget": "予算: ${{amount}}",
-      "savingsGoal": "貯蓄目標: ${{amount}}（{{percentage}}%）",
+      "income": "収入: {{symbol}}{{amount}}（{{source}}）",
+      "budget": "予算: {{symbol}}{{amount}}",
+      "savingsGoal": "貯蓄目標: {{symbol}}{{amount}}（{{percentage}}%）",
       "categoriesHeading": "カテゴリ（{{count}}件 有効）",
       "noCategories": "カテゴリが選択されていません。",
       "startingBalanceHeading": "開始残高",
@@ -78,6 +78,12 @@
         "today": "今日",
         "monthStart": "今月の初め"
       }
+    },
+    "currencies": {
+      "usd": "USD - 米ドル",
+      "eur": "EUR - ユーロ",
+      "jpy": "JPY - 日本円",
+      "sar": "SAR - サウジリヤル"
     },
     "footer": {
       "skipSetup": "設定をスキップ",

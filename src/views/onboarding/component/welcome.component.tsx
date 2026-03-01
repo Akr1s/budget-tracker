@@ -2,6 +2,7 @@ import CustomSelect from "@/components/custom-select.component";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
+import { LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
 
 const languageOptions = [
   { label: "English", value: "en" },
@@ -9,8 +10,6 @@ const languageOptions = [
   { label: "日本語", value: "ja" },
   { label: "العربية", value: "ar" },
 ];
-
-const currencyOptions = [{ label: "USD - US Dollar", value: "usd" }];
 
 interface IProps {
   setFieldValue: (
@@ -33,10 +32,18 @@ export default function Welcome({
 
   const handleLanguageChange = (value: string) => {
     setFieldValue("language", value);
+    setFieldValue("currency", LANGUAGE_CURRENCY_OPTIONS[value]?.[0] ?? "usd");
     i18n.changeLanguage(value);
     document.documentElement.dir = value === "ar" ? "rtl" : "ltr";
     document.documentElement.lang = value;
   };
+
+  const currencyOptions = (
+    LANGUAGE_CURRENCY_OPTIONS[values.language] ?? ["usd"]
+  ).map((code) => ({
+    value: code,
+    label: t(`onboarding.currencies.${code}`),
+  }));
 
   return (
     <div>

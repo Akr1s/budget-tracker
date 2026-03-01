@@ -1,7 +1,8 @@
-import { Input } from "@/components/ui/input";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
+import CurrencyInput from "@/components/currency-input.component";
+import { getCurrencySymbol } from "@/utils/currency";
 
 interface IProps {
   setFieldValue: (
@@ -16,6 +17,7 @@ interface IProps {
 
 export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
   const { t } = useTranslation();
+  const currencySymbol = getCurrencySymbol(values.currency);
 
   const categoryLabels: Record<string, string> = {
     housing: t("onboarding.categories.items.housing"),
@@ -48,6 +50,7 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
       <p className="leading-7">{t("onboarding.budgetGoals.heading")}</p>
       <p className="leading-7 mt-4">
         {t("onboarding.budgetGoals.monthlyIncome", {
+          symbol: currencySymbol,
           amount: values.primarySourceMonthlyAmount.toFixed(2),
         })}
       </p>
@@ -63,7 +66,8 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
               <p className="leading-7 w-32 shrink-0">
                 {categoryLabels[category]}
               </p>
-              <Input
+              <CurrencyInput
+                currency={values.currency}
                 type="number"
                 min={0}
                 placeholder="0.00"
@@ -87,12 +91,14 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
 
       <p className="leading-7 mt-4">
         {t("onboarding.budgetGoals.totalBudgeted", {
+          symbol: currencySymbol,
           budgeted: totalBudgeted.toFixed(2),
           income: values.primarySourceMonthlyAmount.toFixed(2),
         })}
       </p>
       <p className="leading-7">
         {t("onboarding.budgetGoals.remaining", {
+          symbol: currencySymbol,
           amount: remainingBudgeted.toFixed(2),
           percentage: remainingPercentage,
         })}

@@ -1,9 +1,9 @@
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
+import CurrencyInput from "@/components/currency-input.component";
 
 interface IProps {
   setFieldValue: (
@@ -32,7 +32,8 @@ export default function StartingBalance({
       <p className="leading-7 mt-4">
         {t("onboarding.startingBalance.balanceLabel")}
       </p>
-      <Input
+      <CurrencyInput
+        currency={values.currency}
         type="number"
         min={0}
         placeholder={t("onboarding.startingBalance.amountPlaceholder")}

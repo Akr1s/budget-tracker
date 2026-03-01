@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import type { IOnboardingForm } from "../onboarding.type";
+import { getCurrencySymbol } from "@/utils/currency";
 
 interface IProps {
   values: IOnboardingForm;
@@ -7,6 +8,7 @@ interface IProps {
 
 export default function Summary({ values }: IProps) {
   const { t } = useTranslation();
+  const currencySymbol = getCurrencySymbol(values.currency);
 
   const startingDateLabels: Record<IOnboardingForm["startingDate"], string> = {
     today: t("onboarding.summary.startingDates.today"),
@@ -47,15 +49,20 @@ export default function Summary({ values }: IProps) {
         </p>
         <p className="leading-7">
           {t("onboarding.summary.income", {
+            symbol: currencySymbol,
             amount: values.primarySourceMonthlyAmount.toFixed(2),
             source: values.primaryIncomeSource,
           })}
         </p>
         <p className="leading-7">
-          {t("onboarding.summary.budget", { amount: totalBudgeted.toFixed(2) })}
+          {t("onboarding.summary.budget", {
+            symbol: currencySymbol,
+            amount: totalBudgeted.toFixed(2),
+          })}
         </p>
         <p className="leading-7">
           {t("onboarding.summary.savingsGoal", {
+            symbol: currencySymbol,
             amount: savingsGoal.toFixed(2),
             percentage: savingsPercentage,
           })}
@@ -76,7 +83,8 @@ export default function Summary({ values }: IProps) {
                 {values.budgetGoals[cat] !== undefined && (
                   <span className="text-muted-foreground">
                     {" "}
-                    — ${values.budgetGoals[cat].toFixed(2)}
+                    — {currencySymbol}
+                    {values.budgetGoals[cat].toFixed(2)}
                   </span>
                 )}
               </li>
@@ -93,7 +101,10 @@ export default function Summary({ values }: IProps) {
         <p className="font-semibold">
           {t("onboarding.summary.startingBalanceHeading")}
         </p>
-        <p className="leading-7">${values.startingBalance.toFixed(2)}</p>
+        <p className="leading-7">
+          {currencySymbol}
+          {values.startingBalance.toFixed(2)}
+        </p>
         <p className="leading-7 text-sm text-muted-foreground">
           {t("onboarding.summary.trackingFrom", {
             date: startingDateLabels[values.startingDate],
