@@ -8,4 +8,5 @@ export const initialValues: IOnboardingForm = {
     primarySourceMonthlyAmount: 0,
     startingBalance: 0,
     startingDate: 'today',
+    budgetGoals: {},
 };

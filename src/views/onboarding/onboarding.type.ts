@@ -5,5 +5,6 @@ export interface IOnboardingForm {
     primaryIncomeSource: string;
     primarySourceMonthlyAmount: number;
     startingBalance: number;
-    startingDate: string;
+    startingDate: 'today' | 'monthStart';
+    budgetGoals: Record<string, number>;
 }
