@@ -19,10 +19,15 @@ import type { IOnboardingForm } from "./onboarding.type";
 import { initialValues } from "./utils/initial-values.constant";
 import { validationSchema } from "./utils/validation-schema.constant";
 import Footer from "./component/footer.component";
-import { ONBOARDING_STEPS_COUNT, STEP_FIELDS } from "./utils/onboarding.constant";
+import {
+  ONBOARDING_STEPS_COUNT,
+  STEP_FIELDS,
+} from "./utils/onboarding.constant";
+import { useTranslation } from "react-i18next";
 
 export default function Onboarding() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { values, errors, touched, setFieldValue, handleSubmit } =
     useFormik<IOnboardingForm>({
       initialValues,
@@ -43,11 +48,14 @@ export default function Onboarding() {
   return (
     <Dialog open>
       <form>
-        <DialogContent className="sm:max-w-sm">
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Welcome to Budget Tracker</DialogTitle>
+            <DialogTitle>{t("onboarding.title")}</DialogTitle>
             <DialogDescription>
-              (Step {step} of {ONBOARDING_STEPS_COUNT})
+              {t("onboarding.stepIndicator", {
+                current: step,
+                total: ONBOARDING_STEPS_COUNT,
+              })}
             </DialogDescription>
             <hr className="border-gray-300 dark:border-gray-700" />
           </DialogHeader>

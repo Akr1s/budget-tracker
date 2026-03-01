@@ -1,0 +1,89 @@
+{
+  "onboarding": {
+    "title": "予算トラッカーへようこそ",
+    "stepIndicator": "ステップ {{current}} / {{total}}",
+    "welcome": {
+      "description1": "あなた専用の予算トラッカーを設定しましょう！",
+      "description2": "2〜3分で完了します。",
+      "selectLanguage": "言語を選択:",
+      "languageLabel": "利用可能な言語",
+      "selectCurrency": "通貨を選択:",
+      "currencyLabel": "利用可能な通貨"
+    },
+    "categories": {
+      "heading": "あなたに当てはまるカテゴリを選んでください:",
+      "groups": {
+        "essential": "必需品",
+        "lifestyle": "ライフスタイル",
+        "financial": "金融"
+      },
+      "items": {
+        "housing": "住居（家賃・住宅ローン・光熱費）",
+        "groceries": "食料品・食費",
+        "transportation": "交通費",
+        "healthcare": "医療・保険",
+        "entertainment": "娯楽",
+        "shopping": "買い物・日用品",
+        "sports": "フィットネス・スポーツ",
+        "travel": "旅行・休暇",
+        "debt": "ローン返済",
+        "savings": "貯蓄・投資",
+        "education": "教育"
+      }
+    },
+    "income": {
+      "heading": "毎月の収入はいくらですか？",
+      "primarySourceLabel": "主な収入源:",
+      "primarySourcePlaceholder": "主な収入源を選択",
+      "monthlyAmountLabel": "月収:",
+      "amountPlaceholder": "金額を入力",
+      "sources": {
+        "salary": "給与",
+        "freelance": "フリーランス",
+        "donations": "寄付・支援"
+      }
+    },
+    "startingBalance": {
+      "heading": "現在の口座残高はいくらですか？",
+      "balanceLabel": "開始残高:",
+      "amountPlaceholder": "金額を入力",
+      "trackingLabel": "いつから記録を始めますか？",
+      "today": "今日（{{date}}）",
+      "monthStart": "今月の初め"
+    },
+    "budgetGoals": {
+      "heading": "各カテゴリの月次支出上限を設定:",
+      "monthlyIncome": "月収: ${{amount}}",
+      "noCategories": "カテゴリが選択されていません。ステップ2に戻ってください。",
+      "totalBudgeted": "合計予算: ${{budgeted}} / ${{income}}",
+      "remaining": "残り: ${{amount}}（{{percentage}}%）貯蓄・その他"
+    },
+    "summary": {
+      "overview": "予算の概要です:",
+      "monthlySummaryHeading": "月次サマリー",
+      "income": "収入: ${{amount}}（{{source}}）",
+      "budget": "予算: ${{amount}}",
+      "savingsGoal": "貯蓄目標: ${{amount}}（{{percentage}}%）",
+      "categoriesHeading": "カテゴリ（{{count}}件 有効）",
+      "noCategories": "カテゴリが選択されていません。",
+      "startingBalanceHeading": "開始残高",
+      "trackingFrom": "記録開始: {{date}}",
+      "preferencesHeading": "設定",
+      "languageCurrency": "言語: {{language}} · 通貨: {{currency}}",
+      "nextStepsHeading": "次のステップ",
+      "nextStep1": "最初の取引を追加する",
+      "nextStep2": "定期的な支払いを設定する",
+      "nextStep3": "レポートと分析を確認する",
+      "startingDates": {
+        "today": "今日",
+        "monthStart": "今月の初め"
+      }
+    },
+    "footer": {
+      "skipSetup": "設定をスキップ",
+      "previousStep": "前のステップ",
+      "nextStep": "次のステップ",
+      "saveChanges": "変更を保存"
+    }
+  }
+}

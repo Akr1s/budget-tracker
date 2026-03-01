@@ -1,0 +1,89 @@
+{
+  "onboarding": {
+    "title": "مرحبًا بك في متتبع الميزانية",
+    "stepIndicator": "الخطوة {{current}} من {{total}}",
+    "welcome": {
+      "description1": "لنقم بإعداد متتبع الميزانية الشخصي الخاص بك!",
+      "description2": "لن يستغرق ذلك سوى 2-3 دقائق.",
+      "selectLanguage": "اختر لغتك:",
+      "languageLabel": "اللغات المتاحة",
+      "selectCurrency": "اختر عملتك:",
+      "currencyLabel": "العملات المتاحة"
+    },
+    "categories": {
+      "heading": "اختر الفئات التي تنطبق عليك:",
+      "groups": {
+        "essential": "الأساسيات",
+        "lifestyle": "أسلوب الحياة",
+        "financial": "المالية"
+      },
+      "items": {
+        "housing": "السكن (الإيجار، الرهن العقاري، المرافق)",
+        "groceries": "البقالة والطعام",
+        "transportation": "المواصلات",
+        "healthcare": "الرعاية الصحية والتأمين",
+        "entertainment": "الترفيه",
+        "shopping": "التسوق والاحتياجات الشخصية",
+        "sports": "اللياقة البدنية والرياضة",
+        "travel": "السفر والإجازات",
+        "debt": "سداد الديون",
+        "savings": "المدخرات والاستثمارات",
+        "education": "التعليم"
+      }
+    },
+    "income": {
+      "heading": "ما هو دخلك الشهري؟",
+      "primarySourceLabel": "المصدر الرئيسي للدخل:",
+      "primarySourcePlaceholder": "اختر مصدر دخلك الرئيسي",
+      "monthlyAmountLabel": "المبلغ الشهري:",
+      "amountPlaceholder": "أدخل المبلغ",
+      "sources": {
+        "salary": "الراتب",
+        "freelance": "العمل الحر",
+        "donations": "التبرعات"
+      }
+    },
+    "startingBalance": {
+      "heading": "ما هو رصيد حسابك الحالي؟",
+      "balanceLabel": "الرصيد الابتدائي:",
+      "amountPlaceholder": "أدخل المبلغ",
+      "trackingLabel": "متى تريد البدء في التتبع؟",
+      "today": "اليوم ({{date}})",
+      "monthStart": "بداية هذا الشهر"
+    },
+    "budgetGoals": {
+      "heading": "حدد حدود الإنفاق الشهرية لكل فئة:",
+      "monthlyIncome": "الدخل الشهري: ${{amount}}",
+      "noCategories": "لم يتم اختيار أي فئات. ارجع إلى الخطوة 2.",
+      "totalBudgeted": "إجمالي الميزانية: ${{budgeted}} / ${{income}}",
+      "remaining": "المتبقي: ${{amount}} ({{percentage}}%) للمدخرات/أخرى"
+    },
+    "summary": {
+      "overview": "إليك نظرة عامة على ميزانيتك:",
+      "monthlySummaryHeading": "الملخص الشهري",
+      "income": "الدخل: ${{amount}} ({{source}})",
+      "budget": "الميزانية: ${{amount}}",
+      "savingsGoal": "هدف الادخار: ${{amount}} ({{percentage}}%)",
+      "categoriesHeading": "الفئات ({{count}} نشطة)",
+      "noCategories": "لم يتم اختيار أي فئات.",
+      "startingBalanceHeading": "الرصيد الابتدائي",
+      "trackingFrom": "التتبع من: {{date}}",
+      "preferencesHeading": "التفضيلات",
+      "languageCurrency": "اللغة: {{language}} · العملة: {{currency}}",
+      "nextStepsHeading": "الخطوات التالية",
+      "nextStep1": "أضف معاملتك الأولى",
+      "nextStep2": "إعداد الفواتير المتكررة",
+      "nextStep3": "استكشف التقارير والتحليلات",
+      "startingDates": {
+        "today": "اليوم",
+        "monthStart": "بداية هذا الشهر"
+      }
+    },
+    "footer": {
+      "skipSetup": "تخطي الإعداد",
+      "previousStep": "الخطوة السابقة",
+      "nextStep": "الخطوة التالية",
+      "saveChanges": "حفظ التغييرات"
+    }
+  }
+}

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setFieldValue: (
@@ -20,44 +21,46 @@ interface IProps {
   touched: FormikTouched<IOnboardingForm>;
 }
 
-const categories = [
-  {
-    value: "essential",
-    label: "ESSENTIAL",
-    items: [
-      { label: "Housing (rent, mortgage, utilities)", value: "housing" },
-      { label: "Groceries & Food", value: "groceries" },
-      { label: "Transportation", value: "transportation" },
-      { label: "Healthcare & Insurance", value: "healthcare" },
-    ],
-  },
-  {
-    value: "lifestyle",
-    label: "LIFESTYLE",
-    items: [
-      { label: "Entertainment", value: "entertainment" },
-      { label: "Shopping & Personal", value: "shopping" },
-      { label: "Fitness & Sports", value: "sports" },
-      { label: "Travel & Vacation", value: "travel" },
-    ],
-  },
-  {
-    value: "financial",
-    label: "FINANCIAL",
-    items: [
-      { label: "Debt Payments", value: "debt" },
-      { label: "Savings & Investments", value: "savings" },
-      { label: "Education", value: "education" },
-    ],
-  },
-];
-
 export default function Categories({
   setFieldValue,
   values,
   errors,
   touched,
 }: IProps) {
+  const { t } = useTranslation();
+
+  const categories = [
+    {
+      value: "essential",
+      label: t("onboarding.categories.groups.essential"),
+      items: [
+        { label: t("onboarding.categories.items.housing"), value: "housing" },
+        { label: t("onboarding.categories.items.groceries"), value: "groceries" },
+        { label: t("onboarding.categories.items.transportation"), value: "transportation" },
+        { label: t("onboarding.categories.items.healthcare"), value: "healthcare" },
+      ],
+    },
+    {
+      value: "lifestyle",
+      label: t("onboarding.categories.groups.lifestyle"),
+      items: [
+        { label: t("onboarding.categories.items.entertainment"), value: "entertainment" },
+        { label: t("onboarding.categories.items.shopping"), value: "shopping" },
+        { label: t("onboarding.categories.items.sports"), value: "sports" },
+        { label: t("onboarding.categories.items.travel"), value: "travel" },
+      ],
+    },
+    {
+      value: "financial",
+      label: t("onboarding.categories.groups.financial"),
+      items: [
+        { label: t("onboarding.categories.items.debt"), value: "debt" },
+        { label: t("onboarding.categories.items.savings"), value: "savings" },
+        { label: t("onboarding.categories.items.education"), value: "education" },
+      ],
+    },
+  ];
+
   const handleCheckedChange = (checked: boolean, value: string) => {
     if (checked) {
       setFieldValue("categories", [...values.categories, value]);
@@ -73,7 +76,7 @@ export default function Categories({
     <div>
       <FieldSet>
         <FieldLegend variant="label">
-          Choose the categories that apply to you:
+          {t("onboarding.categories.heading")}
         </FieldLegend>
         <FieldGroup className="gap-3">
           {categories.map((category) => (

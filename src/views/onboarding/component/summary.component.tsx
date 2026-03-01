@@ -1,15 +1,32 @@
+import { useTranslation } from "react-i18next";
 import type { IOnboardingForm } from "../onboarding.type";
 
 interface IProps {
   values: IOnboardingForm;
 }
 
-const startingDateLabels: Record<IOnboardingForm["startingDate"], string> = {
-  today: "Today",
-  monthStart: "Beginning of this month",
-};
-
 export default function Summary({ values }: IProps) {
+  const { t } = useTranslation();
+
+  const startingDateLabels: Record<IOnboardingForm["startingDate"], string> = {
+    today: t("onboarding.summary.startingDates.today"),
+    monthStart: t("onboarding.summary.startingDates.monthStart"),
+  };
+
+  const categoryLabels: Record<string, string> = {
+    housing: t("onboarding.categories.items.housing"),
+    groceries: t("onboarding.categories.items.groceries"),
+    transportation: t("onboarding.categories.items.transportation"),
+    healthcare: t("onboarding.categories.items.healthcare"),
+    entertainment: t("onboarding.categories.items.entertainment"),
+    shopping: t("onboarding.categories.items.shopping"),
+    sports: t("onboarding.categories.items.sports"),
+    travel: t("onboarding.categories.items.travel"),
+    debt: t("onboarding.categories.items.debt"),
+    savings: t("onboarding.categories.items.savings"),
+    education: t("onboarding.categories.items.education"),
+  };
+
   const totalBudgeted = Object.values(values.budgetGoals).reduce(
     (sum, v) => sum + (v || 0),
     0,
@@ -22,29 +39,40 @@ export default function Summary({ values }: IProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="leading-7">Here's your budget overview:</p>
+      <p className="leading-7">{t("onboarding.summary.overview")}</p>
 
       <div>
-        <p className="font-semibold">MONTHLY SUMMARY</p>
-        <p className="leading-7">
-          Income: ${values.primarySourceMonthlyAmount.toFixed(2)} (
-          {values.primaryIncomeSource})
+        <p className="font-semibold">
+          {t("onboarding.summary.monthlySummaryHeading")}
         </p>
-        <p className="leading-7">Budget: ${totalBudgeted.toFixed(2)}</p>
         <p className="leading-7">
-          Savings Goal: ${savingsGoal.toFixed(2)} ({savingsPercentage}%)
+          {t("onboarding.summary.income", {
+            amount: values.primarySourceMonthlyAmount.toFixed(2),
+            source: values.primaryIncomeSource,
+          })}
+        </p>
+        <p className="leading-7">
+          {t("onboarding.summary.budget", { amount: totalBudgeted.toFixed(2) })}
+        </p>
+        <p className="leading-7">
+          {t("onboarding.summary.savingsGoal", {
+            amount: savingsGoal.toFixed(2),
+            percentage: savingsPercentage,
+          })}
         </p>
       </div>
 
       <div>
         <p className="font-semibold">
-          CATEGORIES ({values.categories.length} active)
+          {t("onboarding.summary.categoriesHeading", {
+            count: values.categories.length,
+          })}
         </p>
         {values.categories.length > 0 ? (
           <ul className="list-disc list-inside">
             {values.categories.map((cat) => (
-              <li key={cat} className="leading-7 capitalize">
-                {cat}
+              <li key={cat} className="leading-7">
+                {categoryLabels[cat]}
                 {values.budgetGoals[cat] !== undefined && (
                   <span className="text-muted-foreground">
                     {" "}
@@ -56,33 +84,43 @@ export default function Summary({ values }: IProps) {
           </ul>
         ) : (
           <p className="text-muted-foreground text-sm">
-            No categories selected.
+            {t("onboarding.summary.noCategories")}
           </p>
         )}
       </div>
 
       <div>
-        <p className="font-semibold">STARTING BALANCE</p>
+        <p className="font-semibold">
+          {t("onboarding.summary.startingBalanceHeading")}
+        </p>
         <p className="leading-7">${values.startingBalance.toFixed(2)}</p>
         <p className="leading-7 text-sm text-muted-foreground">
-          Tracking from: {startingDateLabels[values.startingDate]}
+          {t("onboarding.summary.trackingFrom", {
+            date: startingDateLabels[values.startingDate],
+          })}
         </p>
       </div>
 
       <div>
-        <p className="font-semibold">PREFERENCES</p>
-        <p className="leading-7 capitalize">
-          Language: {values.language} · Currency:{" "}
-          {values.currency.toUpperCase()}
+        <p className="font-semibold">
+          {t("onboarding.summary.preferencesHeading")}
+        </p>
+        <p className="leading-7">
+          {t("onboarding.summary.languageCurrency", {
+            language: values.language,
+            currency: values.currency.toUpperCase(),
+          })}
         </p>
       </div>
 
       <div>
-        <p className="font-semibold">NEXT STEPS</p>
+        <p className="font-semibold">
+          {t("onboarding.summary.nextStepsHeading")}
+        </p>
         <ul className="list-disc list-inside">
-          <li className="leading-7">Add your first transaction</li>
-          <li className="leading-7">Set up recurring bills</li>
-          <li className="leading-7">Explore reports and analytics</li>
+          <li className="leading-7">{t("onboarding.summary.nextStep1")}</li>
+          <li className="leading-7">{t("onboarding.summary.nextStep2")}</li>
+          <li className="leading-7">{t("onboarding.summary.nextStep3")}</li>
         </ul>
       </div>
     </div>

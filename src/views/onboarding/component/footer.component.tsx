@@ -3,6 +3,7 @@ import { DialogFooter } from "@/components/ui/dialog";
 import { RoutesEnum } from "@/routes/routes.enum";
 import { ONBOARDING_STEPS_COUNT } from "../utils/onboarding.constant";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   handleSubmit: () => void;
@@ -11,8 +12,14 @@ interface IProps {
   isNextDisabled: boolean;
 }
 
-export default function Footer({ handleSubmit, setStep, step, isNextDisabled }: IProps) {
+export default function Footer({
+  handleSubmit,
+  setStep,
+  step,
+  isNextDisabled,
+}: IProps) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <DialogFooter>
@@ -22,7 +29,7 @@ export default function Footer({ handleSubmit, setStep, step, isNextDisabled }: 
           onClick={() => navigate(RoutesEnum.DASHBOARD)}
           variant="outline"
         >
-          Skip Setup
+          {t("onboarding.footer.skipSetup")}
         </Button>
       ) : (
         <Button
@@ -30,12 +37,16 @@ export default function Footer({ handleSubmit, setStep, step, isNextDisabled }: 
           onClick={() => setStep(step - 1)}
           variant="outline"
         >
-          Previous step
+          {t("onboarding.footer.previousStep")}
         </Button>
       )}
       {step === ONBOARDING_STEPS_COUNT ? (
-        <Button type="submit" onClick={() => handleSubmit()} disabled={isNextDisabled}>
-          Save changes
+        <Button
+          type="submit"
+          onClick={() => handleSubmit()}
+          disabled={isNextDisabled}
+        >
+          {t("onboarding.footer.saveChanges")}
         </Button>
       ) : (
         <Button
@@ -44,7 +55,7 @@ export default function Footer({ handleSubmit, setStep, step, isNextDisabled }: 
           variant="outline"
           disabled={isNextDisabled}
         >
-          Next step
+          {t("onboarding.footer.nextStep")}
         </Button>
       )}
     </DialogFooter>

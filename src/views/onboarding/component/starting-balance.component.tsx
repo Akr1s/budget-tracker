@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
+import { useTranslation } from "react-i18next";
 
 interface IProps {
   setFieldValue: (
@@ -23,15 +24,19 @@ export default function StartingBalance({
 }: IProps) {
   const today = new Date().toISOString().split("T")[0];
 
+  const { t } = useTranslation();
+
   return (
     <div>
-      <p className="leading-7">What's your current account balance?</p>
-      <p className="leading-7 mt-4">Starting Balance:</p>
+      <p className="leading-7">{t("onboarding.startingBalance.heading")}</p>
+      <p className="leading-7 mt-4">
+        {t("onboarding.startingBalance.balanceLabel")}
+      </p>
       <Input
         type="number"
         min={0}
-        placeholder="Type an amount"
-        value={values.startingBalance || ''}
+        placeholder={t("onboarding.startingBalance.amountPlaceholder")}
+        value={values.startingBalance || ""}
         onChange={(e) =>
           setFieldValue("startingBalance", parseFloat(e.target.value) || 0)
         }
@@ -42,7 +47,9 @@ export default function StartingBalance({
         </p>
       )}
 
-      <p className="leading-7 mt-4">When are you starting to track?</p>
+      <p className="leading-7 mt-4">
+        {t("onboarding.startingBalance.trackingLabel")}
+      </p>
       <RadioGroup
         value={values.startingDate}
         onValueChange={(value) =>
@@ -55,11 +62,15 @@ export default function StartingBalance({
       >
         <div className="flex items-center gap-3">
           <RadioGroupItem value="today" id="r1" />
-          <Label htmlFor="r1">Today ({today})</Label>
+          <Label htmlFor="r1">
+            {t("onboarding.startingBalance.today", { date: today })}
+          </Label>
         </div>
         <div className="flex items-center gap-3">
           <RadioGroupItem value="monthStart" id="r2" />
-          <Label htmlFor="r2">Beginning of this month</Label>
+          <Label htmlFor="r2">
+            {t("onboarding.startingBalance.monthStart")}
+          </Label>
         </div>
       </RadioGroup>
     </div>
