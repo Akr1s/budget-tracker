@@ -9,6 +9,7 @@ import {
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
+import { CategoryEnum } from "../utils/onboarding.enum";
 
 interface IProps {
   setFieldValue: (
@@ -34,34 +35,34 @@ export default function Categories({
       value: "essential",
       label: t("onboarding.categories.groups.essential"),
       items: [
-        { label: t("onboarding.categories.items.housing"), value: "housing" },
-        { label: t("onboarding.categories.items.groceries"), value: "groceries" },
-        { label: t("onboarding.categories.items.transportation"), value: "transportation" },
-        { label: t("onboarding.categories.items.healthcare"), value: "healthcare" },
+        { label: t("onboarding.categories.items.housing"), value: CategoryEnum.HOUSING },
+        { label: t("onboarding.categories.items.groceries"), value: CategoryEnum.GROCERIES },
+        { label: t("onboarding.categories.items.transportation"), value: CategoryEnum.TRANSPORTATION },
+        { label: t("onboarding.categories.items.healthcare"), value: CategoryEnum.HEALTHCARE },
       ],
     },
     {
       value: "lifestyle",
       label: t("onboarding.categories.groups.lifestyle"),
       items: [
-        { label: t("onboarding.categories.items.entertainment"), value: "entertainment" },
-        { label: t("onboarding.categories.items.shopping"), value: "shopping" },
-        { label: t("onboarding.categories.items.sports"), value: "sports" },
-        { label: t("onboarding.categories.items.travel"), value: "travel" },
+        { label: t("onboarding.categories.items.entertainment"), value: CategoryEnum.ENTERTAINMENT },
+        { label: t("onboarding.categories.items.shopping"), value: CategoryEnum.SHOPPING },
+        { label: t("onboarding.categories.items.sports"), value: CategoryEnum.SPORTS },
+        { label: t("onboarding.categories.items.travel"), value: CategoryEnum.TRAVEL },
       ],
     },
     {
       value: "financial",
       label: t("onboarding.categories.groups.financial"),
       items: [
-        { label: t("onboarding.categories.items.debt"), value: "debt" },
-        { label: t("onboarding.categories.items.savings"), value: "savings" },
-        { label: t("onboarding.categories.items.education"), value: "education" },
+        { label: t("onboarding.categories.items.debt"), value: CategoryEnum.DEBT },
+        { label: t("onboarding.categories.items.savings"), value: CategoryEnum.SAVINGS },
+        { label: t("onboarding.categories.items.education"), value: CategoryEnum.EDUCATION },
       ],
     },
   ];
 
-  const handleCheckedChange = (checked: boolean, value: string) => {
+  const handleCheckedChange = (checked: boolean, value: CategoryEnum) => {
     if (checked) {
       setFieldValue("categories", [...values.categories, value]);
     } else {

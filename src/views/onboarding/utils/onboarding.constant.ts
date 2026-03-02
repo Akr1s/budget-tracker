@@ -1,4 +1,7 @@
+import { CurrencyEnum } from "@/utils/currency";
+import { DateService } from "@/utils/date.service";
 import type { IOnboardingForm } from "../onboarding.type";
+import { CategoryEnum, IncomeSourceEnum, LanguageEnum } from "./onboarding.enum";
 
 export const ONBOARDING_STEPS_COUNT = 6;
 
@@ -12,20 +15,20 @@ export const STEP_FIELDS: Record<number, (keyof IOnboardingForm)[]> = {
 };
 
 export const defaultOnboardingData: IOnboardingForm = {
-  language: navigator.language.split("-")[0] || "en",
-  currency: "usd",
+  language: LanguageEnum.EN,
+  currency: CurrencyEnum.USD,
   categories: [
-    "housing",
-    "groceries",
-    "transportation",
-    "healthcare",
-    "entertainment",
-    "shopping",
-    "debt",
+    CategoryEnum.HOUSING,
+    CategoryEnum.GROCERIES,
+    CategoryEnum.TRANSPORTATION,
+    CategoryEnum.HEALTHCARE,
+    CategoryEnum.ENTERTAINMENT,
+    CategoryEnum.SHOPPING,
+    CategoryEnum.DEBT,
   ],
-  primaryIncomeSource: "",
+  primaryIncomeSource: IncomeSourceEnum.SALARY,
   primarySourceMonthlyAmount: 0,
   startingBalance: 0,
-  startingDate: "today",
+  startingDate: DateService.getToday(),
   budgetGoals: {},
 };

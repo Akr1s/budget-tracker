@@ -1,12 +1,17 @@
-import type { CurrencyCode } from "@/utils/currency";
+import type { CurrencyEnum } from "@/utils/currency";
+import type {
+  CategoryEnum,
+  IncomeSourceEnum,
+  LanguageEnum,
+} from "./utils/onboarding.enum";
 
 export interface IOnboardingForm {
-  categories: string[];
-  currency: CurrencyCode;
-  language: string;
-  primaryIncomeSource: string;
+  categories: CategoryEnum[];
+  currency: CurrencyEnum;
+  language: LanguageEnum;
+  primaryIncomeSource: IncomeSourceEnum;
   primarySourceMonthlyAmount: number;
   startingBalance: number;
-  startingDate: "today" | "monthStart";
-  budgetGoals: Record<string, number>;
+  startingDate: string;
+  budgetGoals: Partial<Record<CategoryEnum, number>>;
 }

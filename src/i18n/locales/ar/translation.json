@@ -49,7 +49,8 @@
       "amountPlaceholder": "أدخل المبلغ",
       "trackingLabel": "متى تريد البدء في التتبع؟",
       "today": "اليوم ({{date}})",
-      "monthStart": "بداية هذا الشهر"
+      "currentMonthStart": "بداية هذا الشهر ({{date}})",
+      "nextMonthStart": "بداية الشهر القادم ({{date}})"
     },
     "budgetGoals": {
       "heading": "حدد حدود الإنفاق الشهرية لكل فئة:",
@@ -73,11 +74,7 @@
       "nextStepsHeading": "الخطوات التالية",
       "nextStep1": "أضف معاملتك الأولى",
       "nextStep2": "إعداد الفواتير المتكررة",
-      "nextStep3": "استكشف التقارير والتحليلات",
-      "startingDates": {
-        "today": "اليوم",
-        "monthStart": "بداية هذا الشهر"
-      }
+      "nextStep3": "استكشف التقارير والتحليلات"
     },
     "currencies": {
       "usd": "USD - دولار أمريكي",

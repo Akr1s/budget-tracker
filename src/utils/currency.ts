@@ -1,18 +1,25 @@
-export const CURRENCIES = {
-  usd: { symbol: "$" },
-  eur: { symbol: "€" },
-  jpy: { symbol: "¥" },
-  sar: { symbol: "ر.س" },
-} as const;
+import { LanguageEnum } from "@/views/onboarding/utils/onboarding.enum";
 
-export type CurrencyCode = keyof typeof CURRENCIES;
+export enum CurrencyEnum {
+  USD = "usd",
+  EUR = "eur",
+  JPY = "jpy",
+  SAR = "sar",
+}
 
-export const LANGUAGE_CURRENCY_OPTIONS: Record<string, CurrencyCode[]> = {
-  en: ["usd", "eur"],
-  de: ["eur", "usd"],
-  ja: ["jpy", "usd", "eur"],
-  ar: ["sar", "usd", "eur"],
+const currencySymbols: Record<CurrencyEnum, string> = {
+  [CurrencyEnum.USD]: "$",
+  [CurrencyEnum.EUR]: "€",
+  [CurrencyEnum.JPY]: "¥",
+  [CurrencyEnum.SAR]: "ر.س",
 };
 
-export const getCurrencySymbol = (code: CurrencyCode): string =>
-  CURRENCIES[code]?.symbol ?? code;
+export const LANGUAGE_CURRENCY_OPTIONS: Record<LanguageEnum, CurrencyEnum[]> = {
+  [LanguageEnum.EN]: [CurrencyEnum.USD, CurrencyEnum.EUR],
+  [LanguageEnum.DE]: [CurrencyEnum.EUR, CurrencyEnum.USD],
+  [LanguageEnum.JA]: [CurrencyEnum.JPY, CurrencyEnum.USD, CurrencyEnum.EUR],
+  [LanguageEnum.AR]: [CurrencyEnum.SAR, CurrencyEnum.USD, CurrencyEnum.EUR],
+};
+
+export const getCurrencySymbol = (code: CurrencyEnum): string =>
+  currencySymbols[code] ?? code;

@@ -4,6 +4,9 @@ import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
 import CurrencyInput from "@/components/currency-input.component";
+import { StartingDateEnum } from "../utils/onboarding.enum";
+import { DateService } from "@/utils/date.service";
+import { useState } from "react";
 
 interface IProps {
   setFieldValue: (
@@ -16,15 +19,29 @@ interface IProps {
   touched: FormikTouched<IOnboardingForm>;
 }
 
+const STARTING_DATE_MAP: Record<StartingDateEnum, string> = {
+  [StartingDateEnum.TODAY]: DateService.getToday(),
+  [StartingDateEnum.CURRENT_MONTH_START]: DateService.getCurrentMonthStart(),
+  [StartingDateEnum.NEXT_MONTH_START]: DateService.getNextMonthStart(),
+};
+
+const { TODAY, CURRENT_MONTH_START, NEXT_MONTH_START } = StartingDateEnum;
+
 export default function StartingBalance({
   setFieldValue,
   values,
   errors,
   touched,
 }: IProps) {
-  const today = new Date().toISOString().split("T")[0];
-
   const { t } = useTranslation();
+  const [selectedOption, setSelectedOption] = useState<StartingDateEnum>(
+    StartingDateEnum.TODAY,
+  );
+
+  const handleOptionChange = (value: StartingDateEnum) => {
+    setSelectedOption(value);
+    setFieldValue("startingDate", STARTING_DATE_MAP[value]);
+  };
 
   return (
     <div>
@@ -52,25 +69,32 @@ export default function StartingBalance({
         {t("onboarding.startingBalance.trackingLabel")}
       </p>
       <RadioGroup
-        value={values.startingDate}
-        onValueChange={(value) =>
-          setFieldValue(
-            "startingDate",
-            value as IOnboardingForm["startingDate"],
-          )
-        }
+        value={selectedOption}
+        onValueChange={(value) => handleOptionChange(value as StartingDateEnum)}
         className="w-fit"
       >
         <div className="flex items-center gap-3">
-          <RadioGroupItem value="today" id="r1" />
+          <RadioGroupItem value={TODAY} id="r1" />
           <Label htmlFor="r1">
-            {t("onboarding.startingBalance.today", { date: today })}
+            {t("onboarding.startingBalance.today", {
+              date: DateService.toDisplayDate(STARTING_DATE_MAP[TODAY], values.language),
+            })}
           </Label>
         </div>
         <div className="flex items-center gap-3">
-          <RadioGroupItem value="monthStart" id="r2" />
+          <RadioGroupItem value={CURRENT_MONTH_START} id="r2" />
           <Label htmlFor="r2">
-            {t("onboarding.startingBalance.monthStart")}
+            {t("onboarding.startingBalance.currentMonthStart", {
+              date: DateService.toDisplayDate(STARTING_DATE_MAP[CURRENT_MONTH_START], values.language),
+            })}
+          </Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <RadioGroupItem value={NEXT_MONTH_START} id="r3" />
+          <Label htmlFor="r3">
+            {t("onboarding.startingBalance.nextMonthStart", {
+              date: DateService.toDisplayDate(STARTING_DATE_MAP[NEXT_MONTH_START], values.language),
+            })}
           </Label>
         </div>
       </RadioGroup>

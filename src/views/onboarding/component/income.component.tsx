@@ -3,6 +3,7 @@ import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
 import CurrencyInput from "@/components/currency-input.component";
+import { IncomeSourceEnum } from "../utils/onboarding.enum";
 
 interface IProps {
   setFieldValue: (
@@ -24,9 +25,9 @@ export default function Income({
   const { t } = useTranslation();
 
   const incomeOptions = [
-    { label: t("onboarding.income.sources.salary"), value: "salary" },
-    { label: t("onboarding.income.sources.freelance"), value: "freelance" },
-    { label: t("onboarding.income.sources.donations"), value: "donations" },
+    { label: t("onboarding.income.sources.salary"), value: IncomeSourceEnum.SALARY },
+    { label: t("onboarding.income.sources.freelance"), value: IncomeSourceEnum.FREELANCE },
+    { label: t("onboarding.income.sources.donations"), value: IncomeSourceEnum.DONATIONS },
   ];
 
   return (

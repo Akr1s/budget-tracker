@@ -49,7 +49,8 @@
       "amountPlaceholder": "Type an amount",
       "trackingLabel": "When are you starting to track?",
       "today": "Today ({{date}})",
-      "monthStart": "Beginning of this month"
+      "currentMonthStart": "Beginning of this month ({{date}})",
+      "nextMonthStart": "Beginning of next month ({{date}})"
     },
     "budgetGoals": {
       "heading": "Set monthly spending limits for each category:",
@@ -73,11 +74,7 @@
       "nextStepsHeading": "NEXT STEPS",
       "nextStep1": "Add your first transaction",
       "nextStep2": "Set up recurring bills",
-      "nextStep3": "Explore reports and analytics",
-      "startingDates": {
-        "today": "Today",
-        "monthStart": "Beginning of this month"
-      }
+      "nextStep3": "Explore reports and analytics"
     },
     "currencies": {
       "usd": "USD - US Dollar",

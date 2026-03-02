@@ -3,12 +3,13 @@ import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
 import { LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
+import { LanguageEnum } from "../utils/onboarding.enum";
 
 const languageOptions = [
-  { label: "English", value: "en" },
-  { label: "Deutsch", value: "de" },
-  { label: "日本語", value: "ja" },
-  { label: "العربية", value: "ar" },
+  { label: "English", value: LanguageEnum.EN },
+  { label: "Deutsch", value: LanguageEnum.DE },
+  { label: "日本語", value: LanguageEnum.JA },
+  { label: "العربية", value: LanguageEnum.AR },
 ];
 
 interface IProps {
@@ -30,11 +31,11 @@ export default function Welcome({
 }: IProps) {
   const { t, i18n } = useTranslation();
 
-  const handleLanguageChange = (value: string) => {
+  const handleLanguageChange = (value: LanguageEnum) => {
     setFieldValue("language", value);
     setFieldValue("currency", LANGUAGE_CURRENCY_OPTIONS[value]?.[0] ?? "usd");
     i18n.changeLanguage(value);
-    document.documentElement.dir = value === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = value === LanguageEnum.AR ? "rtl" : "ltr";
     document.documentElement.lang = value;
   };
 
@@ -55,7 +56,7 @@ export default function Welcome({
         label={t("onboarding.welcome.languageLabel")}
         value={values.language}
         options={languageOptions}
-        onValueChange={handleLanguageChange}
+        onValueChange={(value) => handleLanguageChange(value as LanguageEnum)}
       />
       {touched.language && errors.language && (
         <p className="text-sm text-destructive mt-1">{errors.language}</p>

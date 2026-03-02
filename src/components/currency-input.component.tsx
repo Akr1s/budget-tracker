@@ -1,10 +1,10 @@
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { getCurrencySymbol, type CurrencyCode } from "@/utils/currency";
+import { getCurrencySymbol, type CurrencyEnum } from "@/utils/currency";
 import type { ComponentProps } from "react";
 
 interface IProps extends ComponentProps<typeof Input> {
-  currency: CurrencyCode;
+  currency: CurrencyEnum;
 }
 
 export default function CurrencyInput({

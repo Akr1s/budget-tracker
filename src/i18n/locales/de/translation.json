@@ -49,7 +49,8 @@
       "amountPlaceholder": "Betrag eingeben",
       "trackingLabel": "Wann möchtest du anfangen zu tracken?",
       "today": "Heute ({{date}})",
-      "monthStart": "Anfang dieses Monats"
+      "currentMonthStart": "Anfang dieses Monats ({{date}})",
+      "nextMonthStart": "Anfang des nächsten Monats ({{date}})"
     },
     "budgetGoals": {
       "heading": "Lege monatliche Ausgabenlimits für jede Kategorie fest:",
@@ -73,11 +74,7 @@
       "nextStepsHeading": "NÄCHSTE SCHRITTE",
       "nextStep1": "Erste Transaktion hinzufügen",
       "nextStep2": "Wiederkehrende Rechnungen einrichten",
-      "nextStep3": "Berichte und Analysen erkunden",
-      "startingDates": {
-        "today": "Heute",
-        "monthStart": "Anfang dieses Monats"
-      }
+      "nextStep3": "Berichte und Analysen erkunden"
     },
     "currencies": {
       "usd": "USD - US-Dollar",

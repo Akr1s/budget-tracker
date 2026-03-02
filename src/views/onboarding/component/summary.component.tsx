@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { IOnboardingForm } from "../onboarding.type";
 import { getCurrencySymbol } from "@/utils/currency";
+import { DateService } from "@/utils/date.service";
 
 interface IProps {
   values: IOnboardingForm;
@@ -9,11 +10,6 @@ interface IProps {
 export default function Summary({ values }: IProps) {
   const { t } = useTranslation();
   const currencySymbol = getCurrencySymbol(values.currency);
-
-  const startingDateLabels: Record<IOnboardingForm["startingDate"], string> = {
-    today: t("onboarding.summary.startingDates.today"),
-    monthStart: t("onboarding.summary.startingDates.monthStart"),
-  };
 
   const categoryLabels: Record<string, string> = {
     housing: t("onboarding.categories.items.housing"),
@@ -107,7 +103,7 @@ export default function Summary({ values }: IProps) {
         </p>
         <p className="leading-7 text-sm text-muted-foreground">
           {t("onboarding.summary.trackingFrom", {
-            date: startingDateLabels[values.startingDate],
+            date: DateService.toDisplayDate(values.startingDate, values.language),
           })}
         </p>
       </div>
