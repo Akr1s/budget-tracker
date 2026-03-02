@@ -24,6 +24,10 @@ import {
   STEP_FIELDS,
 } from "./utils/onboarding.constant";
 import { useTranslation } from "react-i18next";
+import {
+  LocalStorageKeys,
+  LocalStorageService,
+} from "@/storage/local-storage.service";
 
 export default function Onboarding() {
   const navigate = useNavigate();
@@ -34,8 +38,11 @@ export default function Onboarding() {
       validationSchema,
       validateOnMount: true,
       onSubmit: (formValues) => {
-        console.log(formValues);
-        navigate(RoutesEnum.DASHBOARD);
+        LocalStorageService.setItem(
+          LocalStorageKeys.ONBOARDING_DATA,
+          JSON.stringify(formValues),
+        );
+        navigate(`/${RoutesEnum.DASHBOARD}`, { replace: true });
       },
     });
 
