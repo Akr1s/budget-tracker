@@ -1,3 +1,9 @@
+import CreateTransaction from "./components/create-transaction.component";
+
 export default function Transactions() {
-  return <div>Transactions</div>;
+  return (
+    <div>
+      <CreateTransaction />
+    </div>
+  );
 }

@@ -10,4 +10,14 @@ export class LocalStorageService {
   static setItem(key: LocalStorageKeys, value: string) {
     localStorage.setItem(key, value);
   }
+
+  static getItem<T>(key: LocalStorageKeys): T | null {
+    const item = localStorage.getItem(key);
+    if (!item) return null;
+    try {
+      return JSON.parse(item) as T;
+    } catch {
+      return null;
+    }
+  }
 }

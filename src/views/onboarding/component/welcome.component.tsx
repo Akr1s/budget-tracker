@@ -1,4 +1,5 @@
 import CustomSelect from "@/components/custom-select.component";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
@@ -51,27 +52,33 @@ export default function Welcome({
       <p className="leading-7">{t("onboarding.welcome.description1")}</p>
       <p className="leading-7">{t("onboarding.welcome.description2")}</p>
 
-      <p className="leading-7 mt-4">{t("onboarding.welcome.selectLanguage")}</p>
-      <CustomSelect
-        label={t("onboarding.welcome.languageLabel")}
-        value={values.language}
-        options={languageOptions}
-        onValueChange={(value) => handleLanguageChange(value as LanguageEnum)}
-      />
-      {touched.language && errors.language && (
-        <p className="text-sm text-destructive mt-1">{errors.language}</p>
-      )}
+      <FieldGroup className="mt-4">
+        <Field>
+          <FieldLabel>{t("onboarding.welcome.selectLanguage")}</FieldLabel>
+          <CustomSelect
+            label={t("onboarding.welcome.languageLabel")}
+            value={values.language}
+            options={languageOptions}
+            onValueChange={(value) => handleLanguageChange(value as LanguageEnum)}
+          />
+          {touched.language && errors.language && (
+            <FieldError>{errors.language}</FieldError>
+          )}
+        </Field>
 
-      <p className="leading-7 mt-4">{t("onboarding.welcome.selectCurrency")}</p>
-      <CustomSelect
-        label={t("onboarding.welcome.currencyLabel")}
-        value={values.currency}
-        options={currencyOptions}
-        onValueChange={(value) => setFieldValue("currency", value)}
-      />
-      {touched.currency && errors.currency && (
-        <p className="text-sm text-destructive mt-1">{errors.currency}</p>
-      )}
+        <Field>
+          <FieldLabel>{t("onboarding.welcome.selectCurrency")}</FieldLabel>
+          <CustomSelect
+            label={t("onboarding.welcome.currencyLabel")}
+            value={values.currency}
+            options={currencyOptions}
+            onValueChange={(value) => setFieldValue("currency", value)}
+          />
+          {touched.currency && errors.currency && (
+            <FieldError>{errors.currency}</FieldError>
+          )}
+        </Field>
+      </FieldGroup>
     </div>
   );
 }

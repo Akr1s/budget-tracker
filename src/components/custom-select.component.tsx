@@ -18,6 +18,7 @@ interface IProps {
   value: string;
   options: IOption[];
   onValueChange: (value: string) => void;
+  className?: string;
 }
 
 export default function CustomSelect({
@@ -25,10 +26,11 @@ export default function CustomSelect({
   value,
   options,
   onValueChange,
+  className,
 }: IProps) {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-full max-w-48">
+      <SelectTrigger className={className ?? "w-full max-w-48"}>
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

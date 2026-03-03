@@ -1,6 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Field,
+  FieldError,
   FieldGroup,
   FieldLabel,
   FieldLegend,
@@ -102,10 +103,8 @@ export default function Categories({
           ))}
         </FieldGroup>
       </FieldSet>
-      {touched.categories && errors.categories && (
-        <p className="text-sm text-destructive mt-1">
-          {typeof errors.categories === "string" ? errors.categories : null}
-        </p>
+      {touched.categories && errors.categories && typeof errors.categories === "string" && (
+        <FieldError>{errors.categories}</FieldError>
       )}
     </div>
   );

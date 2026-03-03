@@ -1,8 +1,9 @@
 import CustomSelect from "@/components/custom-select.component";
+import CurrencyInput from "@/components/currency-input.component";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import CurrencyInput from "@/components/currency-input.component";
 import { IncomeSourceEnum } from "../utils/onboarding.enum";
 
 interface IProps {
@@ -33,43 +34,41 @@ export default function Income({
   return (
     <div>
       <p className="leading-7">{t("onboarding.income.heading")}</p>
-      <p className="leading-7 mt-4">
-        {t("onboarding.income.primarySourceLabel")}
-      </p>
-      <CustomSelect
-        label={t("onboarding.income.primarySourcePlaceholder")}
-        value={values.primaryIncomeSource}
-        options={incomeOptions}
-        onValueChange={(value) => setFieldValue("primaryIncomeSource", value)}
-      />
-      {touched.primaryIncomeSource && errors.primaryIncomeSource && (
-        <p className="text-sm text-destructive mt-1">
-          {errors.primaryIncomeSource}
-        </p>
-      )}
 
-      <p className="leading-7 mt-4">
-        {t("onboarding.income.monthlyAmountLabel")}
-      </p>
-      <CurrencyInput
-        currency={values.currency}
-        type="number"
-        min={0}
-        placeholder={t("onboarding.income.amountPlaceholder")}
-        value={values.primarySourceMonthlyAmount || ""}
-        onChange={(e) =>
-          setFieldValue(
-            "primarySourceMonthlyAmount",
-            parseFloat(e.target.value) || 0,
-          )
-        }
-      />
-      {touched.primarySourceMonthlyAmount &&
-        errors.primarySourceMonthlyAmount && (
-          <p className="text-sm text-destructive mt-1">
-            {errors.primarySourceMonthlyAmount}
-          </p>
-        )}
+      <FieldGroup className="mt-4">
+        <Field>
+          <FieldLabel>{t("onboarding.income.primarySourceLabel")}</FieldLabel>
+          <CustomSelect
+            label={t("onboarding.income.primarySourcePlaceholder")}
+            value={values.primaryIncomeSource}
+            options={incomeOptions}
+            onValueChange={(value) => setFieldValue("primaryIncomeSource", value)}
+          />
+          {touched.primaryIncomeSource && errors.primaryIncomeSource && (
+            <FieldError>{errors.primaryIncomeSource}</FieldError>
+          )}
+        </Field>
+
+        <Field>
+          <FieldLabel>{t("onboarding.income.monthlyAmountLabel")}</FieldLabel>
+          <CurrencyInput
+            currency={values.currency}
+            type="number"
+            min={0}
+            placeholder={t("onboarding.income.amountPlaceholder")}
+            value={values.primarySourceMonthlyAmount || ""}
+            onChange={(e) =>
+              setFieldValue(
+                "primarySourceMonthlyAmount",
+                parseFloat(e.target.value) || 0,
+              )
+            }
+          />
+          {touched.primarySourceMonthlyAmount && errors.primarySourceMonthlyAmount && (
+            <FieldError>{errors.primarySourceMonthlyAmount}</FieldError>
+          )}
+        </Field>
+      </FieldGroup>
     </div>
   );
 }

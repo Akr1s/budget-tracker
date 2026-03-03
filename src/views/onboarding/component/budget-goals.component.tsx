@@ -1,7 +1,8 @@
+import CurrencyInput from "@/components/currency-input.component";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import CurrencyInput from "@/components/currency-input.component";
 import { getCurrencySymbol } from "@/utils/currency";
 
 interface IProps {
@@ -60,12 +61,10 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
           {t("onboarding.budgetGoals.noCategories")}
         </p>
       ) : (
-        <div className="flex flex-col gap-2 mt-2">
+        <FieldGroup className="mt-2">
           {values.categories.map((category) => (
-            <div key={category} className="flex items-center gap-2">
-              <p className="leading-7 w-32 shrink-0">
-                {categoryLabels[category]}
-              </p>
+            <Field key={category}>
+              <FieldLabel>{categoryLabels[category]}</FieldLabel>
               <CurrencyInput
                 currency={values.currency}
                 type="number"
@@ -80,13 +79,11 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
                 }
               />
               {errors.budgetGoals?.[category] && (
-                <p className="text-sm text-destructive">
-                  {errors.budgetGoals[category]}
-                </p>
+                <FieldError>{errors.budgetGoals[category]}</FieldError>
               )}
-            </div>
+            </Field>
           ))}
-        </div>
+        </FieldGroup>
       )}
 
       <p className="leading-7 mt-4">

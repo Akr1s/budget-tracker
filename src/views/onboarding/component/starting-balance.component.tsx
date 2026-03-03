@@ -1,9 +1,9 @@
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import CustomRadioGroup from "@/components/custom-radiogroup.component";
+import CurrencyInput from "@/components/currency-input.component";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import CurrencyInput from "@/components/currency-input.component";
 import { StartingDateEnum } from "../utils/onboarding.enum";
 import { DateService } from "@/utils/date.service";
 import { useState } from "react";
@@ -38,6 +38,36 @@ export default function StartingBalance({
     StartingDateEnum.TODAY,
   );
 
+  const startingBalanceOptions = [
+    {
+      value: TODAY,
+      label: t("onboarding.startingBalance.today", {
+        date: DateService.toDisplayDate(
+          STARTING_DATE_MAP[TODAY],
+          values.language,
+        ),
+      }),
+    },
+    {
+      value: CURRENT_MONTH_START,
+      label: t("onboarding.startingBalance.currentMonthStart", {
+        date: DateService.toDisplayDate(
+          STARTING_DATE_MAP[CURRENT_MONTH_START],
+          values.language,
+        ),
+      }),
+    },
+    {
+      value: NEXT_MONTH_START,
+      label: t("onboarding.startingBalance.nextMonthStart", {
+        date: DateService.toDisplayDate(
+          STARTING_DATE_MAP[NEXT_MONTH_START],
+          values.language,
+        ),
+      }),
+    },
+  ];
+
   const handleOptionChange = (value: StartingDateEnum) => {
     setSelectedOption(value);
     setFieldValue("startingDate", STARTING_DATE_MAP[value]);
@@ -46,58 +76,35 @@ export default function StartingBalance({
   return (
     <div>
       <p className="leading-7">{t("onboarding.startingBalance.heading")}</p>
-      <p className="leading-7 mt-4">
-        {t("onboarding.startingBalance.balanceLabel")}
-      </p>
-      <CurrencyInput
-        currency={values.currency}
-        type="number"
-        min={0}
-        placeholder={t("onboarding.startingBalance.amountPlaceholder")}
-        value={values.startingBalance || ""}
-        onChange={(e) =>
-          setFieldValue("startingBalance", parseFloat(e.target.value) || 0)
-        }
-      />
-      {touched.startingBalance && errors.startingBalance && (
-        <p className="text-sm text-destructive mt-1">
-          {errors.startingBalance}
-        </p>
-      )}
 
-      <p className="leading-7 mt-4">
-        {t("onboarding.startingBalance.trackingLabel")}
-      </p>
-      <RadioGroup
-        value={selectedOption}
-        onValueChange={(value) => handleOptionChange(value as StartingDateEnum)}
-        className="w-fit"
-      >
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value={TODAY} id="r1" />
-          <Label htmlFor="r1">
-            {t("onboarding.startingBalance.today", {
-              date: DateService.toDisplayDate(STARTING_DATE_MAP[TODAY], values.language),
-            })}
-          </Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value={CURRENT_MONTH_START} id="r2" />
-          <Label htmlFor="r2">
-            {t("onboarding.startingBalance.currentMonthStart", {
-              date: DateService.toDisplayDate(STARTING_DATE_MAP[CURRENT_MONTH_START], values.language),
-            })}
-          </Label>
-        </div>
-        <div className="flex items-center gap-3">
-          <RadioGroupItem value={NEXT_MONTH_START} id="r3" />
-          <Label htmlFor="r3">
-            {t("onboarding.startingBalance.nextMonthStart", {
-              date: DateService.toDisplayDate(STARTING_DATE_MAP[NEXT_MONTH_START], values.language),
-            })}
-          </Label>
-        </div>
-      </RadioGroup>
+      <FieldGroup className="mt-4">
+        <Field>
+          <FieldLabel>{t("onboarding.startingBalance.balanceLabel")}</FieldLabel>
+          <CurrencyInput
+            currency={values.currency}
+            type="number"
+            min={0}
+            placeholder={t("onboarding.startingBalance.amountPlaceholder")}
+            value={values.startingBalance || ""}
+            onChange={(e) =>
+              setFieldValue("startingBalance", parseFloat(e.target.value) || 0)
+            }
+          />
+          {touched.startingBalance && errors.startingBalance && (
+            <FieldError>{errors.startingBalance}</FieldError>
+          )}
+        </Field>
+
+        <Field>
+          <FieldLabel>{t("onboarding.startingBalance.trackingLabel")}</FieldLabel>
+          <CustomRadioGroup
+            className="w-fit"
+            value={selectedOption}
+            onValueChange={(value) => handleOptionChange(value as StartingDateEnum)}
+            items={startingBalanceOptions}
+          />
+        </Field>
+      </FieldGroup>
     </div>
   );
 }
