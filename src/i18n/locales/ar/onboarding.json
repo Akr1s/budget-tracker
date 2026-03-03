@@ -1,73 +1,107 @@
 {
-  "onboarding": {
-    "title": "مرحبًا بك في متتبع الميزانية",
-    "stepIndicator": "الخطوة {{current}} من {{total}}",
-    "welcome": {
-      "description1": "لنقم بإعداد متتبع الميزانية الشخصي الخاص بك!",
-      "description2": "لن يستغرق ذلك سوى 2-3 دقائق.",
-      "selectLanguage": "اختر لغتك:",
-      "languageLabel": "اللغات المتاحة",
-      "selectCurrency": "اختر عملتك:",
-      "currencyLabel": "العملات المتاحة"
-    },
+  "title": "مرحبًا بك في متتبع الميزانية",
+  "stepIndicator": "الخطوة {{current}} من {{total}}",
+  "welcome": {
+    "description1": "لنقم بإعداد متتبع الميزانية الشخصي الخاص بك!",
+    "description2": "لن يستغرق ذلك سوى 2-3 دقائق.",
+    "selectLanguage": "اختر لغتك:",
+    "languageLabel": "اللغات المتاحة",
+    "selectCurrency": "اختر عملتك:",
+    "currencyLabel": "العملات المتاحة"
+  },
+  "categories": {
+    "heading": "اختر الفئات التي تنطبق عليك:",
+    "groups": {
+      "essential": "الأساسيات",
+      "lifestyle": "أسلوب الحياة",
+      "financial": "المالية"
+    }
+  },
+  "income": {
+    "heading": "ما هو دخلك الشهري؟",
+    "primarySourceLabel": "المصدر الرئيسي للدخل:",
+    "primarySourcePlaceholder": "اختر مصدر دخلك الرئيسي",
+    "monthlyAmountLabel": "المبلغ الشهري:",
+    "amountPlaceholder": "أدخل المبلغ",
+    "sources": {
+      "salary": "الراتب",
+      "freelance": "العمل الحر",
+      "donations": "التبرعات"
+    }
+  },
+  "startingBalance": {
+    "heading": "ما هو رصيد حسابك الحالي؟",
+    "balanceLabel": "الرصيد الابتدائي:",
+    "amountPlaceholder": "أدخل المبلغ",
+    "trackingLabel": "متى تريد البدء في التتبع؟",
+    "today": "اليوم ({{date}})",
+    "currentMonthStart": "بداية هذا الشهر ({{date}})",
+    "nextMonthStart": "بداية الشهر القادم ({{date}})"
+  },
+  "budgetGoals": {
+    "heading": "حدد حدود الإنفاق الشهرية لكل فئة:",
+    "monthlyIncome": "الدخل الشهري: {{symbol}}{{amount}}",
+    "noCategories": "لم يتم اختيار أي فئات. ارجع إلى الخطوة 2.",
+    "totalBudgeted": "إجمالي الميزانية: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
+    "remaining": "المتبقي: {{symbol}}{{amount}} ({{percentage}}%) للمدخرات/أخرى"
+  },
+  "summary": {
+    "overview": "إليك نظرة عامة على ميزانيتك:",
+    "monthlySummaryHeading": "الملخص الشهري",
+    "income": "الدخل: {{symbol}}{{amount}} ({{source}})",
+    "budget": "الميزانية: {{symbol}}{{amount}}",
+    "savingsGoal": "هدف الادخار: {{symbol}}{{amount}} ({{percentage}}%)",
+    "categoriesHeading": "الفئات ({{count}} نشطة)",
+    "noCategories": "لم يتم اختيار أي فئات.",
+    "startingBalanceHeading": "الرصيد الابتدائي",
+    "trackingFrom": "التتبع من: {{date}}",
+    "preferencesHeading": "التفضيلات",
+    "languageCurrency": "اللغة: {{language}} · العملة: {{currency}}",
+    "nextStepsHeading": "الخطوات التالية",
+    "nextStep1": "أضف معاملتك الأولى",
+    "nextStep2": "إعداد الفواتير المتكررة",
+    "nextStep3": "استكشف التقارير والتحليلات"
+  },
+  "validation": {
     "categories": {
-      "heading": "اختر الفئات التي تنطبق عليك:",
-      "groups": {
-        "essential": "الأساسيات",
-        "lifestyle": "أسلوب الحياة",
-        "financial": "المالية"
-      }
+      "invalid": "فئة غير صالحة",
+      "minOne": "يرجى اختيار فئة واحدة على الأقل"
     },
-    "income": {
-      "heading": "ما هو دخلك الشهري؟",
-      "primarySourceLabel": "المصدر الرئيسي للدخل:",
-      "primarySourcePlaceholder": "اختر مصدر دخلك الرئيسي",
-      "monthlyAmountLabel": "المبلغ الشهري:",
-      "amountPlaceholder": "أدخل المبلغ",
-      "sources": {
-        "salary": "الراتب",
-        "freelance": "العمل الحر",
-        "donations": "التبرعات"
-      }
+    "currency": {
+      "invalid": "عملة غير صالحة",
+      "required": "العملة مطلوبة"
+    },
+    "language": {
+      "invalid": "لغة غير صالحة",
+      "required": "اللغة مطلوبة"
+    },
+    "primaryIncomeSource": {
+      "invalid": "مصدر دخل غير صالح",
+      "required": "المصدر الرئيسي للدخل مطلوب"
+    },
+    "primarySourceMonthlyAmount": {
+      "number": "يجب أن يكون المبلغ الشهري رقمًا",
+      "positive": "يجب أن يكون المبلغ الشهري أكبر من 0",
+      "required": "المبلغ الشهري مطلوب"
     },
     "startingBalance": {
-      "heading": "ما هو رصيد حسابك الحالي؟",
-      "balanceLabel": "الرصيد الابتدائي:",
-      "amountPlaceholder": "أدخل المبلغ",
-      "trackingLabel": "متى تريد البدء في التتبع؟",
-      "today": "اليوم ({{date}})",
-      "currentMonthStart": "بداية هذا الشهر ({{date}})",
-      "nextMonthStart": "بداية الشهر القادم ({{date}})"
+      "number": "يجب أن يكون الرصيد الابتدائي رقمًا",
+      "positive": "يجب أن يكون الرصيد الابتدائي أكبر من 0",
+      "required": "الرصيد الابتدائي مطلوب"
+    },
+    "startingDate": {
+      "invalid": "تاريخ غير صالح",
+      "required": "تاريخ البدء مطلوب"
     },
     "budgetGoals": {
-      "heading": "حدد حدود الإنفاق الشهرية لكل فئة:",
-      "monthlyIncome": "الدخل الشهري: {{symbol}}{{amount}}",
-      "noCategories": "لم يتم اختيار أي فئات. ارجع إلى الخطوة 2.",
-      "totalBudgeted": "إجمالي الميزانية: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
-      "remaining": "المتبقي: {{symbol}}{{amount}} ({{percentage}}%) للمدخرات/أخرى"
-    },
-    "summary": {
-      "overview": "إليك نظرة عامة على ميزانيتك:",
-      "monthlySummaryHeading": "الملخص الشهري",
-      "income": "الدخل: {{symbol}}{{amount}} ({{source}})",
-      "budget": "الميزانية: {{symbol}}{{amount}}",
-      "savingsGoal": "هدف الادخار: {{symbol}}{{amount}} ({{percentage}}%)",
-      "categoriesHeading": "الفئات ({{count}} نشطة)",
-      "noCategories": "لم يتم اختيار أي فئات.",
-      "startingBalanceHeading": "الرصيد الابتدائي",
-      "trackingFrom": "التتبع من: {{date}}",
-      "preferencesHeading": "التفضيلات",
-      "languageCurrency": "اللغة: {{language}} · العملة: {{currency}}",
-      "nextStepsHeading": "الخطوات التالية",
-      "nextStep1": "أضف معاملتك الأولى",
-      "nextStep2": "إعداد الفواتير المتكررة",
-      "nextStep3": "استكشف التقارير والتحليلات"
-    },
-    "footer": {
-      "skipSetup": "تخطي الإعداد",
-      "previousStep": "الخطوة السابقة",
-      "nextStep": "الخطوة التالية",
-      "saveChanges": "حفظ التغييرات"
+      "number": "يجب أن تكون الميزانية رقمًا",
+      "negative": "لا يمكن أن تكون الميزانية سالبة"
     }
+  },
+  "footer": {
+    "skipSetup": "تخطي الإعداد",
+    "previousStep": "الخطوة السابقة",
+    "nextStep": "الخطوة التالية",
+    "saveChanges": "حفظ التغييرات"
   }
 }

@@ -17,7 +17,7 @@ import BudgetGoals from "./component/budget-goals.component";
 import { useFormik } from "formik";
 import type { IOnboardingForm } from "./onboarding.type";
 import { initialValues } from "./utils/initial-values.constant";
-import { validationSchema } from "./utils/validation-schema.constant";
+import { createValidationSchema } from "./utils/validation-schema.constant";
 import Footer from "./component/footer.component";
 import {
   ONBOARDING_STEPS_COUNT,
@@ -35,11 +35,12 @@ export default function Onboarding() {
   );
 
   const navigate = useNavigate();
-  const { t } = useTranslation("onboarding");
+  const { t: tOnboarding } = useTranslation("onboarding");
+
   const { values, errors, touched, setFieldValue, handleSubmit } =
     useFormik<IOnboardingForm>({
       initialValues,
-      validationSchema,
+      validationSchema: createValidationSchema(tOnboarding),
       validateOnMount: true,
       onSubmit: (formValues) => {
         LocalStorageService.setItem(
@@ -67,9 +68,9 @@ export default function Onboarding() {
       <form>
         <DialogContent className="sm:max-w-md" showCloseButton={false}>
           <DialogHeader>
-            <DialogTitle>{t("onboarding.title")}</DialogTitle>
+            <DialogTitle>{tOnboarding("title")}</DialogTitle>
             <DialogDescription>
-              {t("onboarding.stepIndicator", {
+              {tOnboarding("stepIndicator", {
                 current: step,
                 total: ONBOARDING_STEPS_COUNT,
               })}

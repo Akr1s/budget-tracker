@@ -1,73 +1,107 @@
 {
-  "onboarding": {
-    "title": "Willkommen beim Budget-Tracker",
-    "stepIndicator": "Schritt {{current}} von {{total}}",
-    "welcome": {
-      "description1": "Lass uns deinen persönlichen Budget-Tracker einrichten!",
-      "description2": "Das dauert nur 2-3 Minuten.",
-      "selectLanguage": "Sprache auswählen:",
-      "languageLabel": "Verfügbare Sprachen",
-      "selectCurrency": "Währung auswählen:",
-      "currencyLabel": "Verfügbare Währungen"
-    },
+  "title": "Willkommen beim Budget-Tracker",
+  "stepIndicator": "Schritt {{current}} von {{total}}",
+  "welcome": {
+    "description1": "Lass uns deinen persönlichen Budget-Tracker einrichten!",
+    "description2": "Das dauert nur 2-3 Minuten.",
+    "selectLanguage": "Sprache auswählen:",
+    "languageLabel": "Verfügbare Sprachen",
+    "selectCurrency": "Währung auswählen:",
+    "currencyLabel": "Verfügbare Währungen"
+  },
+  "categories": {
+    "heading": "Wähle die Kategorien, die auf dich zutreffen:",
+    "groups": {
+      "essential": "WESENTLICH",
+      "lifestyle": "LEBENSSTIL",
+      "financial": "FINANZIELL"
+    }
+  },
+  "income": {
+    "heading": "Wie hoch ist dein monatliches Einkommen?",
+    "primarySourceLabel": "Haupteinkommensquelle:",
+    "primarySourcePlaceholder": "Haupteinkommensquelle auswählen",
+    "monthlyAmountLabel": "Monatlicher Betrag:",
+    "amountPlaceholder": "Betrag eingeben",
+    "sources": {
+      "salary": "Gehalt",
+      "freelance": "Freiberuflich",
+      "donations": "Spenden"
+    }
+  },
+  "startingBalance": {
+    "heading": "Wie hoch ist dein aktuelles Kontoguthaben?",
+    "balanceLabel": "Startguthaben:",
+    "amountPlaceholder": "Betrag eingeben",
+    "trackingLabel": "Wann möchtest du anfangen zu tracken?",
+    "today": "Heute ({{date}})",
+    "currentMonthStart": "Anfang dieses Monats ({{date}})",
+    "nextMonthStart": "Anfang des nächsten Monats ({{date}})"
+  },
+  "budgetGoals": {
+    "heading": "Lege monatliche Ausgabenlimits für jede Kategorie fest:",
+    "monthlyIncome": "Monatliches Einkommen: {{symbol}}{{amount}}",
+    "noCategories": "Keine Kategorien ausgewählt. Gehe zurück zu Schritt 2.",
+    "totalBudgeted": "Gesamt budgetiert: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
+    "remaining": "Verbleibend: {{symbol}}{{amount}} ({{percentage}}%) für Sparen/Sonstiges"
+  },
+  "summary": {
+    "overview": "Hier ist deine Budgetübersicht:",
+    "monthlySummaryHeading": "MONATLICHE ZUSAMMENFASSUNG",
+    "income": "Einkommen: {{symbol}}{{amount}} ({{source}})",
+    "budget": "Budget: {{symbol}}{{amount}}",
+    "savingsGoal": "Sparziel: {{symbol}}{{amount}} ({{percentage}}%)",
+    "categoriesHeading": "KATEGORIEN ({{count}} aktiv)",
+    "noCategories": "Keine Kategorien ausgewählt.",
+    "startingBalanceHeading": "STARTGUTHABEN",
+    "trackingFrom": "Tracking ab: {{date}}",
+    "preferencesHeading": "EINSTELLUNGEN",
+    "languageCurrency": "Sprache: {{language}} · Währung: {{currency}}",
+    "nextStepsHeading": "NÄCHSTE SCHRITTE",
+    "nextStep1": "Erste Transaktion hinzufügen",
+    "nextStep2": "Wiederkehrende Rechnungen einrichten",
+    "nextStep3": "Berichte und Analysen erkunden"
+  },
+  "validation": {
     "categories": {
-      "heading": "Wähle die Kategorien, die auf dich zutreffen:",
-      "groups": {
-        "essential": "WESENTLICH",
-        "lifestyle": "LEBENSSTIL",
-        "financial": "FINANZIELL"
-      }
+      "invalid": "Ungültige Kategorie",
+      "minOne": "Bitte wähle mindestens eine Kategorie aus"
     },
-    "income": {
-      "heading": "Wie hoch ist dein monatliches Einkommen?",
-      "primarySourceLabel": "Haupteinkommensquelle:",
-      "primarySourcePlaceholder": "Haupteinkommensquelle auswählen",
-      "monthlyAmountLabel": "Monatlicher Betrag:",
-      "amountPlaceholder": "Betrag eingeben",
-      "sources": {
-        "salary": "Gehalt",
-        "freelance": "Freiberuflich",
-        "donations": "Spenden"
-      }
+    "currency": {
+      "invalid": "Ungültige Währung",
+      "required": "Währung ist erforderlich"
+    },
+    "language": {
+      "invalid": "Ungültige Sprache",
+      "required": "Sprache ist erforderlich"
+    },
+    "primaryIncomeSource": {
+      "invalid": "Ungültige Einkommensquelle",
+      "required": "Haupteinkommensquelle ist erforderlich"
+    },
+    "primarySourceMonthlyAmount": {
+      "number": "Monatlicher Betrag muss eine Zahl sein",
+      "positive": "Monatlicher Betrag muss größer als 0 sein",
+      "required": "Monatlicher Betrag ist erforderlich"
     },
     "startingBalance": {
-      "heading": "Wie hoch ist dein aktuelles Kontoguthaben?",
-      "balanceLabel": "Startguthaben:",
-      "amountPlaceholder": "Betrag eingeben",
-      "trackingLabel": "Wann möchtest du anfangen zu tracken?",
-      "today": "Heute ({{date}})",
-      "currentMonthStart": "Anfang dieses Monats ({{date}})",
-      "nextMonthStart": "Anfang des nächsten Monats ({{date}})"
+      "number": "Startguthaben muss eine Zahl sein",
+      "positive": "Startguthaben muss größer als 0 sein",
+      "required": "Startguthaben ist erforderlich"
+    },
+    "startingDate": {
+      "invalid": "Ungültiges Datum",
+      "required": "Startdatum ist erforderlich"
     },
     "budgetGoals": {
-      "heading": "Lege monatliche Ausgabenlimits für jede Kategorie fest:",
-      "monthlyIncome": "Monatliches Einkommen: {{symbol}}{{amount}}",
-      "noCategories": "Keine Kategorien ausgewählt. Gehe zurück zu Schritt 2.",
-      "totalBudgeted": "Gesamt budgetiert: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
-      "remaining": "Verbleibend: {{symbol}}{{amount}} ({{percentage}}%) für Sparen/Sonstiges"
-    },
-    "summary": {
-      "overview": "Hier ist deine Budgetübersicht:",
-      "monthlySummaryHeading": "MONATLICHE ZUSAMMENFASSUNG",
-      "income": "Einkommen: {{symbol}}{{amount}} ({{source}})",
-      "budget": "Budget: {{symbol}}{{amount}}",
-      "savingsGoal": "Sparziel: {{symbol}}{{amount}} ({{percentage}}%)",
-      "categoriesHeading": "KATEGORIEN ({{count}} aktiv)",
-      "noCategories": "Keine Kategorien ausgewählt.",
-      "startingBalanceHeading": "STARTGUTHABEN",
-      "trackingFrom": "Tracking ab: {{date}}",
-      "preferencesHeading": "EINSTELLUNGEN",
-      "languageCurrency": "Sprache: {{language}} · Währung: {{currency}}",
-      "nextStepsHeading": "NÄCHSTE SCHRITTE",
-      "nextStep1": "Erste Transaktion hinzufügen",
-      "nextStep2": "Wiederkehrende Rechnungen einrichten",
-      "nextStep3": "Berichte und Analysen erkunden"
-    },
-    "footer": {
-      "skipSetup": "Einrichtung überspringen",
-      "previousStep": "Vorheriger Schritt",
-      "nextStep": "Nächster Schritt",
-      "saveChanges": "Änderungen speichern"
+      "number": "Budget muss eine Zahl sein",
+      "negative": "Budget darf nicht negativ sein"
     }
+  },
+  "footer": {
+    "skipSetup": "Einrichtung überspringen",
+    "previousStep": "Vorheriger Schritt",
+    "nextStep": "Nächster Schritt",
+    "saveChanges": "Änderungen speichern"
   }
 }

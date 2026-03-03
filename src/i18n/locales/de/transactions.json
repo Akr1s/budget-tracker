@@ -1,41 +1,39 @@
 {
-  "transactions": {
-    "form": {
-      "title": "Transaktion erstellen",
-      "description": "Eine neue Transaktion erstellen",
-      "fields": {
-        "type": "Typ",
-        "amount": "Betrag *",
-        "category": "Kategorie *",
-        "description": "Beschreibung",
-        "date": "Datum *",
-        "currency": "Währung"
-      },
-      "placeholders": {
-        "amount": "0.00",
-        "description": "Beschreibung hinzufügen..."
-      },
-      "typeOptions": {
-        "income": "Einnahme",
-        "expense": "Ausgabe"
-      },
-      "actions": {
-        "cancel": "Abbrechen",
-        "save": "Transaktion speichern"
-      },
-      "validation": {
-        "typeInvalid": "Ungültiger Transaktionstyp",
-        "typeRequired": "Transaktionstyp ist erforderlich",
-        "amountNumber": "Betrag muss eine Zahl sein",
-        "amountPositive": "Betrag muss größer als 0 sein",
-        "amountRequired": "Betrag ist erforderlich",
-        "currencyInvalid": "Ungültige Währung",
-        "currencyRequired": "Währung ist erforderlich",
-        "categoryInvalid": "Ungültige Kategorie",
-        "categoryRequired": "Kategorie ist erforderlich",
-        "dateInvalid": "Ungültiges Datum",
-        "dateRequired": "Datum ist erforderlich"
-      }
+  "form": {
+    "title": "Transaktion erstellen",
+    "description": "Eine neue Transaktion erstellen",
+    "fields": {
+      "type": "Typ",
+      "amount": "Betrag *",
+      "category": "Kategorie *",
+      "description": "Beschreibung",
+      "date": "Datum *",
+      "currency": "Währung"
+    },
+    "placeholders": {
+      "amount": "0.00",
+      "description": "Beschreibung hinzufügen..."
+    },
+    "typeOptions": {
+      "income": "Einnahme",
+      "expense": "Ausgabe"
+    },
+    "actions": {
+      "cancel": "Abbrechen",
+      "save": "Transaktion speichern"
+    },
+    "validation": {
+      "typeInvalid": "Ungültiger Transaktionstyp",
+      "typeRequired": "Transaktionstyp ist erforderlich",
+      "amountNumber": "Betrag muss eine Zahl sein",
+      "amountPositive": "Betrag muss größer als 0 sein",
+      "amountRequired": "Betrag ist erforderlich",
+      "currencyInvalid": "Ungültige Währung",
+      "currencyRequired": "Währung ist erforderlich",
+      "categoryInvalid": "Ungültige Kategorie",
+      "categoryRequired": "Kategorie ist erforderlich",
+      "dateInvalid": "Ungültiges Datum",
+      "dateRequired": "Datum ist erforderlich"
     }
   }
 }

@@ -8,22 +8,22 @@ interface IProps {
 }
 
 export default function Summary({ values }: IProps) {
-  const { t } = useTranslation("onboarding");
+  const { t: tOnboarding } = useTranslation("onboarding");
   const { t: tCommon } = useTranslation("common");
   const currencySymbol = getCurrencySymbol(values.currency);
 
   const categoryLabels: Record<string, string> = {
-    housing: tCommon("common.categories.housing"),
-    groceries: tCommon("common.categories.groceries"),
-    transportation: tCommon("common.categories.transportation"),
-    healthcare: tCommon("common.categories.healthcare"),
-    entertainment: tCommon("common.categories.entertainment"),
-    shopping: tCommon("common.categories.shopping"),
-    sports: tCommon("common.categories.sports"),
-    travel: tCommon("common.categories.travel"),
-    debt: tCommon("common.categories.debt"),
-    savings: tCommon("common.categories.savings"),
-    education: tCommon("common.categories.education"),
+    housing: tCommon("categories.housing"),
+    groceries: tCommon("categories.groceries"),
+    transportation: tCommon("categories.transportation"),
+    healthcare: tCommon("categories.healthcare"),
+    entertainment: tCommon("categories.entertainment"),
+    shopping: tCommon("categories.shopping"),
+    sports: tCommon("categories.sports"),
+    travel: tCommon("categories.travel"),
+    debt: tCommon("categories.debt"),
+    savings: tCommon("categories.savings"),
+    education: tCommon("categories.education"),
   };
 
   const totalBudgeted = Object.values(values.budgetGoals).reduce(
@@ -38,27 +38,27 @@ export default function Summary({ values }: IProps) {
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="leading-7">{t("onboarding.summary.overview")}</p>
+      <p className="leading-7">{tOnboarding("summary.overview")}</p>
 
       <div>
         <p className="font-semibold">
-          {t("onboarding.summary.monthlySummaryHeading")}
+          {tOnboarding("summary.monthlySummaryHeading")}
         </p>
         <p className="leading-7">
-          {t("onboarding.summary.income", {
+          {tOnboarding("summary.income", {
             symbol: currencySymbol,
             amount: values.primarySourceMonthlyAmount.toFixed(2),
             source: values.primaryIncomeSource,
           })}
         </p>
         <p className="leading-7">
-          {t("onboarding.summary.budget", {
+          {tOnboarding("summary.budget", {
             symbol: currencySymbol,
             amount: totalBudgeted.toFixed(2),
           })}
         </p>
         <p className="leading-7">
-          {t("onboarding.summary.savingsGoal", {
+          {tOnboarding("summary.savingsGoal", {
             symbol: currencySymbol,
             amount: savingsGoal.toFixed(2),
             percentage: savingsPercentage,
@@ -68,7 +68,7 @@ export default function Summary({ values }: IProps) {
 
       <div>
         <p className="font-semibold">
-          {t("onboarding.summary.categoriesHeading", {
+          {tOnboarding("summary.categoriesHeading", {
             count: values.categories.length,
           })}
         </p>
@@ -89,21 +89,21 @@ export default function Summary({ values }: IProps) {
           </ul>
         ) : (
           <p className="text-muted-foreground text-sm">
-            {t("onboarding.summary.noCategories")}
+            {tOnboarding("summary.noCategories")}
           </p>
         )}
       </div>
 
       <div>
         <p className="font-semibold">
-          {t("onboarding.summary.startingBalanceHeading")}
+          {tOnboarding("summary.startingBalanceHeading")}
         </p>
         <p className="leading-7">
           {currencySymbol}
           {values.startingBalance.toFixed(2)}
         </p>
         <p className="leading-7 text-sm text-muted-foreground">
-          {t("onboarding.summary.trackingFrom", {
+          {tOnboarding("summary.trackingFrom", {
             date: DateService.toDisplayDate(values.startingDate, values.language),
           })}
         </p>
@@ -111,10 +111,10 @@ export default function Summary({ values }: IProps) {
 
       <div>
         <p className="font-semibold">
-          {t("onboarding.summary.preferencesHeading")}
+          {tOnboarding("summary.preferencesHeading")}
         </p>
         <p className="leading-7">
-          {t("onboarding.summary.languageCurrency", {
+          {tOnboarding("summary.languageCurrency", {
             language: values.language,
             currency: values.currency.toUpperCase(),
           })}
@@ -123,12 +123,12 @@ export default function Summary({ values }: IProps) {
 
       <div>
         <p className="font-semibold">
-          {t("onboarding.summary.nextStepsHeading")}
+          {tOnboarding("summary.nextStepsHeading")}
         </p>
         <ul className="list-disc list-inside">
-          <li className="leading-7">{t("onboarding.summary.nextStep1")}</li>
-          <li className="leading-7">{t("onboarding.summary.nextStep2")}</li>
-          <li className="leading-7">{t("onboarding.summary.nextStep3")}</li>
+          <li className="leading-7">{tOnboarding("summary.nextStep1")}</li>
+          <li className="leading-7">{tOnboarding("summary.nextStep2")}</li>
+          <li className="leading-7">{tOnboarding("summary.nextStep3")}</li>
         </ul>
       </div>
     </div>

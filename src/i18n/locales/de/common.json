@@ -1,23 +1,21 @@
 {
-  "common": {
-    "categories": {
-      "housing": "Wohnen",
-      "groceries": "Lebensmittel",
-      "transportation": "Transport",
-      "healthcare": "Gesundheit",
-      "entertainment": "Unterhaltung",
-      "shopping": "Einkaufen",
-      "sports": "Sport",
-      "travel": "Reisen",
-      "debt": "Schulden",
-      "savings": "Sparen",
-      "education": "Bildung"
-    },
-    "currencies": {
-      "usd": "USD - US-Dollar",
-      "eur": "EUR - Euro",
-      "jpy": "JPY - Japanischer Yen",
-      "sar": "SAR - Saudi-Riyal"
-    }
+  "categories": {
+    "housing": "Wohnen",
+    "groceries": "Lebensmittel",
+    "transportation": "Transport",
+    "healthcare": "Gesundheit",
+    "entertainment": "Unterhaltung",
+    "shopping": "Einkaufen",
+    "sports": "Sport",
+    "travel": "Reisen",
+    "debt": "Schulden",
+    "savings": "Sparen",
+    "education": "Bildung"
+  },
+  "currencies": {
+    "usd": "USD - US-Dollar",
+    "eur": "EUR - Euro",
+    "jpy": "JPY - Japanischer Yen",
+    "sar": "SAR - Saudi-Riyal"
   }
 }

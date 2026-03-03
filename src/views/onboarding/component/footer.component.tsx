@@ -26,7 +26,7 @@ export default function Footer({
   isNextDisabled,
 }: IProps) {
   const navigate = useNavigate();
-  const { t } = useTranslation("onboarding");
+  const { t: tOnboarding } = useTranslation("onboarding");
 
   const handleSkipSetup = () => {
     LocalStorageService.setItem(
@@ -40,7 +40,7 @@ export default function Footer({
     <DialogFooter>
       {step === 1 ? (
         <Button type="button" onClick={handleSkipSetup} variant="outline">
-          {t("onboarding.footer.skipSetup")}
+          {tOnboarding("footer.skipSetup")}
         </Button>
       ) : (
         <Button
@@ -48,7 +48,7 @@ export default function Footer({
           onClick={() => setStep(step - 1)}
           variant="outline"
         >
-          {t("onboarding.footer.previousStep")}
+          {tOnboarding("footer.previousStep")}
         </Button>
       )}
       {step === ONBOARDING_STEPS_COUNT ? (
@@ -57,7 +57,7 @@ export default function Footer({
           onClick={() => handleSubmit()}
           disabled={isNextDisabled}
         >
-          {t("onboarding.footer.saveChanges")}
+          {tOnboarding("footer.saveChanges")}
         </Button>
       ) : (
         <Button
@@ -66,7 +66,7 @@ export default function Footer({
           variant="outline"
           disabled={isNextDisabled}
         >
-          {t("onboarding.footer.nextStep")}
+          {tOnboarding("footer.nextStep")}
         </Button>
       )}
     </DialogFooter>

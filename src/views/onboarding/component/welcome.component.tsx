@@ -30,7 +30,7 @@ export default function Welcome({
   errors,
   touched,
 }: IProps) {
-  const { t, i18n } = useTranslation("onboarding");
+  const { t: tOnboarding, i18n } = useTranslation("onboarding");
   const { t: tCommon } = useTranslation("common");
 
   const handleLanguageChange = (value: LanguageEnum) => {
@@ -45,19 +45,19 @@ export default function Welcome({
     LANGUAGE_CURRENCY_OPTIONS[values.language] ?? ["usd"]
   ).map((code) => ({
     value: code,
-    label: tCommon(`common.currencies.${code}`),
+    label: tCommon(`currencies.${code}`),
   }));
 
   return (
     <div>
-      <p className="leading-7">{t("onboarding.welcome.description1")}</p>
-      <p className="leading-7">{t("onboarding.welcome.description2")}</p>
+      <p className="leading-7">{tOnboarding("welcome.description1")}</p>
+      <p className="leading-7">{tOnboarding("welcome.description2")}</p>
 
       <FieldGroup className="mt-4">
         <Field>
-          <FieldLabel>{t("onboarding.welcome.selectLanguage")}</FieldLabel>
+          <FieldLabel>{tOnboarding("welcome.selectLanguage")}</FieldLabel>
           <CustomSelect
-            label={t("onboarding.welcome.languageLabel")}
+            label={tOnboarding("welcome.languageLabel")}
             value={values.language}
             options={languageOptions}
             onValueChange={(value) => handleLanguageChange(value as LanguageEnum)}
@@ -68,9 +68,9 @@ export default function Welcome({
         </Field>
 
         <Field>
-          <FieldLabel>{t("onboarding.welcome.selectCurrency")}</FieldLabel>
+          <FieldLabel>{tOnboarding("welcome.selectCurrency")}</FieldLabel>
           <CustomSelect
-            label={t("onboarding.welcome.currencyLabel")}
+            label={tOnboarding("welcome.currencyLabel")}
             value={values.currency}
             options={currencyOptions}
             onValueChange={(value) => setFieldValue("currency", value)}

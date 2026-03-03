@@ -23,23 +23,23 @@ export default function Income({
   errors,
   touched,
 }: IProps) {
-  const { t } = useTranslation("onboarding");
+  const { t: tOnboarding } = useTranslation("onboarding");
 
   const incomeOptions = [
-    { label: t("onboarding.income.sources.salary"), value: IncomeSourceEnum.SALARY },
-    { label: t("onboarding.income.sources.freelance"), value: IncomeSourceEnum.FREELANCE },
-    { label: t("onboarding.income.sources.donations"), value: IncomeSourceEnum.DONATIONS },
+    { label: tOnboarding("income.sources.salary"), value: IncomeSourceEnum.SALARY },
+    { label: tOnboarding("income.sources.freelance"), value: IncomeSourceEnum.FREELANCE },
+    { label: tOnboarding("income.sources.donations"), value: IncomeSourceEnum.DONATIONS },
   ];
 
   return (
     <div>
-      <p className="leading-7">{t("onboarding.income.heading")}</p>
+      <p className="leading-7">{tOnboarding("income.heading")}</p>
 
       <FieldGroup className="mt-4">
         <Field>
-          <FieldLabel>{t("onboarding.income.primarySourceLabel")}</FieldLabel>
+          <FieldLabel>{tOnboarding("income.primarySourceLabel")}</FieldLabel>
           <CustomSelect
-            label={t("onboarding.income.primarySourcePlaceholder")}
+            label={tOnboarding("income.primarySourcePlaceholder")}
             value={values.primaryIncomeSource}
             options={incomeOptions}
             onValueChange={(value) => setFieldValue("primaryIncomeSource", value)}
@@ -50,12 +50,12 @@ export default function Income({
         </Field>
 
         <Field>
-          <FieldLabel>{t("onboarding.income.monthlyAmountLabel")}</FieldLabel>
+          <FieldLabel>{tOnboarding("income.monthlyAmountLabel")}</FieldLabel>
           <CurrencyInput
             currency={values.currency}
             type="number"
             min={0}
-            placeholder={t("onboarding.income.amountPlaceholder")}
+            placeholder={tOnboarding("income.amountPlaceholder")}
             value={values.primarySourceMonthlyAmount || ""}
             onChange={(e) =>
               setFieldValue(

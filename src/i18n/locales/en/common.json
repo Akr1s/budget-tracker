@@ -1,23 +1,21 @@
 {
-  "common": {
-    "categories": {
-      "housing": "Housing",
-      "groceries": "Groceries",
-      "transportation": "Transportation",
-      "healthcare": "Healthcare",
-      "entertainment": "Entertainment",
-      "shopping": "Shopping",
-      "sports": "Sports",
-      "travel": "Travel",
-      "debt": "Debt",
-      "savings": "Savings",
-      "education": "Education"
-    },
-    "currencies": {
-      "usd": "USD - US Dollar",
-      "eur": "EUR - Euro",
-      "jpy": "JPY - Japanese Yen",
-      "sar": "SAR - Saudi Riyal"
-    }
+  "categories": {
+    "housing": "Housing",
+    "groceries": "Groceries",
+    "transportation": "Transportation",
+    "healthcare": "Healthcare",
+    "entertainment": "Entertainment",
+    "shopping": "Shopping",
+    "sports": "Sports",
+    "travel": "Travel",
+    "debt": "Debt",
+    "savings": "Savings",
+    "education": "Education"
+  },
+  "currencies": {
+    "usd": "USD - US Dollar",
+    "eur": "EUR - Euro",
+    "jpy": "JPY - Japanese Yen",
+    "sar": "SAR - Saudi Riyal"
   }
 }

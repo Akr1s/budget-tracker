@@ -17,22 +17,22 @@ interface IProps {
 }
 
 export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
-  const { t } = useTranslation("onboarding");
+  const { t: tOnboarding } = useTranslation("onboarding");
   const { t: tCommon } = useTranslation("common");
   const currencySymbol = getCurrencySymbol(values.currency);
 
   const categoryLabels: Record<string, string> = {
-    housing: tCommon("common.categories.housing"),
-    groceries: tCommon("common.categories.groceries"),
-    transportation: tCommon("common.categories.transportation"),
-    healthcare: tCommon("common.categories.healthcare"),
-    entertainment: tCommon("common.categories.entertainment"),
-    shopping: tCommon("common.categories.shopping"),
-    sports: tCommon("common.categories.sports"),
-    travel: tCommon("common.categories.travel"),
-    debt: tCommon("common.categories.debt"),
-    savings: tCommon("common.categories.savings"),
-    education: tCommon("common.categories.education"),
+    housing: tCommon("categories.housing"),
+    groceries: tCommon("categories.groceries"),
+    transportation: tCommon("categories.transportation"),
+    healthcare: tCommon("categories.healthcare"),
+    entertainment: tCommon("categories.entertainment"),
+    shopping: tCommon("categories.shopping"),
+    sports: tCommon("categories.sports"),
+    travel: tCommon("categories.travel"),
+    debt: tCommon("categories.debt"),
+    savings: tCommon("categories.savings"),
+    education: tCommon("categories.education"),
   };
 
   const totalBudgeted = Object.values(values.budgetGoals).reduce(
@@ -49,9 +49,9 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
 
   return (
     <div>
-      <p className="leading-7">{t("onboarding.budgetGoals.heading")}</p>
+      <p className="leading-7">{tOnboarding("budgetGoals.heading")}</p>
       <p className="leading-7 mt-4">
-        {t("onboarding.budgetGoals.monthlyIncome", {
+        {tOnboarding("budgetGoals.monthlyIncome", {
           symbol: currencySymbol,
           amount: values.primarySourceMonthlyAmount.toFixed(2),
         })}
@@ -59,7 +59,7 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
 
       {values.categories.length === 0 ? (
         <p className="text-sm text-muted-foreground mt-2">
-          {t("onboarding.budgetGoals.noCategories")}
+          {tOnboarding("budgetGoals.noCategories")}
         </p>
       ) : (
         <FieldGroup className="mt-2">
@@ -88,14 +88,14 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
       )}
 
       <p className="leading-7 mt-4">
-        {t("onboarding.budgetGoals.totalBudgeted", {
+        {tOnboarding("budgetGoals.totalBudgeted", {
           symbol: currencySymbol,
           budgeted: totalBudgeted.toFixed(2),
           income: values.primarySourceMonthlyAmount.toFixed(2),
         })}
       </p>
       <p className="leading-7">
-        {t("onboarding.budgetGoals.remaining", {
+        {tOnboarding("budgetGoals.remaining", {
           symbol: currencySymbol,
           amount: remainingBudgeted.toFixed(2),
           percentage: remainingPercentage,

@@ -37,16 +37,16 @@ interface IProps {
 }
 
 export default function TransactionForm({ onClose }: IProps) {
-  const { t } = useTranslation("transactions");
+  const { t: tTransactions } = useTranslation("transactions");
   const { t: tCommon } = useTranslation("common");
 
   const typeOptions = Object.values(TransactionTypeEnum).map((type) => ({
-    label: t(`transactions.form.typeOptions.${type}`),
+    label: tTransactions(`form.typeOptions.${type}`),
     value: type,
   }));
 
   const categoryOptions = Object.values(CategoryEnum).map((c) => ({
-    label: tCommon(`common.categories.${c}`),
+    label: tCommon(`categories.${c}`),
     value: c,
   }));
 
@@ -79,7 +79,7 @@ export default function TransactionForm({ onClose }: IProps) {
     isValid,
   } = useFormik<ITransactionForm>({
     initialValues: formInitialValues,
-    validationSchema: createValidationSchema(t),
+    validationSchema: createValidationSchema(tTransactions),
     validateOnMount: true,
     onSubmit: (formValues) => {
       console.log(formValues);
@@ -91,16 +91,16 @@ export default function TransactionForm({ onClose }: IProps) {
       <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>{t("transactions.form.title")}</DialogTitle>
+            <DialogTitle>{tTransactions("form.title")}</DialogTitle>
             <DialogDescription>
-              {t("transactions.form.description")}
+              {tTransactions("form.description")}
             </DialogDescription>
             <hr className="border-gray-300 dark:border-gray-700" />
           </DialogHeader>
 
           <FieldGroup className="mt-4">
             <Field>
-              <FieldLabel>{t("transactions.form.fields.type")}</FieldLabel>
+              <FieldLabel>{tTransactions("form.fields.type")}</FieldLabel>
               <CustomRadioGroup
                 className="flex flex-row gap-4"
                 value={values.type}
@@ -112,14 +112,14 @@ export default function TransactionForm({ onClose }: IProps) {
             </Field>
 
             <Field>
-              <FieldLabel>{t("transactions.form.fields.amount")}</FieldLabel>
+              <FieldLabel>{tTransactions("form.fields.amount")}</FieldLabel>
               <div className="flex items-center gap-3">
                 <CurrencyInput
                   currency={values.currency}
                   type="number"
                   min={0}
                   name="amount"
-                  placeholder={t("transactions.form.placeholders.amount")}
+                  placeholder={tTransactions("form.placeholders.amount")}
                   value={values.amount || ""}
                   onChange={(e) =>
                     setFieldValue("amount", parseFloat(e.target.value) || 0)
@@ -128,7 +128,7 @@ export default function TransactionForm({ onClose }: IProps) {
                   aria-invalid={touched.amount && !!errors.amount}
                 />
                 <CustomSelect
-                  label={t("transactions.form.fields.currency")}
+                  label={tTransactions("form.fields.currency")}
                   value={values.currency}
                   options={currencyOptions}
                   onValueChange={(value) => setFieldValue("currency", value)}
@@ -140,9 +140,9 @@ export default function TransactionForm({ onClose }: IProps) {
             </Field>
 
             <Field>
-              <FieldLabel>{t("transactions.form.fields.category")}</FieldLabel>
+              <FieldLabel>{tTransactions("form.fields.category")}</FieldLabel>
               <CustomSelect
-                label={t("transactions.form.fields.category")}
+                label={tTransactions("form.fields.category")}
                 value={values.category}
                 options={categoryOptions}
                 className="w-full"
@@ -157,11 +157,11 @@ export default function TransactionForm({ onClose }: IProps) {
 
             <Field>
               <FieldLabel>
-                {t("transactions.form.fields.description")}
+                {tTransactions("form.fields.description")}
               </FieldLabel>
               <Input
                 name="description"
-                placeholder={t("transactions.form.placeholders.description")}
+                placeholder={tTransactions("form.placeholders.description")}
                 value={values.description}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -169,7 +169,7 @@ export default function TransactionForm({ onClose }: IProps) {
             </Field>
 
             <Field>
-              <FieldLabel>{t("transactions.form.fields.date")}</FieldLabel>
+              <FieldLabel>{tTransactions("form.fields.date")}</FieldLabel>
               <Input
                 type="date"
                 name="date"
@@ -186,10 +186,10 @@ export default function TransactionForm({ onClose }: IProps) {
 
           <DialogFooter className="mt-6">
             <Button type="button" variant="outline" onClick={onClose}>
-              {t("transactions.form.actions.cancel")}
+              {tTransactions("form.actions.cancel")}
             </Button>
             <Button type="submit" disabled={!isValid}>
-              {t("transactions.form.actions.save")}
+              {tTransactions("form.actions.save")}
             </Button>
           </DialogFooter>
         </form>

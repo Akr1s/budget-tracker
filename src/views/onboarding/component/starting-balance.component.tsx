@@ -33,7 +33,7 @@ export default function StartingBalance({
   errors,
   touched,
 }: IProps) {
-  const { t } = useTranslation("onboarding");
+  const { t: tOnboarding } = useTranslation("onboarding");
   const [selectedOption, setSelectedOption] = useState<StartingDateEnum>(
     StartingDateEnum.TODAY,
   );
@@ -41,7 +41,7 @@ export default function StartingBalance({
   const startingBalanceOptions = [
     {
       value: TODAY,
-      label: t("onboarding.startingBalance.today", {
+      label: tOnboarding("startingBalance.today", {
         date: DateService.toDisplayDate(
           STARTING_DATE_MAP[TODAY],
           values.language,
@@ -50,7 +50,7 @@ export default function StartingBalance({
     },
     {
       value: CURRENT_MONTH_START,
-      label: t("onboarding.startingBalance.currentMonthStart", {
+      label: tOnboarding("startingBalance.currentMonthStart", {
         date: DateService.toDisplayDate(
           STARTING_DATE_MAP[CURRENT_MONTH_START],
           values.language,
@@ -59,7 +59,7 @@ export default function StartingBalance({
     },
     {
       value: NEXT_MONTH_START,
-      label: t("onboarding.startingBalance.nextMonthStart", {
+      label: tOnboarding("startingBalance.nextMonthStart", {
         date: DateService.toDisplayDate(
           STARTING_DATE_MAP[NEXT_MONTH_START],
           values.language,
@@ -75,16 +75,16 @@ export default function StartingBalance({
 
   return (
     <div>
-      <p className="leading-7">{t("onboarding.startingBalance.heading")}</p>
+      <p className="leading-7">{tOnboarding("startingBalance.heading")}</p>
 
       <FieldGroup className="mt-4">
         <Field>
-          <FieldLabel>{t("onboarding.startingBalance.balanceLabel")}</FieldLabel>
+          <FieldLabel>{tOnboarding("startingBalance.balanceLabel")}</FieldLabel>
           <CurrencyInput
             currency={values.currency}
             type="number"
             min={0}
-            placeholder={t("onboarding.startingBalance.amountPlaceholder")}
+            placeholder={tOnboarding("startingBalance.amountPlaceholder")}
             value={values.startingBalance || ""}
             onChange={(e) =>
               setFieldValue("startingBalance", parseFloat(e.target.value) || 0)
@@ -96,7 +96,7 @@ export default function StartingBalance({
         </Field>
 
         <Field>
-          <FieldLabel>{t("onboarding.startingBalance.trackingLabel")}</FieldLabel>
+          <FieldLabel>{tOnboarding("startingBalance.trackingLabel")}</FieldLabel>
           <CustomRadioGroup
             className="w-fit"
             value={selectedOption}

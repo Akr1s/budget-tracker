@@ -1,73 +1,107 @@
 {
-  "onboarding": {
-    "title": "Welcome to Budget Tracker",
-    "stepIndicator": "Step {{current}} of {{total}}",
-    "welcome": {
-      "description1": "Let's set up your personal budget tracker!",
-      "description2": "This will only take 2-3 minutes.",
-      "selectLanguage": "Select your language:",
-      "languageLabel": "Available languages",
-      "selectCurrency": "Select your currency:",
-      "currencyLabel": "Available currencies"
-    },
+  "title": "Welcome to Budget Tracker",
+  "stepIndicator": "Step {{current}} of {{total}}",
+  "welcome": {
+    "description1": "Let's set up your personal budget tracker!",
+    "description2": "This will only take 2-3 minutes.",
+    "selectLanguage": "Select your language:",
+    "languageLabel": "Available languages",
+    "selectCurrency": "Select your currency:",
+    "currencyLabel": "Available currencies"
+  },
+  "categories": {
+    "heading": "Choose the categories that apply to you:",
+    "groups": {
+      "essential": "ESSENTIAL",
+      "lifestyle": "LIFESTYLE",
+      "financial": "FINANCIAL"
+    }
+  },
+  "income": {
+    "heading": "What's your monthly income?",
+    "primarySourceLabel": "Primary Income Source:",
+    "primarySourcePlaceholder": "Select your primary source of income",
+    "monthlyAmountLabel": "Monthly Amount:",
+    "amountPlaceholder": "Type an amount",
+    "sources": {
+      "salary": "Salary",
+      "freelance": "Freelance",
+      "donations": "Donations"
+    }
+  },
+  "startingBalance": {
+    "heading": "What's your current account balance?",
+    "balanceLabel": "Starting Balance:",
+    "amountPlaceholder": "Type an amount",
+    "trackingLabel": "When are you starting to track?",
+    "today": "Today ({{date}})",
+    "currentMonthStart": "Beginning of this month ({{date}})",
+    "nextMonthStart": "Beginning of next month ({{date}})"
+  },
+  "budgetGoals": {
+    "heading": "Set monthly spending limits for each category:",
+    "monthlyIncome": "Monthly Income: {{symbol}}{{amount}}",
+    "noCategories": "No categories selected. Go back to step 2 to choose categories.",
+    "totalBudgeted": "Total Budgeted: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
+    "remaining": "Remaining: {{symbol}}{{amount}} ({{percentage}}%) for savings/other"
+  },
+  "summary": {
+    "overview": "Here's your budget overview:",
+    "monthlySummaryHeading": "MONTHLY SUMMARY",
+    "income": "Income: {{symbol}}{{amount}} ({{source}})",
+    "budget": "Budget: {{symbol}}{{amount}}",
+    "savingsGoal": "Savings Goal: {{symbol}}{{amount}} ({{percentage}}%)",
+    "categoriesHeading": "CATEGORIES ({{count}} active)",
+    "noCategories": "No categories selected.",
+    "startingBalanceHeading": "STARTING BALANCE",
+    "trackingFrom": "Tracking from: {{date}}",
+    "preferencesHeading": "PREFERENCES",
+    "languageCurrency": "Language: {{language}} · Currency: {{currency}}",
+    "nextStepsHeading": "NEXT STEPS",
+    "nextStep1": "Add your first transaction",
+    "nextStep2": "Set up recurring bills",
+    "nextStep3": "Explore reports and analytics"
+  },
+  "validation": {
     "categories": {
-      "heading": "Choose the categories that apply to you:",
-      "groups": {
-        "essential": "ESSENTIAL",
-        "lifestyle": "LIFESTYLE",
-        "financial": "FINANCIAL"
-      }
+      "invalid": "Invalid category",
+      "minOne": "Please select at least one category"
     },
-    "income": {
-      "heading": "What's your monthly income?",
-      "primarySourceLabel": "Primary Income Source:",
-      "primarySourcePlaceholder": "Select your primary source of income",
-      "monthlyAmountLabel": "Monthly Amount:",
-      "amountPlaceholder": "Type an amount",
-      "sources": {
-        "salary": "Salary",
-        "freelance": "Freelance",
-        "donations": "Donations"
-      }
+    "currency": {
+      "invalid": "Invalid currency",
+      "required": "Currency is required"
+    },
+    "language": {
+      "invalid": "Invalid language",
+      "required": "Language is required"
+    },
+    "primaryIncomeSource": {
+      "invalid": "Invalid income source",
+      "required": "Primary income source is required"
+    },
+    "primarySourceMonthlyAmount": {
+      "number": "Monthly amount must be a number",
+      "positive": "Monthly amount must be greater than 0",
+      "required": "Monthly amount is required"
     },
     "startingBalance": {
-      "heading": "What's your current account balance?",
-      "balanceLabel": "Starting Balance:",
-      "amountPlaceholder": "Type an amount",
-      "trackingLabel": "When are you starting to track?",
-      "today": "Today ({{date}})",
-      "currentMonthStart": "Beginning of this month ({{date}})",
-      "nextMonthStart": "Beginning of next month ({{date}})"
+      "number": "Starting balance must be a number",
+      "positive": "Starting balance must be greater than 0",
+      "required": "Starting balance is required"
+    },
+    "startingDate": {
+      "invalid": "Invalid date",
+      "required": "Starting date is required"
     },
     "budgetGoals": {
-      "heading": "Set monthly spending limits for each category:",
-      "monthlyIncome": "Monthly Income: {{symbol}}{{amount}}",
-      "noCategories": "No categories selected. Go back to step 2 to choose categories.",
-      "totalBudgeted": "Total Budgeted: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
-      "remaining": "Remaining: {{symbol}}{{amount}} ({{percentage}}%) for savings/other"
-    },
-    "summary": {
-      "overview": "Here's your budget overview:",
-      "monthlySummaryHeading": "MONTHLY SUMMARY",
-      "income": "Income: {{symbol}}{{amount}} ({{source}})",
-      "budget": "Budget: {{symbol}}{{amount}}",
-      "savingsGoal": "Savings Goal: {{symbol}}{{amount}} ({{percentage}}%)",
-      "categoriesHeading": "CATEGORIES ({{count}} active)",
-      "noCategories": "No categories selected.",
-      "startingBalanceHeading": "STARTING BALANCE",
-      "trackingFrom": "Tracking from: {{date}}",
-      "preferencesHeading": "PREFERENCES",
-      "languageCurrency": "Language: {{language}} · Currency: {{currency}}",
-      "nextStepsHeading": "NEXT STEPS",
-      "nextStep1": "Add your first transaction",
-      "nextStep2": "Set up recurring bills",
-      "nextStep3": "Explore reports and analytics"
-    },
-    "footer": {
-      "skipSetup": "Skip Setup",
-      "previousStep": "Previous step",
-      "nextStep": "Next step",
-      "saveChanges": "Save changes"
+      "number": "Budget must be a number",
+      "negative": "Budget cannot be negative"
     }
+  },
+  "footer": {
+    "skipSetup": "Skip Setup",
+    "previousStep": "Previous step",
+    "nextStep": "Next step",
+    "saveChanges": "Save changes"
   }
 }

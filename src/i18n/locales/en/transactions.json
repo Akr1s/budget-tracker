@@ -1,41 +1,39 @@
 {
-  "transactions": {
-    "form": {
-      "title": "Create Transaction",
-      "description": "Create a new transaction",
-      "fields": {
-        "type": "Type",
-        "amount": "Amount *",
-        "category": "Category *",
-        "description": "Description",
-        "date": "Date *",
-        "currency": "Currency"
-      },
-      "placeholders": {
-        "amount": "0.00",
-        "description": "Add a description..."
-      },
-      "typeOptions": {
-        "income": "Income",
-        "expense": "Expense"
-      },
-      "actions": {
-        "cancel": "Cancel",
-        "save": "Save Transaction"
-      },
-      "validation": {
-        "typeInvalid": "Invalid transaction type",
-        "typeRequired": "Transaction type is required",
-        "amountNumber": "Amount must be a number",
-        "amountPositive": "Amount must be greater than 0",
-        "amountRequired": "Amount is required",
-        "currencyInvalid": "Invalid currency",
-        "currencyRequired": "Currency is required",
-        "categoryInvalid": "Invalid category",
-        "categoryRequired": "Category is required",
-        "dateInvalid": "Invalid date",
-        "dateRequired": "Date is required"
-      }
+  "form": {
+    "title": "Create Transaction",
+    "description": "Create a new transaction",
+    "fields": {
+      "type": "Type",
+      "amount": "Amount *",
+      "category": "Category *",
+      "description": "Description",
+      "date": "Date *",
+      "currency": "Currency"
+    },
+    "placeholders": {
+      "amount": "0.00",
+      "description": "Add a description..."
+    },
+    "typeOptions": {
+      "income": "Income",
+      "expense": "Expense"
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save Transaction"
+    },
+    "validation": {
+      "typeInvalid": "Invalid transaction type",
+      "typeRequired": "Transaction type is required",
+      "amountNumber": "Amount must be a number",
+      "amountPositive": "Amount must be greater than 0",
+      "amountRequired": "Amount is required",
+      "currencyInvalid": "Invalid currency",
+      "currencyRequired": "Currency is required",
+      "categoryInvalid": "Invalid category",
+      "categoryRequired": "Category is required",
+      "dateInvalid": "Invalid date",
+      "dateRequired": "Date is required"
     }
   }
 }
