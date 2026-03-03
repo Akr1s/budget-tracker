@@ -1,0 +1,41 @@
+{
+  "transactions": {
+    "form": {
+      "title": "取引を作成",
+      "description": "新しい取引を作成",
+      "fields": {
+        "type": "種類",
+        "amount": "金額 *",
+        "category": "カテゴリ *",
+        "description": "説明",
+        "date": "日付 *",
+        "currency": "通貨"
+      },
+      "placeholders": {
+        "amount": "0.00",
+        "description": "説明を追加..."
+      },
+      "typeOptions": {
+        "income": "収入",
+        "expense": "支出"
+      },
+      "actions": {
+        "cancel": "キャンセル",
+        "save": "取引を保存"
+      },
+      "validation": {
+        "typeInvalid": "無効な取引種類",
+        "typeRequired": "取引種類は必須です",
+        "amountNumber": "金額は数値でなければなりません",
+        "amountPositive": "金額は0より大きくなければなりません",
+        "amountRequired": "金額は必須です",
+        "currencyInvalid": "無効な通貨",
+        "currencyRequired": "通貨は必須です",
+        "categoryInvalid": "無効なカテゴリ",
+        "categoryRequired": "カテゴリは必須です",
+        "dateInvalid": "無効な日付",
+        "dateRequired": "日付は必須です"
+      }
+    }
+  }
+}

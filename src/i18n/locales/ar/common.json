@@ -1,0 +1,23 @@
+{
+  "common": {
+    "categories": {
+      "housing": "السكن",
+      "groceries": "البقالة",
+      "transportation": "المواصلات",
+      "healthcare": "الرعاية الصحية",
+      "entertainment": "الترفيه",
+      "shopping": "التسوق",
+      "sports": "الرياضة",
+      "travel": "السفر",
+      "debt": "الديون",
+      "savings": "المدخرات",
+      "education": "التعليم"
+    },
+    "currencies": {
+      "usd": "USD - دولار أمريكي",
+      "eur": "EUR - يورو",
+      "jpy": "JPY - ين ياباني",
+      "sar": "SAR - ريال سعودي"
+    }
+  }
+}

@@ -35,7 +35,7 @@ export default function Onboarding() {
   );
 
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useTranslation("onboarding");
   const { values, errors, touched, setFieldValue, handleSubmit } =
     useFormik<IOnboardingForm>({
       initialValues,

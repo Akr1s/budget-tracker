@@ -1,0 +1,41 @@
+{
+  "transactions": {
+    "form": {
+      "title": "إنشاء معاملة",
+      "description": "إنشاء معاملة جديدة",
+      "fields": {
+        "type": "النوع",
+        "amount": "المبلغ *",
+        "category": "الفئة *",
+        "description": "الوصف",
+        "date": "التاريخ *",
+        "currency": "العملة"
+      },
+      "placeholders": {
+        "amount": "0.00",
+        "description": "أضف وصفًا..."
+      },
+      "typeOptions": {
+        "income": "دخل",
+        "expense": "مصروف"
+      },
+      "actions": {
+        "cancel": "إلغاء",
+        "save": "حفظ المعاملة"
+      },
+      "validation": {
+        "typeInvalid": "نوع المعاملة غير صالح",
+        "typeRequired": "نوع المعاملة مطلوب",
+        "amountNumber": "يجب أن يكون المبلغ رقمًا",
+        "amountPositive": "يجب أن يكون المبلغ أكبر من 0",
+        "amountRequired": "المبلغ مطلوب",
+        "currencyInvalid": "عملة غير صالحة",
+        "currencyRequired": "العملة مطلوبة",
+        "categoryInvalid": "فئة غير صالحة",
+        "categoryRequired": "الفئة مطلوبة",
+        "dateInvalid": "تاريخ غير صالح",
+        "dateRequired": "التاريخ مطلوب"
+      }
+    }
+  }
+}

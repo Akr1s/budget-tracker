@@ -17,21 +17,22 @@ interface IProps {
 }
 
 export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("onboarding");
+  const { t: tCommon } = useTranslation("common");
   const currencySymbol = getCurrencySymbol(values.currency);
 
   const categoryLabels: Record<string, string> = {
-    housing: t("onboarding.categories.items.housing"),
-    groceries: t("onboarding.categories.items.groceries"),
-    transportation: t("onboarding.categories.items.transportation"),
-    healthcare: t("onboarding.categories.items.healthcare"),
-    entertainment: t("onboarding.categories.items.entertainment"),
-    shopping: t("onboarding.categories.items.shopping"),
-    sports: t("onboarding.categories.items.sports"),
-    travel: t("onboarding.categories.items.travel"),
-    debt: t("onboarding.categories.items.debt"),
-    savings: t("onboarding.categories.items.savings"),
-    education: t("onboarding.categories.items.education"),
+    housing: tCommon("common.categories.housing"),
+    groceries: tCommon("common.categories.groceries"),
+    transportation: tCommon("common.categories.transportation"),
+    healthcare: tCommon("common.categories.healthcare"),
+    entertainment: tCommon("common.categories.entertainment"),
+    shopping: tCommon("common.categories.shopping"),
+    sports: tCommon("common.categories.sports"),
+    travel: tCommon("common.categories.travel"),
+    debt: tCommon("common.categories.debt"),
+    savings: tCommon("common.categories.savings"),
+    education: tCommon("common.categories.education"),
   };
 
   const totalBudgeted = Object.values(values.budgetGoals).reduce(

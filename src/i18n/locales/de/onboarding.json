@@ -16,19 +16,6 @@
         "essential": "WESENTLICH",
         "lifestyle": "LEBENSSTIL",
         "financial": "FINANZIELL"
-      },
-      "items": {
-        "housing": "Wohnen (Miete, Hypothek, Nebenkosten)",
-        "groceries": "Lebensmittel & Essen",
-        "transportation": "Transport",
-        "healthcare": "Gesundheit & Versicherung",
-        "entertainment": "Unterhaltung",
-        "shopping": "Einkaufen & Persönliches",
-        "sports": "Fitness & Sport",
-        "travel": "Reisen & Urlaub",
-        "debt": "Schulden & Kredite",
-        "savings": "Sparen & Investitionen",
-        "education": "Bildung"
       }
     },
     "income": {
@@ -75,12 +62,6 @@
       "nextStep1": "Erste Transaktion hinzufügen",
       "nextStep2": "Wiederkehrende Rechnungen einrichten",
       "nextStep3": "Berichte und Analysen erkunden"
-    },
-    "currencies": {
-      "usd": "USD - US-Dollar",
-      "eur": "EUR - Euro",
-      "jpy": "JPY - Japanischer Yen",
-      "sar": "SAR - Saudi-Riyal"
     },
     "footer": {
       "skipSetup": "Einrichtung überspringen",

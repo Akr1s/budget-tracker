@@ -29,36 +29,37 @@ export default function Categories({
   errors,
   touched,
 }: IProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("onboarding");
+  const { t: tCommon } = useTranslation("common");
 
   const categories = [
     {
       value: "essential",
       label: t("onboarding.categories.groups.essential"),
       items: [
-        { label: t("onboarding.categories.items.housing"), value: CategoryEnum.HOUSING },
-        { label: t("onboarding.categories.items.groceries"), value: CategoryEnum.GROCERIES },
-        { label: t("onboarding.categories.items.transportation"), value: CategoryEnum.TRANSPORTATION },
-        { label: t("onboarding.categories.items.healthcare"), value: CategoryEnum.HEALTHCARE },
+        { label: tCommon("common.categories.housing"), value: CategoryEnum.HOUSING },
+        { label: tCommon("common.categories.groceries"), value: CategoryEnum.GROCERIES },
+        { label: tCommon("common.categories.transportation"), value: CategoryEnum.TRANSPORTATION },
+        { label: tCommon("common.categories.healthcare"), value: CategoryEnum.HEALTHCARE },
       ],
     },
     {
       value: "lifestyle",
       label: t("onboarding.categories.groups.lifestyle"),
       items: [
-        { label: t("onboarding.categories.items.entertainment"), value: CategoryEnum.ENTERTAINMENT },
-        { label: t("onboarding.categories.items.shopping"), value: CategoryEnum.SHOPPING },
-        { label: t("onboarding.categories.items.sports"), value: CategoryEnum.SPORTS },
-        { label: t("onboarding.categories.items.travel"), value: CategoryEnum.TRAVEL },
+        { label: tCommon("common.categories.entertainment"), value: CategoryEnum.ENTERTAINMENT },
+        { label: tCommon("common.categories.shopping"), value: CategoryEnum.SHOPPING },
+        { label: tCommon("common.categories.sports"), value: CategoryEnum.SPORTS },
+        { label: tCommon("common.categories.travel"), value: CategoryEnum.TRAVEL },
       ],
     },
     {
       value: "financial",
       label: t("onboarding.categories.groups.financial"),
       items: [
-        { label: t("onboarding.categories.items.debt"), value: CategoryEnum.DEBT },
-        { label: t("onboarding.categories.items.savings"), value: CategoryEnum.SAVINGS },
-        { label: t("onboarding.categories.items.education"), value: CategoryEnum.EDUCATION },
+        { label: tCommon("common.categories.debt"), value: CategoryEnum.DEBT },
+        { label: tCommon("common.categories.savings"), value: CategoryEnum.SAVINGS },
+        { label: tCommon("common.categories.education"), value: CategoryEnum.EDUCATION },
       ],
     },
   ];

@@ -26,7 +26,7 @@ export default function Footer({
   isNextDisabled,
 }: IProps) {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t } = useTranslation("onboarding");
 
   const handleSkipSetup = () => {
     LocalStorageService.setItem(

@@ -30,7 +30,8 @@ export default function Welcome({
   errors,
   touched,
 }: IProps) {
-  const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation("onboarding");
+  const { t: tCommon } = useTranslation("common");
 
   const handleLanguageChange = (value: LanguageEnum) => {
     setFieldValue("language", value);
@@ -44,7 +45,7 @@ export default function Welcome({
     LANGUAGE_CURRENCY_OPTIONS[values.language] ?? ["usd"]
   ).map((code) => ({
     value: code,
-    label: t(`onboarding.currencies.${code}`),
+    label: tCommon(`common.currencies.${code}`),
   }));
 
   return (

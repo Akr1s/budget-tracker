@@ -16,19 +16,6 @@
         "essential": "必需品",
         "lifestyle": "ライフスタイル",
         "financial": "金融"
-      },
-      "items": {
-        "housing": "住居（家賃・住宅ローン・光熱費）",
-        "groceries": "食料品・食費",
-        "transportation": "交通費",
-        "healthcare": "医療・保険",
-        "entertainment": "娯楽",
-        "shopping": "買い物・日用品",
-        "sports": "フィットネス・スポーツ",
-        "travel": "旅行・休暇",
-        "debt": "ローン返済",
-        "savings": "貯蓄・投資",
-        "education": "教育"
       }
     },
     "income": {
@@ -75,12 +62,6 @@
       "nextStep1": "最初の取引を追加する",
       "nextStep2": "定期的な支払いを設定する",
       "nextStep3": "レポートと分析を確認する"
-    },
-    "currencies": {
-      "usd": "USD - 米ドル",
-      "eur": "EUR - ユーロ",
-      "jpy": "JPY - 日本円",
-      "sar": "SAR - サウジリヤル"
     },
     "footer": {
       "skipSetup": "設定をスキップ",

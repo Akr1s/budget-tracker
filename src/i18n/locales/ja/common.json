@@ -1,0 +1,23 @@
+{
+  "common": {
+    "categories": {
+      "housing": "住居",
+      "groceries": "食料品",
+      "transportation": "交通費",
+      "healthcare": "医療",
+      "entertainment": "娯楽",
+      "shopping": "買い物",
+      "sports": "スポーツ",
+      "travel": "旅行",
+      "debt": "ローン",
+      "savings": "貯蓄",
+      "education": "教育"
+    },
+    "currencies": {
+      "usd": "USD - 米ドル",
+      "eur": "EUR - ユーロ",
+      "jpy": "JPY - 日本円",
+      "sar": "SAR - サウジリヤル"
+    }
+  }
+}

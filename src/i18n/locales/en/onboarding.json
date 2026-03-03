@@ -16,19 +16,6 @@
         "essential": "ESSENTIAL",
         "lifestyle": "LIFESTYLE",
         "financial": "FINANCIAL"
-      },
-      "items": {
-        "housing": "Housing (rent, mortgage, utilities)",
-        "groceries": "Groceries & Food",
-        "transportation": "Transportation",
-        "healthcare": "Healthcare & Insurance",
-        "entertainment": "Entertainment",
-        "shopping": "Shopping & Personal",
-        "sports": "Fitness & Sports",
-        "travel": "Travel & Vacation",
-        "debt": "Debt Payments",
-        "savings": "Savings & Investments",
-        "education": "Education"
       }
     },
     "income": {
@@ -75,12 +62,6 @@
       "nextStep1": "Add your first transaction",
       "nextStep2": "Set up recurring bills",
       "nextStep3": "Explore reports and analytics"
-    },
-    "currencies": {
-      "usd": "USD - US Dollar",
-      "eur": "EUR - Euro",
-      "jpy": "JPY - Japanese Yen",
-      "sar": "SAR - Saudi Riyal"
     },
     "footer": {
       "skipSetup": "Skip Setup",

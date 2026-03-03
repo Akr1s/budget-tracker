@@ -25,9 +25,10 @@ import {
   LocalStorageService,
 } from "@/storage/local-storage.service";
 import { useFormik } from "formik";
+import { useTranslation } from "react-i18next";
 import type { ITransactionForm } from "./transaction-form.type";
 import { initialValues } from "./utils/transaction-form.constant";
-import { validationSchema } from "./utils/validation-schema.constant";
+import { createValidationSchema } from "./utils/validation-schema.constant";
 import { TransactionTypeEnum } from "./utils/transaction-form.enum";
 import { DateService } from "@/utils/date.service";
 
@@ -35,17 +36,20 @@ interface IProps {
   onClose: () => void;
 }
 
-const TYPE_OPTIONS = Object.values(TransactionTypeEnum).map((type) => ({
-  label: type.charAt(0).toUpperCase() + type.slice(1),
-  value: type,
-}));
-
-const CATEGORY_OPTIONS = Object.values(CategoryEnum).map((c) => ({
-  label: c.charAt(0).toUpperCase() + c.slice(1),
-  value: c,
-}));
-
 export default function TransactionForm({ onClose }: IProps) {
+  const { t } = useTranslation("transactions");
+  const { t: tCommon } = useTranslation("common");
+
+  const typeOptions = Object.values(TransactionTypeEnum).map((type) => ({
+    label: t(`transactions.form.typeOptions.${type}`),
+    value: type,
+  }));
+
+  const categoryOptions = Object.values(CategoryEnum).map((c) => ({
+    label: tCommon(`common.categories.${c}`),
+    value: c,
+  }));
+
   const onboardingData = LocalStorageService.getItem<IOnboardingForm>(
     LocalStorageKeys.ONBOARDING_DATA,
   );
@@ -75,7 +79,7 @@ export default function TransactionForm({ onClose }: IProps) {
     isValid,
   } = useFormik<ITransactionForm>({
     initialValues: formInitialValues,
-    validationSchema,
+    validationSchema: createValidationSchema(t),
     validateOnMount: true,
     onSubmit: (formValues) => {
       console.log(formValues);
@@ -87,33 +91,35 @@ export default function TransactionForm({ onClose }: IProps) {
       <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>Create Transaction</DialogTitle>
-            <DialogDescription>Create a new transaction</DialogDescription>
+            <DialogTitle>{t("transactions.form.title")}</DialogTitle>
+            <DialogDescription>
+              {t("transactions.form.description")}
+            </DialogDescription>
             <hr className="border-gray-300 dark:border-gray-700" />
           </DialogHeader>
 
           <FieldGroup className="mt-4">
             <Field>
-              <FieldLabel>Type</FieldLabel>
+              <FieldLabel>{t("transactions.form.fields.type")}</FieldLabel>
               <CustomRadioGroup
                 className="flex flex-row gap-4"
                 value={values.type}
                 onValueChange={(value) =>
                   setFieldValue("type", value as TransactionTypeEnum)
                 }
-                items={TYPE_OPTIONS}
+                items={typeOptions}
               />
             </Field>
 
             <Field>
-              <FieldLabel>Amount *</FieldLabel>
+              <FieldLabel>{t("transactions.form.fields.amount")}</FieldLabel>
               <div className="flex items-center gap-3">
                 <CurrencyInput
                   currency={values.currency}
                   type="number"
                   min={0}
                   name="amount"
-                  placeholder="0.00"
+                  placeholder={t("transactions.form.placeholders.amount")}
                   value={values.amount || ""}
                   onChange={(e) =>
                     setFieldValue("amount", parseFloat(e.target.value) || 0)
@@ -122,7 +128,7 @@ export default function TransactionForm({ onClose }: IProps) {
                   aria-invalid={touched.amount && !!errors.amount}
                 />
                 <CustomSelect
-                  label="Currency"
+                  label={t("transactions.form.fields.currency")}
                   value={values.currency}
                   options={currencyOptions}
                   onValueChange={(value) => setFieldValue("currency", value)}
@@ -134,11 +140,11 @@ export default function TransactionForm({ onClose }: IProps) {
             </Field>
 
             <Field>
-              <FieldLabel>Category *</FieldLabel>
+              <FieldLabel>{t("transactions.form.fields.category")}</FieldLabel>
               <CustomSelect
-                label="Category"
+                label={t("transactions.form.fields.category")}
                 value={values.category}
-                options={CATEGORY_OPTIONS}
+                options={categoryOptions}
                 className="w-full"
                 onValueChange={(value) =>
                   setFieldValue("category", value as CategoryEnum)
@@ -150,10 +156,12 @@ export default function TransactionForm({ onClose }: IProps) {
             </Field>
 
             <Field>
-              <FieldLabel>Description</FieldLabel>
+              <FieldLabel>
+                {t("transactions.form.fields.description")}
+              </FieldLabel>
               <Input
                 name="description"
-                placeholder="Add a description..."
+                placeholder={t("transactions.form.placeholders.description")}
                 value={values.description}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -161,7 +169,7 @@ export default function TransactionForm({ onClose }: IProps) {
             </Field>
 
             <Field>
-              <FieldLabel>Date *</FieldLabel>
+              <FieldLabel>{t("transactions.form.fields.date")}</FieldLabel>
               <Input
                 type="date"
                 name="date"
@@ -178,10 +186,10 @@ export default function TransactionForm({ onClose }: IProps) {
 
           <DialogFooter className="mt-6">
             <Button type="button" variant="outline" onClick={onClose}>
-              Cancel
+              {t("transactions.form.actions.cancel")}
             </Button>
             <Button type="submit" disabled={!isValid}>
-              Save Transaction
+              {t("transactions.form.actions.save")}
             </Button>
           </DialogFooter>
         </form>

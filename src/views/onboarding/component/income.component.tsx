@@ -23,7 +23,7 @@ export default function Income({
   errors,
   touched,
 }: IProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("onboarding");
 
   const incomeOptions = [
     { label: t("onboarding.income.sources.salary"), value: IncomeSourceEnum.SALARY },

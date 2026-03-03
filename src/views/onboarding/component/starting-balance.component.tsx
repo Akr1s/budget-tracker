@@ -33,7 +33,7 @@ export default function StartingBalance({
   errors,
   touched,
 }: IProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("onboarding");
   const [selectedOption, setSelectedOption] = useState<StartingDateEnum>(
     StartingDateEnum.TODAY,
   );
