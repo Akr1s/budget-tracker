@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Welcome from "./component/welcome.component";
 import { useNavigate } from "react-router";
 import { RoutesEnum } from "@/routes/routes.enum";
@@ -30,6 +30,10 @@ import {
 } from "@/storage/local-storage.service";
 
 export default function Onboarding() {
+  const isSetupCompleted = LocalStorageService.checkIfItemExists(
+    LocalStorageKeys.ONBOARDING_DATA,
+  );
+
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { values, errors, touched, setFieldValue, handleSubmit } =
@@ -48,6 +52,12 @@ export default function Onboarding() {
 
   const [step, setStep] = useState(1);
 
+  useEffect(() => {
+    if (isSetupCompleted) {
+      navigate(`/${RoutesEnum.DASHBOARD}`, { replace: true });
+    }
+  }, []);
+
   const isCurrentStepValid = STEP_FIELDS[step].every((field) => !errors[field]);
 
   const sharedProps = { values, errors, touched, setFieldValue };
@@ -55,7 +65,7 @@ export default function Onboarding() {
   return (
     <Dialog open>
       <form>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md" showCloseButton={false}>
           <DialogHeader>
             <DialogTitle>{t("onboarding.title")}</DialogTitle>
             <DialogDescription>

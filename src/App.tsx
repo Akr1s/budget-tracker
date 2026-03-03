@@ -1,25 +1,21 @@
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Navigate } from "react-router";
 import { RoutesEnum } from "./routes/routes.enum";
 import {
   LocalStorageKeys,
   LocalStorageService,
 } from "./storage/local-storage.service";
+import Layout from "./views/layout";
 
 function App() {
-  const navigate = useNavigate();
   const isSetupCompleted = LocalStorageService.checkIfItemExists(
     LocalStorageKeys.ONBOARDING_DATA,
   );
-  const defaultPath = isSetupCompleted
-    ? RoutesEnum.DASHBOARD
-    : RoutesEnum.ONBOARDING;
 
-  useEffect(() => {
-    navigate(defaultPath, { replace: true });
-  }, []);
+  if (!isSetupCompleted) {
+    return <Navigate to={`/${RoutesEnum.ONBOARDING}`} replace={true} />;
+  }
 
-  return <Outlet />;
+  return <Layout />;
 }
 
 export default App;
