@@ -16,6 +16,14 @@ export class DateService {
     );
   }
 
+  static getTodayInputValue(): string {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
   static getCurrentMonthStart(): string {
     const now = new Date();
     return DateService.localMidnightToUTC(now.getFullYear(), now.getMonth(), 1);

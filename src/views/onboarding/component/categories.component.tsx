@@ -10,7 +10,7 @@ import {
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import { CategoryEnum } from "../utils/onboarding.enum";
+import { CategoryEnum } from "@/enums/category.enum";
 
 interface IProps {
   setFieldValue: (
@@ -38,16 +38,28 @@ export default function Categories({
       label: tOnboarding("categories.groups.essential"),
       items: [
         { label: tCommon("categories.housing"), value: CategoryEnum.HOUSING },
-        { label: tCommon("categories.groceries"), value: CategoryEnum.GROCERIES },
-        { label: tCommon("categories.transportation"), value: CategoryEnum.TRANSPORTATION },
-        { label: tCommon("categories.healthcare"), value: CategoryEnum.HEALTHCARE },
+        {
+          label: tCommon("categories.groceries"),
+          value: CategoryEnum.GROCERIES,
+        },
+        {
+          label: tCommon("categories.transportation"),
+          value: CategoryEnum.TRANSPORTATION,
+        },
+        {
+          label: tCommon("categories.healthcare"),
+          value: CategoryEnum.HEALTHCARE,
+        },
       ],
     },
     {
       value: "lifestyle",
       label: tOnboarding("categories.groups.lifestyle"),
       items: [
-        { label: tCommon("categories.entertainment"), value: CategoryEnum.ENTERTAINMENT },
+        {
+          label: tCommon("categories.entertainment"),
+          value: CategoryEnum.ENTERTAINMENT,
+        },
         { label: tCommon("categories.shopping"), value: CategoryEnum.SHOPPING },
         { label: tCommon("categories.sports"), value: CategoryEnum.SPORTS },
         { label: tCommon("categories.travel"), value: CategoryEnum.TRAVEL },
@@ -59,7 +71,10 @@ export default function Categories({
       items: [
         { label: tCommon("categories.debt"), value: CategoryEnum.DEBT },
         { label: tCommon("categories.savings"), value: CategoryEnum.SAVINGS },
-        { label: tCommon("categories.education"), value: CategoryEnum.EDUCATION },
+        {
+          label: tCommon("categories.education"),
+          value: CategoryEnum.EDUCATION,
+        },
       ],
     },
   ];
@@ -104,9 +119,11 @@ export default function Categories({
           ))}
         </FieldGroup>
       </FieldSet>
-      {touched.categories && errors.categories && typeof errors.categories === "string" && (
-        <FieldError>{errors.categories}</FieldError>
-      )}
+      {touched.categories &&
+        errors.categories &&
+        typeof errors.categories === "string" && (
+          <FieldError>{errors.categories}</FieldError>
+        )}
     </div>
   );
 }

@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { CurrencyEnum, LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
-import { CategoryEnum } from "@/views/onboarding/utils/onboarding.enum";
+import { CategoryEnum } from "@/enums/category.enum";
 import type { IOnboardingForm } from "@/views/onboarding/onboarding.type";
 import {
   LocalStorageKeys,
@@ -26,17 +26,19 @@ import {
 } from "@/storage/local-storage.service";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import type { ITransactionForm } from "./transaction-form.type";
+import type { ITransactionForm } from "../transactions.type";
 import { initialValues } from "./utils/transaction-form.constant";
 import { createValidationSchema } from "./utils/validation-schema.constant";
-import { TransactionTypeEnum } from "./utils/transaction-form.enum";
+import { TransactionTypeEnum } from "../utils/transaction.enum";
 import { DateService } from "@/utils/date.service";
+import { IndexedDBService } from "@/storage/index-db.service";
 
 interface IProps {
   onClose: () => void;
+  onCreated: () => void;
 }
 
-export default function TransactionForm({ onClose }: IProps) {
+export default function TransactionForm({ onClose, onCreated }: IProps) {
   const { t: tTransactions } = useTranslation("transactions");
   const { t: tCommon } = useTranslation("common");
 
@@ -65,7 +67,7 @@ export default function TransactionForm({ onClose }: IProps) {
     ...initialValues,
     currency: onboardingData?.currency || CurrencyEnum.USD,
     category: onboardingData?.categories[0] || CategoryEnum.HOUSING,
-    date: DateService.getToday(),
+    date: DateService.getTodayInputValue(),
   };
 
   const {
@@ -81,10 +83,17 @@ export default function TransactionForm({ onClose }: IProps) {
     initialValues: formInitialValues,
     validationSchema: createValidationSchema(tTransactions),
     validateOnMount: true,
-    onSubmit: (formValues) => {
-      console.log(formValues);
-    },
+    onSubmit,
   });
+
+  async function onSubmit(formValues: ITransactionForm) {
+    await IndexedDBService.addTransaction(formValues)
+      .then(() => {
+        onCreated();
+        onClose();
+      })
+      .catch(console.error);
+  }
 
   return (
     <Dialog open onOpenChange={onClose}>

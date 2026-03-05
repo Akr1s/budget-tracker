@@ -1,6 +1,6 @@
 import type { CurrencyEnum } from "@/utils/currency";
-import type { TransactionTypeEnum } from "./utils/transaction-form.enum";
-import type { CategoryEnum } from "@/views/onboarding/utils/onboarding.enum";
+import type { TransactionTypeEnum } from "./utils/transaction.enum";
+import type { CategoryEnum } from "@/enums/category.enum";
 
 export interface ITransactionForm {
   type: TransactionTypeEnum;
@@ -9,4 +9,9 @@ export interface ITransactionForm {
   category: CategoryEnum;
   description: string;
   date: string;
+}
+
+export interface ITransaction extends ITransactionForm {
+  id: number;
+  createdAt: string;
 }

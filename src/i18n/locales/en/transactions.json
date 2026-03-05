@@ -1,4 +1,18 @@
 {
+  "createButton": "Create Transaction",
+  "table": {
+    "columns": {
+      "id": "ID",
+      "type": "Type",
+      "category": "Category",
+      "description": "Description",
+      "amount": "Amount",
+      "currency": "Currency",
+      "date": "Date",
+      "createdAt": "Created At"
+    },
+    "empty": "No transactions yet. Create one to get started."
+  },
   "form": {
     "title": "Create Transaction",
     "description": "Create a new transaction",

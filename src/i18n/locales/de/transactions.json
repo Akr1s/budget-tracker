@@ -1,4 +1,18 @@
 {
+  "createButton": "Transaktion erstellen",
+  "table": {
+    "columns": {
+      "id": "ID",
+      "type": "Typ",
+      "category": "Kategorie",
+      "description": "Beschreibung",
+      "amount": "Betrag",
+      "currency": "Währung",
+      "date": "Datum",
+      "createdAt": "Erstellt am"
+    },
+    "empty": "Noch keine Transaktionen. Erstellen Sie eine, um zu beginnen."
+  },
   "form": {
     "title": "Transaktion erstellen",
     "description": "Eine neue Transaktion erstellen",

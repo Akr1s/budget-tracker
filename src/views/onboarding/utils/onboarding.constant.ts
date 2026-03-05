@@ -1,7 +1,8 @@
 import { CurrencyEnum } from "@/utils/currency";
 import { DateService } from "@/utils/date.service";
 import type { IOnboardingForm } from "../onboarding.type";
-import { CategoryEnum, IncomeSourceEnum, LanguageEnum } from "./onboarding.enum";
+import { IncomeSourceEnum, LanguageEnum } from "./onboarding.enum";
+import { CategoryEnum } from "@/enums/category.enum";
 
 export const ONBOARDING_STEPS_COUNT = 6;
 

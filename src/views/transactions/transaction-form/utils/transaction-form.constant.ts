@@ -1,8 +1,7 @@
 import { CurrencyEnum } from "@/utils/currency";
-import { CategoryEnum } from "@/views/onboarding/utils/onboarding.enum";
-import { DateService } from "@/utils/date.service";
-import type { ITransactionForm } from "../transaction-form.type";
-import { TransactionTypeEnum } from "./transaction-form.enum";
+import { CategoryEnum } from "@/enums/category.enum";
+import type { ITransactionForm } from "../../transactions.type";
+import { TransactionTypeEnum } from "../../utils/transaction.enum";
 
 export const initialValues: ITransactionForm = {
   type: TransactionTypeEnum.EXPENSE,
@@ -10,5 +9,5 @@ export const initialValues: ITransactionForm = {
   currency: CurrencyEnum.USD,
   category: CategoryEnum.HOUSING,
   description: "",
-  date: DateService.getToday(),
+  date: "",
 };

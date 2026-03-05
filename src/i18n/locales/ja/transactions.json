@@ -1,4 +1,18 @@
 {
+  "createButton": "取引を作成",
+  "table": {
+    "columns": {
+      "id": "ID",
+      "type": "種類",
+      "category": "カテゴリ",
+      "description": "説明",
+      "amount": "金額",
+      "currency": "通貨",
+      "date": "日付",
+      "createdAt": "作成日"
+    },
+    "empty": "取引がまだありません。最初の取引を作成しましょう。"
+  },
   "form": {
     "title": "取引を作成",
     "description": "新しい取引を作成",
