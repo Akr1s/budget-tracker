@@ -13,12 +13,18 @@ import commonDe from "./locales/de/common.json";
 import commonJa from "./locales/ja/common.json";
 import commonAr from "./locales/ar/common.json";
 
+import type dashboardEn from "./locales/en/dashboard.json";
+import dashboardDe from "./locales/de/dashboard.json";
+import dashboardJa from "./locales/ja/dashboard.json";
+import dashboardAr from "./locales/ar/dashboard.json";
+
 declare module "i18next" {
   interface CustomTypeOptions {
     resources: {
       onboarding: typeof onboardingEn;
       transactions: typeof transactionsEn;
       common: typeof commonEn;
+      dashboard: typeof dashboardEn;
     };
   }
 }
@@ -53,3 +59,12 @@ const _checkCommonDe: CommonShape = commonDe;
 const _checkCommonJa: CommonShape = commonJa;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const _checkCommonAr: CommonShape = commonAr;
+
+type DashboardShape = DeepStringify<typeof dashboardEn>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _checkDashboardDe: DashboardShape = dashboardDe;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _checkDashboardJa: DashboardShape = dashboardJa;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _checkDashboardAr: DashboardShape = dashboardAr;

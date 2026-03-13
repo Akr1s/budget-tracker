@@ -1,4 +1,11 @@
 {
+  "appTitle": "Budgetly",
+  "resetData": "إعادة تعيين البيانات",
+  "toggleSidebar": "تبديل الشريط الجانبي",
+  "toggleTheme": "تغيير المظهر",
+  "themeLight": "فاتح",
+  "themeDark": "داكن",
+  "themeSystem": "النظام",
   "categories": {
     "housing": "السكن",
     "groceries": "البقالة",

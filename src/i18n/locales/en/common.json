@@ -1,4 +1,11 @@
 {
+  "appTitle": "Budgetly",
+  "resetData": "Reset data",
+  "toggleSidebar": "Toggle sidebar",
+  "toggleTheme": "Toggle theme",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "themeSystem": "System",
   "categories": {
     "housing": "Housing",
     "groceries": "Groceries",

@@ -1,4 +1,11 @@
 {
+  "appTitle": "Budgetly",
+  "resetData": "Daten zurücksetzen",
+  "toggleSidebar": "Seitenleiste umschalten",
+  "toggleTheme": "Design ändern",
+  "themeLight": "Hell",
+  "themeDark": "Dunkel",
+  "themeSystem": "System",
   "categories": {
     "housing": "Wohnen",
     "groceries": "Lebensmittel",

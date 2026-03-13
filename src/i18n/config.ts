@@ -16,16 +16,41 @@ import commonDe from "./locales/de/common.json";
 import commonJa from "./locales/ja/common.json";
 import commonAr from "./locales/ar/common.json";
 
+import dashboardEn from "./locales/en/dashboard.json";
+import dashboardDe from "./locales/de/dashboard.json";
+import dashboardJa from "./locales/ja/dashboard.json";
+import dashboardAr from "./locales/ar/dashboard.json";
+
 i18n.use(initReactI18next).init({
   resources: {
-    en: { onboarding: onboardingEn, transactions: transactionsEn, common: commonEn },
-    de: { onboarding: onboardingDe, transactions: transactionsDe, common: commonDe },
-    ja: { onboarding: onboardingJa, transactions: transactionsJa, common: commonJa },
-    ar: { onboarding: onboardingAr, transactions: transactionsAr, common: commonAr },
+    en: {
+      onboarding: onboardingEn,
+      transactions: transactionsEn,
+      common: commonEn,
+      dashboard: dashboardEn,
+    },
+    de: {
+      onboarding: onboardingDe,
+      transactions: transactionsDe,
+      common: commonDe,
+      dashboard: dashboardDe,
+    },
+    ja: {
+      onboarding: onboardingJa,
+      transactions: transactionsJa,
+      common: commonJa,
+      dashboard: dashboardJa,
+    },
+    ar: {
+      onboarding: onboardingAr,
+      transactions: transactionsAr,
+      common: commonAr,
+      dashboard: dashboardAr,
+    },
   },
   lng: "en",
   fallbackLng: "en",
-  ns: ["onboarding", "transactions", "common"],
+  ns: ["onboarding", "transactions", "common", "dashboard"],
   interpolation: {
     escapeValue: false,
   },

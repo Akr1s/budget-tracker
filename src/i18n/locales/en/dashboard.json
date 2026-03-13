@@ -1,0 +1,7 @@
+{
+  "title": "Dashboard",
+  "monthSelector": {
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month"
+  }
+}

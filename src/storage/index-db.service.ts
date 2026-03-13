@@ -82,4 +82,10 @@ export const IndexedDBService = {
     const tx = db.transaction(STORE, "readonly");
     return promisify(tx.objectStore(STORE).getAll());
   },
+
+  async clearAll(): Promise<void> {
+    const db = await openDB();
+    const tx = db.transaction(STORE, "readwrite");
+    return promisify(tx.objectStore(STORE).clear());
+  },
 };

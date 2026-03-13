@@ -1,4 +1,11 @@
 {
+  "appTitle": "Budgetly",
+  "resetData": "データをリセット",
+  "toggleSidebar": "サイドバーの切替",
+  "toggleTheme": "テーマの切替",
+  "themeLight": "ライト",
+  "themeDark": "ダーク",
+  "themeSystem": "システム",
   "categories": {
     "housing": "住居",
     "groceries": "食料品",
