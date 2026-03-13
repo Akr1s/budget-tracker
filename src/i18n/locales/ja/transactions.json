@@ -9,13 +9,16 @@
       "amount": "金額",
       "currency": "通貨",
       "date": "日付",
-      "createdAt": "作成日"
+      "createdAt": "作成日",
+      "actions": "操作"
     },
     "empty": "取引がまだありません。最初の取引を作成しましょう。"
   },
   "form": {
-    "title": "取引を作成",
-    "description": "新しい取引を作成",
+    "createTitle": "取引を作成",
+    "createDescription": "新しい取引を作成",
+    "editTitle": "取引を編集",
+    "editDescription": "既存の取引を編集",
     "fields": {
       "type": "種類",
       "amount": "金額 *",

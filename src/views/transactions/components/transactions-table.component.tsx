@@ -10,18 +10,25 @@ import { getCurrencySymbol } from "@/utils/currency";
 import { useTranslation } from "react-i18next";
 import type { ITransaction } from "../transactions.type";
 import { DateService } from "@/utils/date.service";
+import TransactionsTableActions from "./transactions-table-actions.component";
 
 interface IProps {
   transactions: ITransaction[];
+  onEdit: (transaction: ITransaction) => void;
+  onDelete: (id: number) => void;
 }
 
-export default function TransactionsTable({ transactions }: IProps) {
-  const { t } = useTranslation("transactions");
+export default function TransactionsTable({
+  transactions,
+  onEdit,
+  onDelete,
+}: IProps) {
+  const { t: tTransactions } = useTranslation("transactions");
 
   if (transactions.length === 0) {
     return (
       <p className="text-muted-foreground text-center py-8">
-        {t("table.empty")}
+        {tTransactions("table.empty")}
       </p>
     );
   }
@@ -31,14 +38,17 @@ export default function TransactionsTable({ transactions }: IProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>{t("table.columns.id")}</TableHead>
-            <TableHead>{t("table.columns.type")}</TableHead>
-            <TableHead>{t("table.columns.category")}</TableHead>
-            <TableHead>{t("table.columns.description")}</TableHead>
-            <TableHead className="text-right">{t("table.columns.amount")}</TableHead>
-            <TableHead>{t("table.columns.currency")}</TableHead>
-            <TableHead>{t("table.columns.date")}</TableHead>
-            <TableHead>{t("table.columns.createdAt")}</TableHead>
+            <TableHead>{tTransactions("table.columns.id")}</TableHead>
+            <TableHead>{tTransactions("table.columns.type")}</TableHead>
+            <TableHead>{tTransactions("table.columns.category")}</TableHead>
+            <TableHead>{tTransactions("table.columns.description")}</TableHead>
+            <TableHead className="text-right">
+              {tTransactions("table.columns.amount")}
+            </TableHead>
+            <TableHead>{tTransactions("table.columns.currency")}</TableHead>
+            <TableHead>{tTransactions("table.columns.date")}</TableHead>
+            <TableHead>{tTransactions("table.columns.createdAt")}</TableHead>
+            <TableHead>{tTransactions("table.columns.actions")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -62,6 +72,13 @@ export default function TransactionsTable({ transactions }: IProps) {
               </TableCell>
               <TableCell>
                 {DateService.toDisplayDate(transaction.createdAt)}
+              </TableCell>
+              <TableCell>
+                <TransactionsTableActions
+                  transaction={transaction}
+                  onEdit={onEdit}
+                  onDelete={onDelete}
+                />
               </TableCell>
             </TableRow>
           ))}

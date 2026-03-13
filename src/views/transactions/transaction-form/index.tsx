@@ -26,7 +26,7 @@ import {
 } from "@/storage/local-storage.service";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
-import type { ITransactionForm } from "../transactions.type";
+import type { ITransaction, ITransactionForm } from "../transactions.type";
 import { initialValues } from "./utils/transaction-form.constant";
 import { createValidationSchema } from "./utils/validation-schema.constant";
 import { TransactionTypeEnum } from "../utils/transaction.enum";
@@ -34,11 +34,16 @@ import { DateService } from "@/utils/date.service";
 import { IndexedDBService } from "@/storage/index-db.service";
 
 interface IProps {
+  transaction?: ITransaction;
   onClose: () => void;
-  onCreated: () => void;
+  onSuccess: (transaction: ITransaction) => void;
 }
 
-export default function TransactionForm({ onClose, onCreated }: IProps) {
+export default function TransactionForm({
+  transaction,
+  onClose,
+  onSuccess,
+}: IProps) {
   const { t: tTransactions } = useTranslation("transactions");
   const { t: tCommon } = useTranslation("common");
 
@@ -63,12 +68,23 @@ export default function TransactionForm({ onClose, onCreated }: IProps) {
       }))
     : [];
 
-  const formInitialValues: ITransactionForm = {
-    ...initialValues,
-    currency: onboardingData?.currency || CurrencyEnum.USD,
-    category: onboardingData?.categories[0] || CategoryEnum.HOUSING,
-    date: DateService.getTodayInputValue(),
-  };
+  const isEditMode = !!transaction;
+
+  const formInitialValues: ITransactionForm = transaction
+    ? {
+        type: transaction.type,
+        amount: transaction.amount,
+        currency: transaction.currency,
+        category: transaction.category,
+        description: transaction.description,
+        date: transaction.date,
+      }
+    : {
+        ...initialValues,
+        currency: onboardingData?.currency || CurrencyEnum.USD,
+        category: onboardingData?.categories[0] || CategoryEnum.HOUSING,
+        date: DateService.getTodayInputValue(),
+      };
 
   const {
     values,
@@ -87,9 +103,13 @@ export default function TransactionForm({ onClose, onCreated }: IProps) {
   });
 
   async function onSubmit(formValues: ITransactionForm) {
-    await IndexedDBService.addTransaction(formValues)
-      .then(() => {
-        onCreated();
+    const action = isEditMode
+      ? IndexedDBService.updateTransaction(transaction.id, formValues)
+      : IndexedDBService.addTransaction(formValues);
+
+    await action
+      .then((result) => {
+        onSuccess(result);
         onClose();
       })
       .catch(console.error);
@@ -100,9 +120,15 @@ export default function TransactionForm({ onClose, onCreated }: IProps) {
       <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>{tTransactions("form.title")}</DialogTitle>
+            <DialogTitle>
+              {tTransactions(
+                isEditMode ? "form.editTitle" : "form.createTitle",
+              )}
+            </DialogTitle>
             <DialogDescription>
-              {tTransactions("form.description")}
+              {tTransactions(
+                isEditMode ? "form.editDescription" : "form.createDescription",
+              )}
             </DialogDescription>
             <hr className="border-gray-300 dark:border-gray-700" />
           </DialogHeader>

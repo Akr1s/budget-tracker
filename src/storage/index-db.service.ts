@@ -19,7 +19,10 @@ function openDB(): Promise<IDBDatabase> {
       const db = (event.target as IDBOpenDBRequest).result;
 
       if (!db.objectStoreNames.contains(STORE)) {
-        const store = db.createObjectStore(STORE, { keyPath: "id", autoIncrement: true });
+        const store = db.createObjectStore(STORE, {
+          keyPath: "id",
+          autoIncrement: true,
+        });
         store.createIndex("date", "date", { unique: false });
         store.createIndex("type", "type", { unique: false });
         store.createIndex("category", "category", { unique: false });
@@ -41,15 +44,37 @@ function promisify<T>(request: IDBRequest<T>): Promise<T> {
 }
 
 export const IndexedDBService = {
-  async addTransaction(transaction: ITransactionForm): Promise<void> {
+  async addTransaction(formValues: ITransactionForm): Promise<ITransaction> {
     const record: Omit<ITransaction, "id"> = {
-      ...transaction,
+      ...formValues,
       createdAt: new Date().toISOString(),
     };
-
     const db = await openDB();
     const tx = db.transaction(STORE, "readwrite");
-    await promisify(tx.objectStore(STORE).add(record));
+
+    return promisify(tx.objectStore(STORE).add(record)).then((result) => ({
+      ...record,
+      id: result as number,
+    }));
+  },
+
+  async updateTransaction(
+    id: number,
+    formValues: ITransactionForm,
+  ): Promise<ITransaction> {
+    const db = await openDB();
+    const tx = db.transaction(STORE, "readwrite");
+    const store = tx.objectStore(STORE);
+    const record: ITransaction = await promisify(store.get(id));
+    const updatedRecord: ITransaction = { ...record, ...formValues };
+
+    return promisify(store.put(updatedRecord)).then(() => updatedRecord);
+  },
+
+  async deleteTransaction(id: number): Promise<void> {
+    const db = await openDB();
+    const tx = db.transaction(STORE, "readwrite");
+    return promisify(tx.objectStore(STORE).delete(id));
   },
 
   async getAllTransactions(): Promise<ITransaction[]> {

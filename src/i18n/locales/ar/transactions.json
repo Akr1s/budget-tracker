@@ -9,13 +9,16 @@
       "amount": "المبلغ",
       "currency": "العملة",
       "date": "التاريخ",
-      "createdAt": "تاريخ الإنشاء"
+      "createdAt": "تاريخ الإنشاء",
+      "actions": "إجراءات"
     },
     "empty": "لا توجد معاملات بعد. أنشئ واحدة للبدء."
   },
   "form": {
-    "title": "إنشاء معاملة",
-    "description": "إنشاء معاملة جديدة",
+    "createTitle": "إنشاء معاملة",
+    "createDescription": "إنشاء معاملة جديدة",
+    "editTitle": "تعديل معاملة",
+    "editDescription": "تعديل معاملة موجودة",
     "fields": {
       "type": "النوع",
       "amount": "المبلغ *",

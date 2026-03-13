@@ -9,13 +9,16 @@
       "amount": "Amount",
       "currency": "Currency",
       "date": "Date",
-      "createdAt": "Created At"
+      "createdAt": "Created At",
+      "actions": "Actions"
     },
     "empty": "No transactions yet. Create one to get started."
   },
   "form": {
-    "title": "Create Transaction",
-    "description": "Create a new transaction",
+    "createTitle": "Create Transaction",
+    "createDescription": "Create a new transaction",
+    "editTitle": "Edit Transaction",
+    "editDescription": "Edit an existing transaction",
     "fields": {
       "type": "Type",
       "amount": "Amount *",

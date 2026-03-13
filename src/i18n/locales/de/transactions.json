@@ -9,13 +9,16 @@
       "amount": "Betrag",
       "currency": "Währung",
       "date": "Datum",
-      "createdAt": "Erstellt am"
+      "createdAt": "Erstellt am",
+      "actions": "Aktionen"
     },
     "empty": "Noch keine Transaktionen. Erstellen Sie eine, um zu beginnen."
   },
   "form": {
-    "title": "Transaktion erstellen",
-    "description": "Eine neue Transaktion erstellen",
+    "createTitle": "Transaktion erstellen",
+    "createDescription": "Eine neue Transaktion erstellen",
+    "editTitle": "Transaktion bearbeiten",
+    "editDescription": "Eine bestehende Transaktion bearbeiten",
     "fields": {
       "type": "Typ",
       "amount": "Betrag *",

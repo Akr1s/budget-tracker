@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { IndexedDBService } from "@/storage/index-db.service";
 import CreateTransaction from "./components/create-transaction.component";
 import TransactionsTable from "./components/transactions-table.component";
@@ -6,7 +6,6 @@ import type { ITransaction } from "./transactions.type";
 
 export default function Transactions() {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
-  const [refreshKey, triggerRefresh] = useReducer((x: number) => x + 1, 0);
 
   useEffect(() => {
     let cancelled = false;
@@ -18,12 +17,30 @@ export default function Transactions() {
     return () => {
       cancelled = true;
     };
-  }, [refreshKey]);
+  }, []);
+
+  function handleAdd(transaction: ITransaction) {
+    setTransactions((prev) => [...prev, transaction]);
+  }
+
+  function handleEdit(transaction: ITransaction) {
+    setTransactions((prev) =>
+      prev.map((t) => (t.id === transaction.id ? transaction : t)),
+    );
+  }
+
+  function handleDelete(id: number) {
+    setTransactions((prev) => prev.filter((t) => t.id !== id));
+  }
 
   return (
     <div className="space-y-6 p-4">
-      <CreateTransaction onCreated={triggerRefresh} />
-      <TransactionsTable transactions={transactions} />
+      <CreateTransaction onCreated={handleAdd} />
+      <TransactionsTable
+        transactions={transactions}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
     </div>
   );
 }
