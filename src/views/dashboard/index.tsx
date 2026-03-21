@@ -7,6 +7,7 @@ import {
 } from "@/storage/local-storage.service";
 import { CurrencyEnum } from "@/utils/currency";
 import MonthSelector from "./components/month-selector.component";
+import RecentTransactions from "./recent-transactions";
 import SummaryCards from "./summary-cards";
 import SpendingByCategory from "./spending-by-category";
 import { useMonthSelector } from "./hooks/use-month-selector";
@@ -51,11 +52,18 @@ export default function Dashboard() {
         currency={currency}
         isLoading={isLoading}
       />
-      <SpendingByCategory
-        transactions={transactions}
-        currency={currency}
-        isLoading={isLoading}
-      />
+      <div className="grid gap-6 lg:grid-cols-2">
+        <SpendingByCategory
+          transactions={transactions}
+          currency={currency}
+          isLoading={isLoading}
+        />
+        <RecentTransactions
+          transactions={transactions}
+          currency={currency}
+          isLoading={isLoading}
+        />
+      </div>
     </div>
   );
 }

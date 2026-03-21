@@ -66,7 +66,7 @@ export default function SpendingByCategory({
   );
 
   return (
-    <Card className="lg:max-w-lg">
+    <Card>
       <CardHeader>
         <CardTitle className="text-base font-semibold">
           {tDashboard("spendingByCategory.title")}

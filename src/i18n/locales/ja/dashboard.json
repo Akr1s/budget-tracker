@@ -14,5 +14,10 @@
   "spendingByCategory": {
     "title": "カテゴリー別支出",
     "noData": "今月の支出はありません"
+  },
+  "recentTransactions": {
+    "title": "最近の取引",
+    "noData": "今月の取引はありません",
+    "viewAll": "すべての取引を表示"
   }
 }

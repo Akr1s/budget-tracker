@@ -14,5 +14,10 @@
   "spendingByCategory": {
     "title": "Spending by Category",
     "noData": "No expenses recorded this month"
+  },
+  "recentTransactions": {
+    "title": "Recent Transactions",
+    "noData": "No transactions this month",
+    "viewAll": "View all transactions"
   }
 }

@@ -14,5 +14,10 @@
   "spendingByCategory": {
     "title": "Ausgaben nach Kategorie",
     "noData": "Keine Ausgaben in diesem Monat erfasst"
+  },
+  "recentTransactions": {
+    "title": "Letzte Transaktionen",
+    "noData": "Keine Transaktionen in diesem Monat",
+    "viewAll": "Alle Transaktionen anzeigen"
   }
 }
