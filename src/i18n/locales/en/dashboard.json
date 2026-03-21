@@ -19,5 +19,11 @@
     "title": "Recent Transactions",
     "noData": "No transactions this month",
     "viewAll": "View all transactions"
+  },
+  "incomeVsExpenses": {
+    "title": "Income vs Expenses",
+    "noData": "No transaction data available",
+    "income": "Income",
+    "expenses": "Expenses"
   }
 }

@@ -19,5 +19,11 @@
     "title": "最近の取引",
     "noData": "今月の取引はありません",
     "viewAll": "すべての取引を表示"
+  },
+  "incomeVsExpenses": {
+    "title": "収入と支出の推移",
+    "noData": "取引データがありません",
+    "income": "収入",
+    "expenses": "支出"
   }
 }

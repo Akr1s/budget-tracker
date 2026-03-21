@@ -7,6 +7,7 @@ import {
 } from "@/storage/local-storage.service";
 import { CurrencyEnum } from "@/utils/currency";
 import MonthSelector from "./components/month-selector.component";
+import IncomeVsExpenses from "./income-vs-expenses";
 import RecentTransactions from "./recent-transactions";
 import SummaryCards from "./summary-cards";
 import SpendingByCategory from "./spending-by-category";
@@ -64,6 +65,7 @@ export default function Dashboard() {
           isLoading={isLoading}
         />
       </div>
+      <IncomeVsExpenses currency={currency} />
     </div>
   );
 }

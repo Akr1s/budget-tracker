@@ -19,5 +19,11 @@
     "title": "Letzte Transaktionen",
     "noData": "Keine Transaktionen in diesem Monat",
     "viewAll": "Alle Transaktionen anzeigen"
+  },
+  "incomeVsExpenses": {
+    "title": "Einnahmen vs. Ausgaben",
+    "noData": "Keine Transaktionsdaten verfügbar",
+    "income": "Einnahmen",
+    "expenses": "Ausgaben"
   }
 }
