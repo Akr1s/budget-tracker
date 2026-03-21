@@ -8,6 +8,7 @@ import {
 import { CurrencyEnum } from "@/utils/currency";
 import MonthSelector from "./components/month-selector.component";
 import SummaryCards from "./summary-cards";
+import SpendingByCategory from "./spending-by-category";
 import { useMonthSelector } from "./hooks/use-month-selector";
 import { useMonthlyTransactions } from "./hooks/use-monthly-transactions";
 
@@ -46,6 +47,11 @@ export default function Dashboard() {
         />
       </div>
       <SummaryCards
+        transactions={transactions}
+        currency={currency}
+        isLoading={isLoading}
+      />
+      <SpendingByCategory
         transactions={transactions}
         currency={currency}
         isLoading={isLoading}

@@ -10,5 +10,9 @@
     "expenses": "المصروفات",
     "remaining": "المتبقي",
     "ofIncome": "{{percent}}% من الدخل"
+  },
+  "spendingByCategory": {
+    "title": "الإنفاق حسب الفئة",
+    "noData": "لا توجد مصروفات مسجلة هذا الشهر"
   }
 }

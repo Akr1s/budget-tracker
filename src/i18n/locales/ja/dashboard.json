@@ -10,5 +10,9 @@
     "expenses": "支出",
     "remaining": "残高",
     "ofIncome": "収入の{{percent}}%"
+  },
+  "spendingByCategory": {
+    "title": "カテゴリー別支出",
+    "noData": "今月の支出はありません"
   }
 }
