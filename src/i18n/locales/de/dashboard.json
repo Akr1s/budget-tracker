@@ -2,6 +2,13 @@
   "title": "Übersicht",
   "monthSelector": {
     "previousMonth": "Vorheriger Monat",
-    "nextMonth": "Nächster Monat"
+    "nextMonth": "Nächster Monat",
+    "currentMonth": "Zum aktuellen Monat"
+  },
+  "summary": {
+    "income": "Einkommen",
+    "expenses": "Ausgaben",
+    "remaining": "Verbleibend",
+    "ofIncome": "{{percent}}% des Einkommens"
   }
 }

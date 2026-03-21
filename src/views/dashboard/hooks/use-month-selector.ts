@@ -46,6 +46,13 @@ export function useMonthSelector() {
     setSelected((prev) => addMonths(prev, 1));
   }
 
+  const isCurrentMonth = isSameMonth(selected, current);
+
+  function goToCurrentMonth() {
+    if (isCurrentMonth) return;
+    setSelected(current);
+  }
+
   const monthStart = new Date(selected.year, selected.month, 1).toISOString();
   const monthEnd = new Date(selected.year, selected.month + 1, 1).toISOString();
 
@@ -55,7 +62,9 @@ export function useMonthSelector() {
     monthEnd,
     canGoBack,
     canGoForward,
+    isCurrentMonth,
     goToPrevMonth,
     goToNextMonth,
+    goToCurrentMonth,
   };
 }

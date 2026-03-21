@@ -83,6 +83,17 @@ export const IndexedDBService = {
     return promisify(tx.objectStore(STORE).getAll());
   },
 
+  async getTransactionsByDateRange(
+    startDate: string,
+    endDate: string,
+  ): Promise<ITransaction[]> {
+    const db = await openDB();
+    const tx = db.transaction(STORE, "readonly");
+    const index = tx.objectStore(STORE).index("date");
+    const range = IDBKeyRange.bound(startDate, endDate);
+    return promisify(index.getAll(range));
+  },
+
   async clearAll(): Promise<void> {
     const db = await openDB();
     const tx = db.transaction(STORE, "readwrite");

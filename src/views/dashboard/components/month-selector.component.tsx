@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, CircleDot } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/ui/button";
@@ -13,8 +13,10 @@ interface MonthSelectorProps {
   selected: IMonthYear;
   canGoBack: boolean;
   canGoForward: boolean;
+  isCurrentMonth: boolean;
   onPrevMonth: () => void;
   onNextMonth: () => void;
+  onGoToCurrentMonth: () => void;
 }
 
 function formatMonthYear(monthYear: IMonthYear, locale: string): string {
@@ -29,8 +31,10 @@ export default function MonthSelector({
   selected,
   canGoBack,
   canGoForward,
+  isCurrentMonth,
   onPrevMonth,
   onNextMonth,
+  onGoToCurrentMonth,
 }: MonthSelectorProps) {
   const { t, i18n } = useTranslation("dashboard");
 
@@ -74,6 +78,22 @@ export default function MonthSelector({
         </TooltipTrigger>
         <TooltipContent>{t("monthSelector.nextMonth")}</TooltipContent>
       </Tooltip>
+
+      {!isCurrentMonth && (
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon-sm"
+              onClick={onGoToCurrentMonth}
+              aria-label={t("monthSelector.currentMonth")}
+            >
+              <CircleDot className="size-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>{t("monthSelector.currentMonth")}</TooltipContent>
+        </Tooltip>
+      )}
     </div>
   );
 }

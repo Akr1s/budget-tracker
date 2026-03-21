@@ -2,6 +2,13 @@
   "title": "لوحة المعلومات",
   "monthSelector": {
     "previousMonth": "الشهر السابق",
-    "nextMonth": "الشهر التالي"
+    "nextMonth": "الشهر التالي",
+    "currentMonth": "الانتقال إلى الشهر الحالي"
+  },
+  "summary": {
+    "income": "الدخل",
+    "expenses": "المصروفات",
+    "remaining": "المتبقي",
+    "ofIncome": "{{percent}}% من الدخل"
   }
 }

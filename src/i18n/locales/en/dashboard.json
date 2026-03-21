@@ -2,6 +2,13 @@
   "title": "Dashboard",
   "monthSelector": {
     "previousMonth": "Previous month",
-    "nextMonth": "Next month"
+    "nextMonth": "Next month",
+    "currentMonth": "Go to current month"
+  },
+  "summary": {
+    "income": "Income",
+    "expenses": "Expenses",
+    "remaining": "Remaining",
+    "ofIncome": "{{percent}}% of income"
   }
 }

@@ -2,6 +2,13 @@
   "title": "ダッシュボード",
   "monthSelector": {
     "previousMonth": "前の月",
-    "nextMonth": "次の月"
+    "nextMonth": "次の月",
+    "currentMonth": "今月に移動"
+  },
+  "summary": {
+    "income": "収入",
+    "expenses": "支出",
+    "remaining": "残高",
+    "ofIncome": "収入の{{percent}}%"
   }
 }
