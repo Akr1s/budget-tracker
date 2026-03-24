@@ -3,16 +3,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getCurrencySymbol, type CurrencyEnum } from "@/utils/currency";
+import type { CurrencyEnum } from "@/utils/currency";
+import { formatCurrency } from "@/utils/format-currency";
 import type { ISummaryCard } from "..";
 
 interface IProps {
   card: ISummaryCard;
   currency: CurrencyEnum;
-}
-
-function formatAmount(amount: number, currency: CurrencyEnum): string {
-  return `${getCurrencySymbol(currency)}${amount.toFixed(2)}`;
 }
 
 export default function CardData({ card, currency }: IProps) {
@@ -28,7 +25,7 @@ export default function CardData({ card, currency }: IProps) {
       </CardHeader>
       <CardContent>
         <p className={`text-2xl font-bold ${card.amountClass}`}>
-          {formatAmount(card.amount, currency)}
+          {formatCurrency(card.amount, currency)}
         </p>
         {card.subtitle && (
           <p className="mt-1 text-xs text-muted-foreground">

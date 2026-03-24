@@ -1,4 +1,4 @@
-import { LayoutDashboard, List } from "lucide-react";
+import { LayoutDashboard, List, Settings } from "lucide-react";
 import {
   SidebarContent,
   SidebarMenu,
@@ -8,23 +8,30 @@ import {
 } from "@/components/ui/sidebar";
 import { RoutesEnum } from "@/routes/routes.enum";
 import { useLocation, useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const items = [
   {
-    title: "Dashboard",
+    titleKey: "sidebar.dashboard",
     url: `/${RoutesEnum.DASHBOARD}`,
     icon: LayoutDashboard,
   },
   {
-    title: "Transactions",
+    titleKey: "sidebar.transactions",
     url: `/${RoutesEnum.TRANSACTIONS}`,
     icon: List,
   },
-];
+  {
+    titleKey: "sidebar.settings",
+    url: `/${RoutesEnum.SETTINGS}`,
+    icon: Settings,
+  },
+] as const;
 
 export default function AppSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { t: tCommon } = useTranslation("common");
 
   const checkIsActive = (url: string) => location.pathname.startsWith(url);
 
@@ -32,18 +39,21 @@ export default function AppSidebar() {
     <Sidebar collapsible="offcanvas" variant="inset">
       <SidebarContent>
         <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                tooltip={item.title}
-                isActive={checkIsActive(item.url)}
-                onClick={() => navigate(item.url)}
-              >
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {items.map((item) => {
+            const title = tCommon(item.titleKey);
+            return (
+              <SidebarMenuItem key={item.titleKey}>
+                <SidebarMenuButton
+                  tooltip={title}
+                  isActive={checkIsActive(item.url)}
+                  onClick={() => navigate(item.url)}
+                >
+                  {item.icon && <item.icon />}
+                  <span>{title}</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            );
+          })}
         </SidebarMenu>
       </SidebarContent>
     </Sidebar>

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getCurrencySymbol, type CurrencyEnum } from "@/utils/currency";
+import { convertTransactions } from "@/utils/currency-converter";
 import type { ITransaction } from "@/views/transactions/transactions.type";
 import { TransactionTypeEnum } from "@/views/transactions/utils/transaction.enum";
 import {
@@ -63,15 +64,20 @@ export default function IncomeVsExpenses({ currency }: IProps) {
 
   const currencySymbol = getCurrencySymbol(currency);
 
+  const converted = useMemo(
+    () => convertTransactions(transactions, currency),
+    [transactions, currency],
+  );
+
   const data = useMemo(
     () =>
-      buildMonthlyTrend(transactions, (date) =>
+      buildMonthlyTrend(converted, (date) =>
         date.toLocaleDateString(navigator.language, {
           month: "short",
           year: "2-digit",
         }),
       ),
-    [transactions],
+    [converted],
   );
 
   const hasData = data.some((d) => d.income > 0 || d.expenses > 0);

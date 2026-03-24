@@ -1,0 +1,38 @@
+{
+  "title": "الإعدادات",
+  "appearance": {
+    "title": "المظهر",
+    "language": "اللغة",
+    "theme": "السمة"
+  },
+  "regional": {
+    "title": "الإقليمية",
+    "displayCurrency": "عملة العرض"
+  },
+  "dataManagement": {
+    "title": "إدارة البيانات",
+    "clearAll": "مسح جميع البيانات",
+    "clearAllDescription": "حذف جميع المعاملات والفئات والإعدادات نهائياً",
+    "clearConfirmTitle": "مسح جميع البيانات",
+    "clearConfirmDescription": "سيؤدي هذا إلى حذف جميع بياناتك نهائياً. لا يمكن التراجع عن هذا الإجراء.",
+    "clearConfirmLabel": "اكتب DELETE للتأكيد:",
+    "clearConfirmPlaceholder": "اكتب DELETE",
+    "cancel": "إلغاء",
+    "confirmDelete": "حذف الكل",
+    "generateData": "إنشاء بيانات تجريبية",
+    "generateDataDescription": "إضافة معاملات عشوائية لآخر 6 أشهر للاختبار",
+    "generateDataSuccess": "تم إنشاء {{count}} معاملة تجريبية"
+  },
+  "about": {
+    "title": "حول",
+    "version": "الإصدار",
+    "transactions": "المعاملات",
+    "categories": "الفئات"
+  },
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "ja": "日本語",
+    "ar": "العربية"
+  }
+}

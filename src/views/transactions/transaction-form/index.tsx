@@ -17,8 +17,11 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { CurrencyEnum, LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
 import { CategoryEnum } from "@/enums/category.enum";
+import { useSettings } from "@/settings/use-settings.hook";
+import { IndexedDBService } from "@/storage/index-db.service";
+import { CurrencyEnum } from "@/utils/currency";
+import { DateService } from "@/utils/date.service";
 import type { IOnboardingForm } from "@/views/onboarding/onboarding.type";
 import {
   LocalStorageKeys,
@@ -30,8 +33,6 @@ import type { ITransaction, ITransactionForm } from "../transactions.type";
 import { initialValues } from "./utils/transaction-form.constant";
 import { createValidationSchema } from "./utils/validation-schema.constant";
 import { TransactionTypeEnum } from "../utils/transaction.enum";
-import { DateService } from "@/utils/date.service";
-import { IndexedDBService } from "@/storage/index-db.service";
 
 interface IProps {
   transaction?: ITransaction;
@@ -46,6 +47,7 @@ export default function TransactionForm({
 }: IProps) {
   const { t: tTransactions } = useTranslation("transactions");
   const { t: tCommon } = useTranslation("common");
+  const { settings } = useSettings();
 
   const typeOptions = Object.values(TransactionTypeEnum).map((type) => ({
     label: tTransactions(`form.typeOptions.${type}`),
@@ -61,12 +63,10 @@ export default function TransactionForm({
     LocalStorageKeys.ONBOARDING_DATA,
   );
 
-  const currencyOptions = onboardingData
-    ? LANGUAGE_CURRENCY_OPTIONS[onboardingData.language].map((c) => ({
-        label: c.toUpperCase(),
-        value: c,
-      }))
-    : [];
+  const currencyOptions = Object.values(CurrencyEnum).map((c) => ({
+    label: tCommon(`currencies.${c}`),
+    value: c,
+  }));
 
   const isEditMode = !!transaction;
 
@@ -81,7 +81,7 @@ export default function TransactionForm({
       }
     : {
         ...initialValues,
-        currency: onboardingData?.currency || CurrencyEnum.USD,
+        currency: settings.displayCurrency,
         category: onboardingData?.categories[0] || CategoryEnum.HOUSING,
         date: DateService.getTodayInputValue(),
       };

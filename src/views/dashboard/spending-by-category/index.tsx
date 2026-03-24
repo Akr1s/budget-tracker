@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CATEGORY_COLORS } from "@/constants/category-colors.config";
 import type { CategoryEnum } from "@/enums/category.enum";
-import { getCurrencySymbol, type CurrencyEnum } from "@/utils/currency";
+import type { CurrencyEnum } from "@/utils/currency";
 import type { ITransaction } from "@/views/transactions/transactions.type";
 import { TransactionTypeEnum } from "@/views/transactions/utils/transaction.enum";
 import CategoryChart from "./components/category-chart.component";
@@ -57,8 +57,6 @@ export default function SpendingByCategory({
   const { t: tDashboard } = useTranslation("dashboard");
   const { t: tCommon } = useTranslation("common");
 
-  const currencySymbol = getCurrencySymbol(currency);
-
   const slices = useMemo(
     () =>
       buildCategoryData(transactions, (key) => tCommon(`categories.${key}`)),
@@ -80,7 +78,7 @@ export default function SpendingByCategory({
             {tDashboard("spendingByCategory.noData")}
           </p>
         ) : (
-          <CategoryChart slices={slices} currencySymbol={currencySymbol} />
+          <CategoryChart slices={slices} currency={currency} />
         )}
       </CardContent>
     </Card>

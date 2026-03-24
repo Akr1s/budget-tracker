@@ -2,8 +2,9 @@ import { useTranslation } from "react-i18next";
 import { TrendingDown, TrendingUp } from "lucide-react";
 
 import { CATEGORY_COLORS } from "@/constants/category-colors.config";
-import { getCurrencySymbol, type CurrencyEnum } from "@/utils/currency";
+import type { CurrencyEnum } from "@/utils/currency";
 import { DateService } from "@/utils/date.service";
+import { formatCurrency } from "@/utils/format-currency";
 import type { ITransaction } from "@/views/transactions/transactions.type";
 import { TransactionTypeEnum } from "@/views/transactions/utils/transaction.enum";
 
@@ -14,7 +15,6 @@ interface IProps {
 
 export default function TransactionList({ transactions, currency }: IProps) {
   const { t: tCommon } = useTranslation("common");
-  const currencySymbol = getCurrencySymbol(currency);
 
   return (
     <ul className="flex flex-col divide-y" role="list">
@@ -56,8 +56,7 @@ export default function TransactionList({ transactions, currency }: IProps) {
               }`}
             >
               {isIncome ? "+" : "-"}
-              {currencySymbol}
-              {tx.amount.toFixed(2)}
+              {formatCurrency(tx.amount, currency)}
             </span>
           </li>
         );

@@ -1,0 +1,38 @@
+{
+  "title": "Settings",
+  "appearance": {
+    "title": "Appearance",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "regional": {
+    "title": "Regional",
+    "displayCurrency": "Display Currency"
+  },
+  "dataManagement": {
+    "title": "Data Management",
+    "clearAll": "Clear All Data",
+    "clearAllDescription": "Permanently delete all transactions, categories and settings",
+    "clearConfirmTitle": "Clear All Data",
+    "clearConfirmDescription": "This will permanently delete all your data. This action cannot be undone.",
+    "clearConfirmLabel": "Type DELETE to confirm:",
+    "clearConfirmPlaceholder": "Type DELETE",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete Everything",
+    "generateData": "Generate Sample Data",
+    "generateDataDescription": "Add random transactions across the last 6 months for testing",
+    "generateDataSuccess": "Generated {{count}} sample transactions"
+  },
+  "about": {
+    "title": "About",
+    "version": "Version",
+    "transactions": "Transactions",
+    "categories": "Categories"
+  },
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "ja": "日本語",
+    "ar": "العربية"
+  }
+}

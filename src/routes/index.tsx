@@ -1,11 +1,11 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 
 import App from "../App";
 import { RoutesEnum } from "./routes.enum";
 import Dashboard from "../views/dashboard";
 import Onboarding from "../views/onboarding";
+import Settings from "@/views/settings";
 import Transactions from "@/views/transactions";
-import { Navigate } from "react-router";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +23,10 @@ export const router = createBrowserRouter([
       {
         path: RoutesEnum.TRANSACTIONS,
         Component: Transactions,
+      },
+      {
+        path: RoutesEnum.SETTINGS,
+        Component: Settings,
       },
     ],
   },

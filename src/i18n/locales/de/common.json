@@ -6,6 +6,11 @@
   "themeLight": "Hell",
   "themeDark": "Dunkel",
   "themeSystem": "System",
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "transactions": "Transaktionen",
+    "settings": "Einstellungen"
+  },
   "categories": {
     "housing": "Wohnen",
     "groceries": "Lebensmittel",

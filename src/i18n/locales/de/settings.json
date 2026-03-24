@@ -1,0 +1,38 @@
+{
+  "title": "Einstellungen",
+  "appearance": {
+    "title": "Darstellung",
+    "language": "Sprache",
+    "theme": "Design"
+  },
+  "regional": {
+    "title": "Regional",
+    "displayCurrency": "Anzeigewährung"
+  },
+  "dataManagement": {
+    "title": "Datenverwaltung",
+    "clearAll": "Alle Daten löschen",
+    "clearAllDescription": "Alle Transaktionen, Kategorien und Einstellungen dauerhaft löschen",
+    "clearConfirmTitle": "Alle Daten löschen",
+    "clearConfirmDescription": "Dadurch werden alle Ihre Daten dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "clearConfirmLabel": "Geben Sie DELETE ein, um zu bestätigen:",
+    "clearConfirmPlaceholder": "DELETE eingeben",
+    "cancel": "Abbrechen",
+    "confirmDelete": "Alles löschen",
+    "generateData": "Testdaten generieren",
+    "generateDataDescription": "Zufällige Transaktionen der letzten 6 Monate zum Testen hinzufügen",
+    "generateDataSuccess": "{{count}} Beispieltransaktionen generiert"
+  },
+  "about": {
+    "title": "Über",
+    "version": "Version",
+    "transactions": "Transaktionen",
+    "categories": "Kategorien"
+  },
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "ja": "日本語",
+    "ar": "العربية"
+  }
+}

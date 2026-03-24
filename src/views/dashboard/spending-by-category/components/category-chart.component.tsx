@@ -1,11 +1,13 @@
 import { Pie, PieChart, ResponsiveContainer, Sector, Tooltip } from "recharts";
 import type { SectorProps } from "recharts";
 
+import type { CurrencyEnum } from "@/utils/currency";
+import { formatCurrency } from "@/utils/format-currency";
 import type { ICategorySlice } from "..";
 
 interface IProps {
   slices: ICategorySlice[];
-  currencySymbol: string;
+  currency: CurrencyEnum;
 }
 
 function renderShape(props: SectorProps & { isActive: boolean }) {
@@ -16,7 +18,7 @@ function renderShape(props: SectorProps & { isActive: boolean }) {
   return <Sector {...props} outerRadius={outerRadius} />;
 }
 
-export default function CategoryChart({ slices, currencySymbol }: IProps) {
+export default function CategoryChart({ slices, currency }: IProps) {
   return (
     <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
       <div className="mx-auto h-[200px] w-[200px] shrink-0">
@@ -52,10 +54,7 @@ export default function CategoryChart({ slices, currencySymbol }: IProps) {
               <span className="text-muted-foreground">{slice.label}</span>
             </div>
             <div className="flex items-center gap-2 font-medium">
-              <span>
-                {currencySymbol}
-                {slice.amount.toFixed(2)}
-              </span>
+              <span>{formatCurrency(slice.amount, currency)}</span>
               <span className="w-10 text-right text-xs text-muted-foreground">
                 {slice.percent}%
               </span>

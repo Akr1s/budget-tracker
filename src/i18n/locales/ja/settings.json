@@ -1,0 +1,38 @@
+{
+  "title": "設定",
+  "appearance": {
+    "title": "外観",
+    "language": "言語",
+    "theme": "テーマ"
+  },
+  "regional": {
+    "title": "地域",
+    "displayCurrency": "表示通貨"
+  },
+  "dataManagement": {
+    "title": "データ管理",
+    "clearAll": "すべてのデータを削除",
+    "clearAllDescription": "すべての取引、カテゴリ、設定を完全に削除します",
+    "clearConfirmTitle": "すべてのデータを削除",
+    "clearConfirmDescription": "すべてのデータが完全に削除されます。この操作は元に戻せません。",
+    "clearConfirmLabel": "DELETEと入力して確認してください：",
+    "clearConfirmPlaceholder": "DELETEと入力",
+    "cancel": "キャンセル",
+    "confirmDelete": "すべて削除",
+    "generateData": "サンプルデータを生成",
+    "generateDataDescription": "テスト用に過去6ヶ月分のランダムな取引を追加します",
+    "generateDataSuccess": "{{count}}件のサンプル取引を生成しました"
+  },
+  "about": {
+    "title": "このアプリについて",
+    "version": "バージョン",
+    "transactions": "取引数",
+    "categories": "カテゴリ数"
+  },
+  "languages": {
+    "en": "English",
+    "de": "Deutsch",
+    "ja": "日本語",
+    "ar": "العربية"
+  }
+}

@@ -6,6 +6,11 @@
   "themeLight": "فاتح",
   "themeDark": "داكن",
   "themeSystem": "النظام",
+  "sidebar": {
+    "dashboard": "لوحة القيادة",
+    "transactions": "المعاملات",
+    "settings": "الإعدادات"
+  },
   "categories": {
     "housing": "السكن",
     "groceries": "البقالة",

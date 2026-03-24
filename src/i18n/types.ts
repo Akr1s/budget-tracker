@@ -18,6 +18,11 @@ import dashboardDe from "./locales/de/dashboard.json";
 import dashboardJa from "./locales/ja/dashboard.json";
 import dashboardAr from "./locales/ar/dashboard.json";
 
+import type settingsEn from "./locales/en/settings.json";
+import settingsDe from "./locales/de/settings.json";
+import settingsJa from "./locales/ja/settings.json";
+import settingsAr from "./locales/ar/settings.json";
+
 declare module "i18next" {
   interface CustomTypeOptions {
     resources: {
@@ -25,6 +30,7 @@ declare module "i18next" {
       transactions: typeof transactionsEn;
       common: typeof commonEn;
       dashboard: typeof dashboardEn;
+      settings: typeof settingsEn;
     };
   }
 }
@@ -68,3 +74,12 @@ const _checkDashboardDe: DashboardShape = dashboardDe;
 const _checkDashboardJa: DashboardShape = dashboardJa;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const _checkDashboardAr: DashboardShape = dashboardAr;
+
+type SettingsShape = DeepStringify<typeof settingsEn>;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _checkSettingsDe: SettingsShape = settingsDe;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _checkSettingsJa: SettingsShape = settingsJa;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _checkSettingsAr: SettingsShape = settingsAr;

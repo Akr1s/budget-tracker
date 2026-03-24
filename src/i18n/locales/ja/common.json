@@ -6,6 +6,11 @@
   "themeLight": "ライト",
   "themeDark": "ダーク",
   "themeSystem": "システム",
+  "sidebar": {
+    "dashboard": "ダッシュボード",
+    "transactions": "取引",
+    "settings": "設定"
+  },
   "categories": {
     "housing": "住居",
     "groceries": "食料品",
