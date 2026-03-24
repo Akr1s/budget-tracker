@@ -37,9 +37,9 @@ export default function TransactionsTable({
   }
 
   return (
-    <div className="rounded-xl border bg-card p-4 shadow-sm max-h-96">
+    <div className="rounded-xl border bg-card p-4 shadow-sm flex-1 min-h-0 overflow-auto">
       <Table>
-        <TableHeader>
+        <TableHeader className="sticky top-0 bg-card z-10">
           <TableRow>
             <TableHead>{tTransactions("table.columns.id")}</TableHead>
             <TableHead>{tTransactions("table.columns.type")}</TableHead>

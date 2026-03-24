@@ -34,7 +34,7 @@ export default function Transactions() {
   }
 
   return (
-    <div className="space-y-6 p-4">
+    <div className="flex flex-1 flex-col gap-6 p-4 min-h-0">
       <CreateTransaction onCreated={handleAdd} />
       <TransactionsTable
         transactions={transactions}

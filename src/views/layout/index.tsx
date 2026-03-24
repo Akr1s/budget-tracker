@@ -7,6 +7,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 export default function Layout() {
   return (
     <SidebarProvider
+      className="max-h-svh"
       style={
         {
           "--sidebar-width": "calc(var(--spacing) * 72)",
@@ -15,7 +16,7 @@ export default function Layout() {
       }
     >
       <Sidebar />
-      <SidebarInset>
+      <SidebarInset className="overflow-y-auto">
         <Header />
         <Outlet />
       </SidebarInset>
