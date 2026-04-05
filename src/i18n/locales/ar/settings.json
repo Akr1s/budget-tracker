@@ -21,13 +21,30 @@
     "confirmDelete": "حذف الكل",
     "generateData": "إنشاء بيانات تجريبية",
     "generateDataDescription": "إضافة معاملات عشوائية لآخر 6 أشهر للاختبار",
-    "generateDataSuccess": "تم إنشاء {{count}} معاملة تجريبية"
+    "generateDataSuccess_zero": "لم يُنشأ أي معاملة تجريبية",
+    "generateDataSuccess_one": "تم إنشاء معاملة تجريبية واحدة",
+    "generateDataSuccess_two": "تم إنشاء معاملتين تجريبيتين",
+    "generateDataSuccess_few": "تم إنشاء {{count}} معاملات تجريبية",
+    "generateDataSuccess_many": "تم إنشاء {{count}} معاملةً تجريبيةً",
+    "generateDataSuccess_other": "تم إنشاء {{count}} معاملة تجريبية"
   },
   "about": {
     "title": "حول",
     "version": "الإصدار",
     "transactions": "المعاملات",
-    "categories": "الفئات"
+    "categories": "الفئات",
+    "transactionCount_zero": "لا معاملات",
+    "transactionCount_one": "{{count}} معاملة",
+    "transactionCount_two": "{{count}} معاملتان",
+    "transactionCount_few": "{{count}} معاملات",
+    "transactionCount_many": "{{count}} معاملةً",
+    "transactionCount_other": "{{count}} معاملة",
+    "categoryCount_zero": "لا فئات",
+    "categoryCount_one": "{{count}} فئة",
+    "categoryCount_two": "{{count}} فئتان",
+    "categoryCount_few": "{{count}} فئات",
+    "categoryCount_many": "{{count}} فئة",
+    "categoryCount_other": "{{count}} فئة"
   },
   "languages": {
     "en": "English",

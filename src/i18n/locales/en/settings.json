@@ -21,13 +21,18 @@
     "confirmDelete": "Delete Everything",
     "generateData": "Generate Sample Data",
     "generateDataDescription": "Add random transactions across the last 6 months for testing",
-    "generateDataSuccess": "Generated {{count}} sample transactions"
+    "generateDataSuccess_one": "Generated {{count}} sample transaction",
+    "generateDataSuccess_other": "Generated {{count}} sample transactions"
   },
   "about": {
     "title": "About",
     "version": "Version",
     "transactions": "Transactions",
-    "categories": "Categories"
+    "categories": "Categories",
+    "transactionCount_one": "{{count}} transaction",
+    "transactionCount_other": "{{count}} transactions",
+    "categoryCount_one": "{{count}} category",
+    "categoryCount_other": "{{count}} categories"
   },
   "languages": {
     "en": "English",

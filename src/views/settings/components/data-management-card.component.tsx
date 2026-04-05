@@ -12,11 +12,16 @@ export default function DataManagementCard() {
   const { t: tSettings } = useTranslation("settings");
   const [isGenerating, setIsGenerating] = useState(false);
   const [showClearDialog, setShowClearDialog] = useState(false);
+  const [generateSuccessCount, setGenerateSuccessCount] = useState<
+    number | null
+  >(null);
 
   async function handleGenerateData() {
     setIsGenerating(true);
+    setGenerateSuccessCount(null);
     try {
-      await generateSampleData();
+      const count = await generateSampleData();
+      setGenerateSuccessCount(count);
     } finally {
       setIsGenerating(false);
     }
@@ -48,6 +53,13 @@ export default function DataManagementCard() {
               {tSettings("dataManagement.generateData")}
             </Button>
           </div>
+          {generateSuccessCount !== null ? (
+            <p className="text-sm text-muted-foreground" role="status">
+              {tSettings("dataManagement.generateDataSuccess", {
+                count: generateSuccessCount,
+              })}
+            </p>
+          ) : null}
           <Separator />
           <div className="flex items-center justify-between gap-4">
             <div>

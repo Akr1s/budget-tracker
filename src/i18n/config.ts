@@ -26,6 +26,8 @@ import settingsDe from "./locales/de/settings.json";
 import settingsJa from "./locales/ja/settings.json";
 import settingsAr from "./locales/ar/settings.json";
 
+const isDev = import.meta.env.DEV;
+
 i18n.use(initReactI18next).init({
   resources: {
     en: {
@@ -63,6 +65,22 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
+  ...(isDev
+    ? {
+        saveMissing: true,
+        saveMissingPlurals: true,
+        missingKeyHandler(
+          lngs: readonly string[],
+          ns: string,
+          key: string,
+          fallbackValue: string,
+        ) {
+          console.warn(
+            `[i18n] Missing key after fallback: ${ns}:${key} (lngs: ${lngs.join(", ")}) fallbackValue=${JSON.stringify(fallbackValue)}`,
+          );
+        },
+      }
+    : {}),
 });
 
 export default i18n;

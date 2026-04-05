@@ -36,13 +36,19 @@ export default function AboutCard() {
             <dt className="text-muted-foreground">
               {tSettings("about.transactions")}
             </dt>
-            <dd className="font-medium">{transactionCount}</dd>
+            <dd className="font-medium">
+              {tSettings("about.transactionCount", {
+                count: transactionCount,
+              })}
+            </dd>
           </div>
           <div>
             <dt className="text-muted-foreground">
               {tSettings("about.categories")}
             </dt>
-            <dd className="font-medium">{categoryCount}</dd>
+            <dd className="font-medium">
+              {tSettings("about.categoryCount", { count: categoryCount })}
+            </dd>
           </div>
         </dl>
       </CardContent>
