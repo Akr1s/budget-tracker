@@ -3,7 +3,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import { getCurrencySymbol } from "@/utils/currency";
+import { formatCurrency } from "@/utils/format-currency";
 
 interface IProps {
   setFieldValue: (
@@ -19,7 +19,6 @@ interface IProps {
 export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
   const { t: tOnboarding } = useTranslation("onboarding");
   const { t: tCommon } = useTranslation("common");
-  const currencySymbol = getCurrencySymbol(values.currency);
 
   const categoryLabels: Record<string, string> = {
     housing: tCommon("categories.housing"),
@@ -52,8 +51,11 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
       <p className="leading-7">{tOnboarding("budgetGoals.heading")}</p>
       <p className="leading-7 mt-4">
         {tOnboarding("budgetGoals.monthlyIncome", {
-          symbol: currencySymbol,
-          amount: values.primarySourceMonthlyAmount.toFixed(2),
+          amount: formatCurrency(
+            values.primarySourceMonthlyAmount,
+            values.currency,
+            values.language,
+          ),
         })}
       </p>
 
@@ -89,15 +91,21 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
 
       <p className="leading-7 mt-4">
         {tOnboarding("budgetGoals.totalBudgeted", {
-          symbol: currencySymbol,
-          budgeted: totalBudgeted.toFixed(2),
-          income: values.primarySourceMonthlyAmount.toFixed(2),
+          budgeted: formatCurrency(totalBudgeted, values.currency, values.language),
+          income: formatCurrency(
+            values.primarySourceMonthlyAmount,
+            values.currency,
+            values.language,
+          ),
         })}
       </p>
       <p className="leading-7">
         {tOnboarding("budgetGoals.remaining", {
-          symbol: currencySymbol,
-          amount: remainingBudgeted.toFixed(2),
+          amount: formatCurrency(
+            remainingBudgeted,
+            values.currency,
+            values.language,
+          ),
           percentage: remainingPercentage,
         })}
       </p>

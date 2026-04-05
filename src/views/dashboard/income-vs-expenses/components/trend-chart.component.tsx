@@ -9,21 +9,33 @@ import {
   YAxis,
 } from "recharts";
 
+import type { CurrencyEnum } from "@/utils/currency";
+import { formatCurrency } from "@/utils/format-currency";
 import type { IMonthlyTrend } from "..";
 
 interface IProps {
   data: IMonthlyTrend[];
-  currencySymbol: string;
+  locale: string;
+  currency: CurrencyEnum;
   incomeLabel: string;
   expensesLabel: string;
 }
 
 export default function TrendChart({
   data,
-  currencySymbol,
+  locale,
+  currency,
   incomeLabel,
   expensesLabel,
 }: IProps) {
+  const axisCurrency = new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency.toUpperCase(),
+    notation: "compact",
+    compactDisplay: "short",
+    maximumFractionDigits: 1,
+  });
+
   return (
     <div className="h-[300px] w-full">
       <ResponsiveContainer width="100%" height="100%">
@@ -43,9 +55,7 @@ export default function TrendChart({
             tickLine={false}
             axisLine={false}
             width={60}
-            tickFormatter={(value: number) =>
-              `${currencySymbol}${value >= 1000 ? `${(value / 1000).toFixed(1)}k` : value}`
-            }
+            tickFormatter={(value: number) => axisCurrency.format(value)}
             className="text-xs fill-muted-foreground"
           />
           <Tooltip
@@ -57,7 +67,7 @@ export default function TrendChart({
               fontSize: "0.875rem",
             }}
             formatter={(value, name) => [
-              `${currencySymbol}${Number(value).toFixed(2)}`,
+              formatCurrency(Number(value), currency, locale),
               name,
             ]}
           />

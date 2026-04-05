@@ -54,7 +54,7 @@ export default function SpendingByCategory({
   currency,
   isLoading,
 }: IProps) {
-  const { t: tDashboard } = useTranslation("dashboard");
+  const { t: tDashboard, i18n } = useTranslation("dashboard");
   const { t: tCommon } = useTranslation("common");
 
   const slices = useMemo(
@@ -78,7 +78,11 @@ export default function SpendingByCategory({
             {tDashboard("spendingByCategory.noData")}
           </p>
         ) : (
-          <CategoryChart slices={slices} currency={currency} />
+          <CategoryChart
+            slices={slices}
+            currency={currency}
+            locale={i18n.language}
+          />
         )}
       </CardContent>
     </Card>

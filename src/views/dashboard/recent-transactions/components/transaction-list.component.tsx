@@ -14,7 +14,7 @@ interface IProps {
 }
 
 export default function TransactionList({ transactions, currency }: IProps) {
-  const { t: tCommon } = useTranslation("common");
+  const { t: tCommon, i18n } = useTranslation("common");
 
   return (
     <ul className="flex flex-col divide-y" role="list">
@@ -44,7 +44,7 @@ export default function TransactionList({ transactions, currency }: IProps) {
               <p className="text-xs text-muted-foreground">
                 {tCommon(`categories.${tx.category}`)}
                 {" · "}
-                {DateService.toDisplayDate(tx.date)}
+                {DateService.toDisplayDate(tx.date, i18n.language)}
               </p>
             </div>
 
@@ -56,7 +56,7 @@ export default function TransactionList({ transactions, currency }: IProps) {
               }`}
             >
               {isIncome ? "+" : "-"}
-              {formatCurrency(tx.amount, currency)}
+              {formatCurrency(tx.amount, currency, i18n.language)}
             </span>
           </li>
         );

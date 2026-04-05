@@ -41,9 +41,7 @@ export class DateService {
     );
   }
 
-  static toDisplayDate(isoString: string, locale?: string): string {
-    return new Date(isoString).toLocaleDateString(
-      locale ?? navigator.language,
-    );
+  static toDisplayDate(isoString: string, locale: string): string {
+    return new Date(isoString).toLocaleDateString(locale);
   }
 }

@@ -40,17 +40,17 @@
   },
   "budgetGoals": {
     "heading": "Lege monatliche Ausgabenlimits für jede Kategorie fest:",
-    "monthlyIncome": "Monatliches Einkommen: {{symbol}}{{amount}}",
+    "monthlyIncome": "Monatliches Einkommen: {{amount}}",
     "noCategories": "Keine Kategorien ausgewählt. Gehe zurück zu Schritt 2.",
-    "totalBudgeted": "Gesamt budgetiert: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
-    "remaining": "Verbleibend: {{symbol}}{{amount}} ({{percentage}}%) für Sparen/Sonstiges"
+    "totalBudgeted": "Gesamt budgetiert: {{budgeted}} / {{income}}",
+    "remaining": "Verbleibend: {{amount}} ({{percentage}}%) für Sparen/Sonstiges"
   },
   "summary": {
     "overview": "Hier ist deine Budgetübersicht:",
     "monthlySummaryHeading": "MONATLICHE ZUSAMMENFASSUNG",
-    "income": "Einkommen: {{symbol}}{{amount}} ({{source}})",
-    "budget": "Budget: {{symbol}}{{amount}}",
-    "savingsGoal": "Sparziel: {{symbol}}{{amount}} ({{percentage}}%)",
+    "income": "Einkommen: {{amount}} ({{source}})",
+    "budget": "Budget: {{amount}}",
+    "savingsGoal": "Sparziel: {{amount}} ({{percentage}}%)",
     "categoriesHeading": "KATEGORIEN ({{count}} aktiv)",
     "noCategories": "Keine Kategorien ausgewählt.",
     "startingBalanceHeading": "STARTGUTHABEN",

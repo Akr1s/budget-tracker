@@ -40,17 +40,17 @@
   },
   "budgetGoals": {
     "heading": "حدد حدود الإنفاق الشهرية لكل فئة:",
-    "monthlyIncome": "الدخل الشهري: {{symbol}}{{amount}}",
+    "monthlyIncome": "الدخل الشهري: {{amount}}",
     "noCategories": "لم يتم اختيار أي فئات. ارجع إلى الخطوة 2.",
-    "totalBudgeted": "إجمالي الميزانية: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
-    "remaining": "المتبقي: {{symbol}}{{amount}} ({{percentage}}%) للمدخرات/أخرى"
+    "totalBudgeted": "إجمالي الميزانية: {{budgeted}} / {{income}}",
+    "remaining": "المتبقي: {{amount}} ({{percentage}}%) للمدخرات/أخرى"
   },
   "summary": {
     "overview": "إليك نظرة عامة على ميزانيتك:",
     "monthlySummaryHeading": "الملخص الشهري",
-    "income": "الدخل: {{symbol}}{{amount}} ({{source}})",
-    "budget": "الميزانية: {{symbol}}{{amount}}",
-    "savingsGoal": "هدف الادخار: {{symbol}}{{amount}} ({{percentage}}%)",
+    "income": "الدخل: {{amount}} ({{source}})",
+    "budget": "الميزانية: {{amount}}",
+    "savingsGoal": "هدف الادخار: {{amount}} ({{percentage}}%)",
     "categoriesHeading": "الفئات ({{count}} نشطة)",
     "noCategories": "لم يتم اختيار أي فئات.",
     "startingBalanceHeading": "الرصيد الابتدائي",

@@ -25,7 +25,7 @@ export default function TransactionsTable({
   onEdit,
   onDelete,
 }: IProps) {
-  const { t: tTransactions } = useTranslation("transactions");
+  const { t: tTransactions, i18n } = useTranslation("transactions");
   const { settings } = useSettings();
 
   if (transactions.length === 0) {
@@ -72,13 +72,20 @@ export default function TransactionsTable({
                 </TableCell>
                 <TableCell>{transaction.description ?? "-"}</TableCell>
                 <TableCell className="text-right">
-                  {formatCurrency(displayAmount, settings.displayCurrency)}
+                  {formatCurrency(
+                    displayAmount,
+                    settings.displayCurrency,
+                    i18n.language,
+                  )}
                 </TableCell>
                 <TableCell>
-                  {DateService.toDisplayDate(transaction.date)}
+                  {DateService.toDisplayDate(transaction.date, i18n.language)}
                 </TableCell>
                 <TableCell>
-                  {DateService.toDisplayDate(transaction.createdAt)}
+                  {DateService.toDisplayDate(
+                    transaction.createdAt,
+                    i18n.language,
+                  )}
                 </TableCell>
                 <TableCell>
                   <TransactionsTableActions

@@ -8,6 +8,7 @@ import type { ICategorySlice } from "..";
 interface IProps {
   slices: ICategorySlice[];
   currency: CurrencyEnum;
+  locale: string;
 }
 
 function renderShape(props: SectorProps & { isActive: boolean }) {
@@ -18,7 +19,7 @@ function renderShape(props: SectorProps & { isActive: boolean }) {
   return <Sector {...props} outerRadius={outerRadius} />;
 }
 
-export default function CategoryChart({ slices, currency }: IProps) {
+export default function CategoryChart({ slices, currency, locale }: IProps) {
   return (
     <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
       <div className="mx-auto h-[200px] w-[200px] shrink-0">
@@ -54,7 +55,7 @@ export default function CategoryChart({ slices, currency }: IProps) {
               <span className="text-muted-foreground">{slice.label}</span>
             </div>
             <div className="flex items-center gap-2 font-medium">
-              <span>{formatCurrency(slice.amount, currency)}</span>
+              <span>{formatCurrency(slice.amount, currency, locale)}</span>
               <span className="w-10 text-right text-xs text-muted-foreground">
                 {slice.percent}%
               </span>

@@ -40,17 +40,17 @@
   },
   "budgetGoals": {
     "heading": "Set monthly spending limits for each category:",
-    "monthlyIncome": "Monthly Income: {{symbol}}{{amount}}",
+    "monthlyIncome": "Monthly Income: {{amount}}",
     "noCategories": "No categories selected. Go back to step 2 to choose categories.",
-    "totalBudgeted": "Total Budgeted: {{symbol}}{{budgeted}} / {{symbol}}{{income}}",
-    "remaining": "Remaining: {{symbol}}{{amount}} ({{percentage}}%) for savings/other"
+    "totalBudgeted": "Total Budgeted: {{budgeted}} / {{income}}",
+    "remaining": "Remaining: {{amount}} ({{percentage}}%) for savings/other"
   },
   "summary": {
     "overview": "Here's your budget overview:",
     "monthlySummaryHeading": "MONTHLY SUMMARY",
-    "income": "Income: {{symbol}}{{amount}} ({{source}})",
-    "budget": "Budget: {{symbol}}{{amount}}",
-    "savingsGoal": "Savings Goal: {{symbol}}{{amount}} ({{percentage}}%)",
+    "income": "Income: {{amount}} ({{source}})",
+    "budget": "Budget: {{amount}}",
+    "savingsGoal": "Savings Goal: {{amount}} ({{percentage}}%)",
     "categoriesHeading": "CATEGORIES ({{count}} active)",
     "noCategories": "No categories selected.",
     "startingBalanceHeading": "STARTING BALANCE",

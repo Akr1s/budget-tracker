@@ -50,7 +50,7 @@ export default function SummaryCards({
   currency,
   isLoading,
 }: IProps) {
-  const { t: tDashboard } = useTranslation("dashboard");
+  const { t: tDashboard, i18n } = useTranslation("dashboard");
 
   const { totalIncome, totalExpenses, remaining, expenseRatio } = useMemo(
     () => computeTransactionTotals(transactions),
@@ -94,7 +94,11 @@ export default function SummaryCards({
           {isLoading ? (
             <CardSkeleton />
           ) : (
-            <CardData card={card} currency={currency} />
+            <CardData
+              card={card}
+              currency={currency}
+              locale={i18n.language}
+            />
           )}
         </Card>
       ))}

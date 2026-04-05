@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getCurrencySymbol, type CurrencyEnum } from "@/utils/currency";
+import type { CurrencyEnum } from "@/utils/currency";
 import { convertTransactions } from "@/utils/currency-converter";
 import type { ITransaction } from "@/views/transactions/transactions.type";
 import { TransactionTypeEnum } from "@/views/transactions/utils/transaction.enum";
@@ -59,10 +59,8 @@ function buildMonthlyTrend(
 }
 
 export default function IncomeVsExpenses({ currency }: IProps) {
-  const { t: tDashboard } = useTranslation("dashboard");
+  const { t: tDashboard, i18n } = useTranslation("dashboard");
   const { transactions, isLoading } = useYearlyTransactions();
-
-  const currencySymbol = getCurrencySymbol(currency);
 
   const converted = useMemo(
     () => convertTransactions(transactions, currency),
@@ -72,12 +70,12 @@ export default function IncomeVsExpenses({ currency }: IProps) {
   const data = useMemo(
     () =>
       buildMonthlyTrend(converted, (date) =>
-        date.toLocaleDateString(navigator.language, {
+        date.toLocaleDateString(i18n.language, {
           month: "short",
           year: "2-digit",
         }),
       ),
-    [converted],
+    [converted, i18n.language],
   );
 
   const hasData = data.some((d) => d.income > 0 || d.expenses > 0);
@@ -99,7 +97,8 @@ export default function IncomeVsExpenses({ currency }: IProps) {
         ) : (
           <TrendChart
             data={data}
-            currencySymbol={currencySymbol}
+            locale={i18n.language}
+            currency={currency}
             incomeLabel={tDashboard("incomeVsExpenses.income")}
             expensesLabel={tDashboard("incomeVsExpenses.expenses")}
           />

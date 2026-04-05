@@ -10,9 +10,10 @@ import type { ISummaryCard } from "..";
 interface IProps {
   card: ISummaryCard;
   currency: CurrencyEnum;
+  locale: string;
 }
 
-export default function CardData({ card, currency }: IProps) {
+export default function CardData({ card, currency, locale }: IProps) {
   const Icon = card.icon;
 
   return (
@@ -25,7 +26,7 @@ export default function CardData({ card, currency }: IProps) {
       </CardHeader>
       <CardContent>
         <p className={`text-2xl font-bold ${card.amountClass}`}>
-          {formatCurrency(card.amount, currency)}
+          {formatCurrency(card.amount, currency, locale)}
         </p>
         {card.subtitle && (
           <p className="mt-1 text-xs text-muted-foreground">

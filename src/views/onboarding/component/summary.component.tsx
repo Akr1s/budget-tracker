@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { IOnboardingForm } from "../onboarding.type";
-import { getCurrencySymbol } from "@/utils/currency";
 import { DateService } from "@/utils/date.service";
+import { formatCurrency } from "@/utils/format-currency";
 
 interface IProps {
   values: IOnboardingForm;
@@ -10,7 +10,6 @@ interface IProps {
 export default function Summary({ values }: IProps) {
   const { t: tOnboarding } = useTranslation("onboarding");
   const { t: tCommon } = useTranslation("common");
-  const currencySymbol = getCurrencySymbol(values.currency);
 
   const categoryLabels: Record<string, string> = {
     housing: tCommon("categories.housing"),
@@ -46,21 +45,22 @@ export default function Summary({ values }: IProps) {
         </p>
         <p className="leading-7">
           {tOnboarding("summary.income", {
-            symbol: currencySymbol,
-            amount: values.primarySourceMonthlyAmount.toFixed(2),
+            amount: formatCurrency(
+              values.primarySourceMonthlyAmount,
+              values.currency,
+              values.language,
+            ),
             source: values.primaryIncomeSource,
           })}
         </p>
         <p className="leading-7">
           {tOnboarding("summary.budget", {
-            symbol: currencySymbol,
-            amount: totalBudgeted.toFixed(2),
+            amount: formatCurrency(totalBudgeted, values.currency, values.language),
           })}
         </p>
         <p className="leading-7">
           {tOnboarding("summary.savingsGoal", {
-            symbol: currencySymbol,
-            amount: savingsGoal.toFixed(2),
+            amount: formatCurrency(savingsGoal, values.currency, values.language),
             percentage: savingsPercentage,
           })}
         </p>
@@ -80,8 +80,12 @@ export default function Summary({ values }: IProps) {
                 {values.budgetGoals[cat] !== undefined && (
                   <span className="text-muted-foreground">
                     {" "}
-                    — {currencySymbol}
-                    {values.budgetGoals[cat].toFixed(2)}
+                    —{" "}
+                    {formatCurrency(
+                      values.budgetGoals[cat] ?? 0,
+                      values.currency,
+                      values.language,
+                    )}
                   </span>
                 )}
               </li>
@@ -99,8 +103,11 @@ export default function Summary({ values }: IProps) {
           {tOnboarding("summary.startingBalanceHeading")}
         </p>
         <p className="leading-7">
-          {currencySymbol}
-          {values.startingBalance.toFixed(2)}
+          {formatCurrency(
+            values.startingBalance,
+            values.currency,
+            values.language,
+          )}
         </p>
         <p className="leading-7 text-sm text-muted-foreground">
           {tOnboarding("summary.trackingFrom", {
