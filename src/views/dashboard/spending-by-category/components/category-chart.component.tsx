@@ -2,7 +2,8 @@ import { Pie, PieChart, ResponsiveContainer, Sector, Tooltip } from "recharts";
 import type { SectorProps } from "recharts";
 
 import type { CurrencyEnum } from "@/utils/currency";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
+import { formatPercent } from "@/utils/format-percent.util";
 import type { ICategorySlice } from "..";
 
 interface IProps {
@@ -56,8 +57,8 @@ export default function CategoryChart({ slices, currency, locale }: IProps) {
             </div>
             <div className="flex items-center gap-2 font-medium">
               <span>{formatCurrency(slice.amount, currency, locale)}</span>
-              <span className="w-10 text-right text-xs text-muted-foreground">
-                {slice.percent}%
+              <span className="min-w-10 text-right text-xs text-muted-foreground">
+                {formatPercent(slice.percent, locale)}
               </span>
             </div>
           </li>

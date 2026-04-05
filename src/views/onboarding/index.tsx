@@ -23,6 +23,7 @@ import {
   ONBOARDING_STEPS_COUNT,
   STEP_FIELDS,
 } from "./utils/onboarding.constant";
+import { formatNumber } from "@/utils/format-number.util";
 import { useTranslation } from "react-i18next";
 import {
   LocalStorageKeys,
@@ -35,7 +36,7 @@ export default function Onboarding() {
   );
 
   const navigate = useNavigate();
-  const { t: tOnboarding } = useTranslation("onboarding");
+  const { t: tOnboarding, i18n } = useTranslation("onboarding");
 
   const { values, errors, touched, setFieldValue, handleSubmit } =
     useFormik<IOnboardingForm>({
@@ -71,8 +72,8 @@ export default function Onboarding() {
             <DialogTitle>{tOnboarding("title")}</DialogTitle>
             <DialogDescription>
               {tOnboarding("stepIndicator", {
-                current: step,
-                total: ONBOARDING_STEPS_COUNT,
+                current: formatNumber(step, i18n.language),
+                total: formatNumber(ONBOARDING_STEPS_COUNT, i18n.language),
               })}
             </DialogDescription>
             <hr className="border-gray-300 dark:border-gray-700" />

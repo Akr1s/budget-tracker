@@ -1,9 +1,15 @@
 import CurrencyInput from "@/components/currency-input.component";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
+import { formatPercent } from "@/utils/format-percent.util";
 
 interface IProps {
   setFieldValue: (
@@ -91,7 +97,11 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
 
       <p className="leading-7 mt-4">
         {tOnboarding("budgetGoals.totalBudgeted", {
-          budgeted: formatCurrency(totalBudgeted, values.currency, values.language),
+          budgeted: formatCurrency(
+            totalBudgeted,
+            values.currency,
+            values.language,
+          ),
           income: formatCurrency(
             values.primarySourceMonthlyAmount,
             values.currency,
@@ -106,7 +116,7 @@ export default function BudgetGoals({ setFieldValue, values, errors }: IProps) {
             values.currency,
             values.language,
           ),
-          percentage: remainingPercentage,
+          percentage: formatPercent(remainingPercentage, values.language),
         })}
       </p>
     </div>

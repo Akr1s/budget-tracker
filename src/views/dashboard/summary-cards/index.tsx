@@ -6,6 +6,7 @@ import type { ITransaction } from "@/views/transactions/transactions.type";
 import { TransactionTypeEnum } from "@/views/transactions/utils/transaction.enum";
 import type { LucideIcon } from "lucide-react";
 import { TrendingDown, TrendingUp, Wallet } from "lucide-react";
+import { formatPercent } from "@/utils/format-percent.util";
 import { useTranslation } from "react-i18next";
 import CardData from "./components/card-data.component";
 import CardSkeleton from "./components/card-skeleton.component";
@@ -72,7 +73,7 @@ export default function SummaryCards({
       amountClass: "text-red-600 dark:text-red-400",
       iconClass: "text-red-600 dark:text-red-400",
       subtitle: tDashboard("summary.ofIncome", {
-        percent: Math.round(expenseRatio),
+        percent: formatPercent(expenseRatio, i18n.language),
       }),
     },
     {

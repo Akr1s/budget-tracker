@@ -4,12 +4,13 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { formatNumber } from "@/utils/format-number.util";
 import { generateSampleData } from "@/utils/sample-data-generator";
 
 import ClearAllDialog from "./clear-all-dialog.component";
 
 export default function DataManagementCard() {
-  const { t: tSettings } = useTranslation("settings");
+  const { t: tSettings, i18n } = useTranslation("settings");
   const [isGenerating, setIsGenerating] = useState(false);
   const [showClearDialog, setShowClearDialog] = useState(false);
   const [generateSuccessCount, setGenerateSuccessCount] = useState<
@@ -57,6 +58,10 @@ export default function DataManagementCard() {
             <p className="text-sm text-muted-foreground" role="status">
               {tSettings("dataManagement.generateDataSuccess", {
                 count: generateSuccessCount,
+                countFormatted: formatNumber(
+                  generateSuccessCount,
+                  i18n.language,
+                ),
               })}
             </p>
           ) : null}

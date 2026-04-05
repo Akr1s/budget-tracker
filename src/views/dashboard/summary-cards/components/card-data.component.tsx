@@ -1,10 +1,6 @@
-import {
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CurrencyEnum } from "@/utils/currency";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
 import type { ISummaryCard } from "..";
 
 interface IProps {
@@ -29,9 +25,7 @@ export default function CardData({ card, currency, locale }: IProps) {
           {formatCurrency(card.amount, currency, locale)}
         </p>
         {card.subtitle && (
-          <p className="mt-1 text-xs text-muted-foreground">
-            {card.subtitle}
-          </p>
+          <p className="mt-1 text-xs text-muted-foreground">{card.subtitle}</p>
         )}
       </CardContent>
     </>

@@ -9,7 +9,7 @@
     "income": "Income",
     "expenses": "Expenses",
     "remaining": "Remaining",
-    "ofIncome": "{{percent}}% of income"
+    "ofIncome": "{{percent}} of income"
   },
   "spendingByCategory": {
     "title": "Spending by Category",

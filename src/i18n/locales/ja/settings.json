@@ -21,15 +21,15 @@
     "confirmDelete": "すべて削除",
     "generateData": "サンプルデータを生成",
     "generateDataDescription": "テスト用に過去6ヶ月分のランダムな取引を追加します",
-    "generateDataSuccess_other": "{{count}}件のサンプル取引を生成しました"
+    "generateDataSuccess_other": "{{countFormatted}}件のサンプル取引を生成しました"
   },
   "about": {
     "title": "このアプリについて",
     "version": "バージョン",
     "transactions": "取引",
     "categories": "カテゴリ",
-    "transactionCount_other": "{{count}}件の取引",
-    "categoryCount_other": "{{count}}件のカテゴリ"
+    "transactionCount_other": "{{countFormatted}}件の取引",
+    "categoryCount_other": "{{countFormatted}}件のカテゴリ"
   },
   "languages": {
     "en": "English",

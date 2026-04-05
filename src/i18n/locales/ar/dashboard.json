@@ -9,7 +9,7 @@
     "income": "الدخل",
     "expenses": "المصروفات",
     "remaining": "المتبقي",
-    "ofIncome": "{{percent}}% من الدخل"
+    "ofIncome": "{{percent}} من الدخل"
   },
   "spendingByCategory": {
     "title": "الإنفاق حسب الفئة",

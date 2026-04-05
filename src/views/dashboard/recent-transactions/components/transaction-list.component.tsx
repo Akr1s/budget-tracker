@@ -3,8 +3,8 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 
 import { CATEGORY_COLORS } from "@/constants/category-colors.config";
 import type { CurrencyEnum } from "@/utils/currency";
-import { DateService } from "@/utils/date.service";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
+import { formatRelativeTime } from "@/utils/format-relative-time.util";
 import type { ITransaction } from "@/views/transactions/transactions.type";
 import { TransactionTypeEnum } from "@/views/transactions/utils/transaction.enum";
 
@@ -44,7 +44,7 @@ export default function TransactionList({ transactions, currency }: IProps) {
               <p className="text-xs text-muted-foreground">
                 {tCommon(`categories.${tx.category}`)}
                 {" · "}
-                {DateService.toDisplayDate(tx.date, i18n.language)}
+                {formatRelativeTime(tx.date, i18n.language)}
               </p>
             </div>
 

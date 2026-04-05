@@ -43,16 +43,16 @@
     "monthlyIncome": "Monatliches Einkommen: {{amount}}",
     "noCategories": "Keine Kategorien ausgewählt. Gehe zurück zu Schritt 2.",
     "totalBudgeted": "Gesamt budgetiert: {{budgeted}} / {{income}}",
-    "remaining": "Verbleibend: {{amount}} ({{percentage}}%) für Sparen/Sonstiges"
+    "remaining": "Verbleibend: {{amount}} ({{percentage}}) für Sparen/Sonstiges"
   },
   "summary": {
     "overview": "Hier ist deine Budgetübersicht:",
     "monthlySummaryHeading": "MONATLICHE ZUSAMMENFASSUNG",
     "income": "Einkommen: {{amount}} ({{source}})",
     "budget": "Budget: {{amount}}",
-    "savingsGoal": "Sparziel: {{amount}} ({{percentage}}%)",
-    "categoriesHeading_one": "KATEGORIEN ({{count}} aktiv)",
-    "categoriesHeading_other": "KATEGORIEN ({{count}} aktiv)",
+    "savingsGoal": "Sparziel: {{amount}} ({{percentage}})",
+    "categoriesHeading_one": "KATEGORIEN ({{countFormatted}} aktiv)",
+    "categoriesHeading_other": "KATEGORIEN ({{countFormatted}} aktiv)",
     "noCategories": "Keine Kategorien ausgewählt.",
     "startingBalanceHeading": "STARTGUTHABEN",
     "trackingFrom": "Tracking ab: {{date}}",

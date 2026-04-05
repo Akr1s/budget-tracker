@@ -43,16 +43,16 @@
     "monthlyIncome": "Monthly Income: {{amount}}",
     "noCategories": "No categories selected. Go back to step 2 to choose categories.",
     "totalBudgeted": "Total Budgeted: {{budgeted}} / {{income}}",
-    "remaining": "Remaining: {{amount}} ({{percentage}}%) for savings/other"
+    "remaining": "Remaining: {{amount}} ({{percentage}}) for savings/other"
   },
   "summary": {
     "overview": "Here's your budget overview:",
     "monthlySummaryHeading": "MONTHLY SUMMARY",
     "income": "Income: {{amount}} ({{source}})",
     "budget": "Budget: {{amount}}",
-    "savingsGoal": "Savings Goal: {{amount}} ({{percentage}}%)",
-    "categoriesHeading_one": "CATEGORIES ({{count}} active)",
-    "categoriesHeading_other": "CATEGORIES ({{count}} active)",
+    "savingsGoal": "Savings Goal: {{amount}} ({{percentage}})",
+    "categoriesHeading_one": "CATEGORIES ({{countFormatted}} active)",
+    "categoriesHeading_other": "CATEGORIES ({{countFormatted}} active)",
     "noCategories": "No categories selected.",
     "startingBalanceHeading": "STARTING BALANCE",
     "trackingFrom": "Tracking from: {{date}}",

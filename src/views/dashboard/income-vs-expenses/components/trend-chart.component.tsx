@@ -10,7 +10,7 @@ import {
 } from "recharts";
 
 import type { CurrencyEnum } from "@/utils/currency";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
 import type { IMonthlyTrend } from "..";
 
 interface IProps {

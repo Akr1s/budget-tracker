@@ -43,15 +43,15 @@
     "monthlyIncome": "月収: {{amount}}",
     "noCategories": "カテゴリが選択されていません。ステップ2に戻ってください。",
     "totalBudgeted": "合計予算: {{budgeted}} / {{income}}",
-    "remaining": "残り: {{amount}}（{{percentage}}%）貯蓄・その他"
+    "remaining": "残り: {{amount}}（{{percentage}}）貯蓄・その他"
   },
   "summary": {
     "overview": "予算の概要です:",
     "monthlySummaryHeading": "月次サマリー",
     "income": "収入: {{amount}}（{{source}}）",
     "budget": "予算: {{amount}}",
-    "savingsGoal": "貯蓄目標: {{amount}}（{{percentage}}%）",
-    "categoriesHeading_other": "カテゴリ（{{count}}件 有効）",
+    "savingsGoal": "貯蓄目標: {{amount}}（{{percentage}}）",
+    "categoriesHeading_other": "カテゴリ（{{countFormatted}}件 有効）",
     "noCategories": "カテゴリが選択されていません。",
     "startingBalanceHeading": "開始残高",
     "trackingFrom": "記録開始: {{date}}",

@@ -24,9 +24,9 @@
     "generateDataSuccess_zero": "لم يُنشأ أي معاملة تجريبية",
     "generateDataSuccess_one": "تم إنشاء معاملة تجريبية واحدة",
     "generateDataSuccess_two": "تم إنشاء معاملتين تجريبيتين",
-    "generateDataSuccess_few": "تم إنشاء {{count}} معاملات تجريبية",
-    "generateDataSuccess_many": "تم إنشاء {{count}} معاملةً تجريبيةً",
-    "generateDataSuccess_other": "تم إنشاء {{count}} معاملة تجريبية"
+    "generateDataSuccess_few": "تم إنشاء {{countFormatted}} معاملات تجريبية",
+    "generateDataSuccess_many": "تم إنشاء {{countFormatted}} معاملةً تجريبيةً",
+    "generateDataSuccess_other": "تم إنشاء {{countFormatted}} معاملة تجريبية"
   },
   "about": {
     "title": "حول",
@@ -34,17 +34,17 @@
     "transactions": "المعاملات",
     "categories": "الفئات",
     "transactionCount_zero": "لا معاملات",
-    "transactionCount_one": "{{count}} معاملة",
-    "transactionCount_two": "{{count}} معاملتان",
-    "transactionCount_few": "{{count}} معاملات",
-    "transactionCount_many": "{{count}} معاملةً",
-    "transactionCount_other": "{{count}} معاملة",
+    "transactionCount_one": "{{countFormatted}} معاملة",
+    "transactionCount_two": "{{countFormatted}} معاملتان",
+    "transactionCount_few": "{{countFormatted}} معاملات",
+    "transactionCount_many": "{{countFormatted}} معاملةً",
+    "transactionCount_other": "{{countFormatted}} معاملة",
     "categoryCount_zero": "لا فئات",
-    "categoryCount_one": "{{count}} فئة",
-    "categoryCount_two": "{{count}} فئتان",
-    "categoryCount_few": "{{count}} فئات",
-    "categoryCount_many": "{{count}} فئة",
-    "categoryCount_other": "{{count}} فئة"
+    "categoryCount_one": "{{countFormatted}} فئة",
+    "categoryCount_two": "{{countFormatted}} فئتان",
+    "categoryCount_few": "{{countFormatted}} فئات",
+    "categoryCount_many": "{{countFormatted}} فئة",
+    "categoryCount_other": "{{countFormatted}} فئة"
   },
   "languages": {
     "en": "English",

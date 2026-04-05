@@ -9,7 +9,7 @@
     "income": "Einkommen",
     "expenses": "Ausgaben",
     "remaining": "Verbleibend",
-    "ofIncome": "{{percent}}% des Einkommens"
+    "ofIncome": "{{percent}} des Einkommens"
   },
   "spendingByCategory": {
     "title": "Ausgaben nach Kategorie",

@@ -4,9 +4,10 @@ import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CategoryEnum } from "@/enums/category.enum";
 import { IndexedDBService } from "@/storage/index-db.service";
+import { formatNumber } from "@/utils/format-number.util";
 
 export default function AboutCard() {
-  const { t: tSettings } = useTranslation("settings");
+  const { t: tSettings, i18n } = useTranslation("settings");
   const [transactionCount, setTransactionCount] = useState(0);
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function AboutCard() {
             <dd className="font-medium">
               {tSettings("about.transactionCount", {
                 count: transactionCount,
+                countFormatted: formatNumber(transactionCount, i18n.language),
               })}
             </dd>
           </div>
@@ -47,7 +49,10 @@ export default function AboutCard() {
               {tSettings("about.categories")}
             </dt>
             <dd className="font-medium">
-              {tSettings("about.categoryCount", { count: categoryCount })}
+              {tSettings("about.categoryCount", {
+                count: categoryCount,
+                countFormatted: formatNumber(categoryCount, i18n.language),
+              })}
             </dd>
           </div>
         </dl>

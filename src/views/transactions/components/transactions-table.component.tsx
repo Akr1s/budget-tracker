@@ -9,7 +9,7 @@ import {
 import { useSettings } from "@/settings/use-settings.hook";
 import { convertAmount } from "@/utils/currency-converter";
 import { DateService } from "@/utils/date.service";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
 import { useTranslation } from "react-i18next";
 import type { ITransaction } from "../transactions.type";
 import TransactionsTableActions from "./transactions-table-actions.component";
@@ -64,9 +64,7 @@ export default function TransactionsTable({
             return (
               <TableRow key={transaction.id}>
                 <TableCell>{transaction.id}</TableCell>
-                <TableCell className="capitalize">
-                  {transaction.type}
-                </TableCell>
+                <TableCell className="capitalize">{transaction.type}</TableCell>
                 <TableCell className="capitalize">
                   {transaction.category}
                 </TableCell>

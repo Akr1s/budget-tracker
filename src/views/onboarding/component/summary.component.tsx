@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
 import type { IOnboardingForm } from "../onboarding.type";
 import { DateService } from "@/utils/date.service";
-import { formatCurrency } from "@/utils/format-currency";
+import { formatCurrency } from "@/utils/format-currency.util";
+import { formatNumber } from "@/utils/format-number.util";
+import { formatPercent } from "@/utils/format-percent.util";
 
 interface IProps {
   values: IOnboardingForm;
@@ -55,13 +57,21 @@ export default function Summary({ values }: IProps) {
         </p>
         <p className="leading-7">
           {tOnboarding("summary.budget", {
-            amount: formatCurrency(totalBudgeted, values.currency, values.language),
+            amount: formatCurrency(
+              totalBudgeted,
+              values.currency,
+              values.language,
+            ),
           })}
         </p>
         <p className="leading-7">
           {tOnboarding("summary.savingsGoal", {
-            amount: formatCurrency(savingsGoal, values.currency, values.language),
-            percentage: savingsPercentage,
+            amount: formatCurrency(
+              savingsGoal,
+              values.currency,
+              values.language,
+            ),
+            percentage: formatPercent(savingsPercentage, values.language),
           })}
         </p>
       </div>
@@ -70,6 +80,10 @@ export default function Summary({ values }: IProps) {
         <p className="font-semibold">
           {tOnboarding("summary.categoriesHeading", {
             count: values.categories.length,
+            countFormatted: formatNumber(
+              values.categories.length,
+              values.language,
+            ),
           })}
         </p>
         {values.categories.length > 0 ? (
@@ -111,7 +125,10 @@ export default function Summary({ values }: IProps) {
         </p>
         <p className="leading-7 text-sm text-muted-foreground">
           {tOnboarding("summary.trackingFrom", {
-            date: DateService.toDisplayDate(values.startingDate, values.language),
+            date: DateService.toDisplayDate(
+              values.startingDate,
+              values.language,
+            ),
           })}
         </p>
       </div>

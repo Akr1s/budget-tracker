@@ -21,18 +21,18 @@
     "confirmDelete": "Alles löschen",
     "generateData": "Testdaten generieren",
     "generateDataDescription": "Zufällige Transaktionen der letzten 6 Monate zum Testen hinzufügen",
-    "generateDataSuccess_one": "{{count}} Beispieltransaktion generiert",
-    "generateDataSuccess_other": "{{count}} Beispieltransaktionen generiert"
+    "generateDataSuccess_one": "{{countFormatted}} Beispieltransaktion generiert",
+    "generateDataSuccess_other": "{{countFormatted}} Beispieltransaktionen generiert"
   },
   "about": {
     "title": "Über",
     "version": "Version",
     "transactions": "Transaktionen",
     "categories": "Kategorien",
-    "transactionCount_one": "{{count}} Transaktion",
-    "transactionCount_other": "{{count}} Transaktionen",
-    "categoryCount_one": "{{count}} Kategorie",
-    "categoryCount_other": "{{count}} Kategorien"
+    "transactionCount_one": "{{countFormatted}} Transaktion",
+    "transactionCount_other": "{{countFormatted}} Transaktionen",
+    "categoryCount_one": "{{countFormatted}} Kategorie",
+    "categoryCount_other": "{{countFormatted}} Kategorien"
   },
   "languages": {
     "en": "English",
