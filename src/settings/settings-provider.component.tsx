@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { applyDocumentLanguage } from "@/i18n/apply-document-language.util";
+import { ensureLanguageLoaded } from "@/i18n/locale-loader.util";
 import {
   LocalStorageKeys,
   LocalStorageService,
@@ -32,7 +33,21 @@ export function SettingsProvider({ children }: IProps) {
   const [settings, setSettings] = useState<ISettings>(loadInitialSettings);
 
   useEffect(() => {
-    i18n.changeLanguage(settings.language);
+    let cancelled = false;
+
+    const handleLanguageChange = async (language: string): Promise<void> => {
+      await ensureLanguageLoaded(language);
+
+      if (!cancelled) {
+        i18n.changeLanguage(language);
+      }
+    };
+
+    handleLanguageChange(settings.language);
+
+    return () => {
+      cancelled = true;
+    };
   }, [settings.language, i18n]);
 
   useEffect(() => {
