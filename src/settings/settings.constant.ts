@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 import { CurrencyEnum } from "@/utils/currency";
-import { LanguageEnum } from "@/views/onboarding/utils/onboarding.enum";
+import { LanguageEnum } from "@/enums/language.enum";
 import type { ISettingsContext } from "./settings.type";
 
 export const DEFAULT_SETTINGS = {

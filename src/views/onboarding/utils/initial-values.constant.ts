@@ -1,7 +1,8 @@
 import { CurrencyEnum } from "@/utils/currency";
 import { DateService } from "@/utils/date.service";
 import type { IOnboardingForm } from "../onboarding.type";
-import { IncomeSourceEnum, LanguageEnum } from "./onboarding.enum";
+import { LanguageEnum } from "@/enums/language.enum";
+import { IncomeSourceEnum } from "./onboarding.enum";
 
 export const initialValues: IOnboardingForm = {
   categories: [],

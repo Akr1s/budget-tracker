@@ -15,12 +15,12 @@ export default function Header() {
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <Tooltip>
           <TooltipTrigger asChild>
-            <SidebarTrigger className="-ml-1" />
+            <SidebarTrigger className="-ms-1" />
           </TooltipTrigger>
           <TooltipContent>{tCommon("toggleSidebar")}</TooltipContent>
         </Tooltip>
         <h1 className="text-base font-medium">{tCommon("appTitle")}</h1>
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ms-auto flex items-center gap-2">
           <ModeToggle />
         </div>
       </div>

@@ -1,10 +1,3 @@
-export enum LanguageEnum {
-  EN = "en",
-  DE = "de",
-  JA = "ja",
-  AR = "ar",
-}
-
 export enum IncomeSourceEnum {
   SALARY = "salary",
   FREELANCE = "freelance",

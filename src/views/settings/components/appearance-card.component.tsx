@@ -7,7 +7,7 @@ import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { useSettings } from "@/settings/use-settings.hook";
 import type { Theme } from "@/theme/provider.constant";
 import { useTheme } from "@/theme/use-theme.hook";
-import { LanguageEnum } from "@/views/onboarding/utils/onboarding.enum";
+import { LanguageEnum } from "@/enums/language.enum";
 
 export default function AppearanceCard() {
   const { t: tSettings } = useTranslation("settings");

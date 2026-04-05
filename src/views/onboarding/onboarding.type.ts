@@ -1,9 +1,7 @@
+import type { CategoryEnum } from "@/enums/category.enum";
+import type { LanguageEnum } from "@/enums/language.enum";
 import type { CurrencyEnum } from "@/utils/currency";
-import type {
-  CategoryEnum,
-  IncomeSourceEnum,
-  LanguageEnum,
-} from "./utils/onboarding.enum";
+import type { IncomeSourceEnum } from "./utils/onboarding.enum";
 
 export interface IOnboardingForm {
   categories: CategoryEnum[];

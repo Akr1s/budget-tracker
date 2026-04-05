@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { applyDocumentLanguage } from "@/i18n/apply-document-language.util";
 import {
   LocalStorageKeys,
   LocalStorageService,
@@ -27,11 +28,16 @@ function loadInitialSettings(): ISettings {
 
 export function SettingsProvider({ children }: IProps) {
   const { i18n } = useTranslation();
+
   const [settings, setSettings] = useState<ISettings>(loadInitialSettings);
 
   useEffect(() => {
     i18n.changeLanguage(settings.language);
   }, [settings.language, i18n]);
+
+  useEffect(() => {
+    applyDocumentLanguage(i18n.language);
+  }, [i18n.language]);
 
   function updateSettings(updates: Partial<ISettings>) {
     setSettings((prev) => {

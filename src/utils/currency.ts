@@ -1,4 +1,4 @@
-import { LanguageEnum } from "@/views/onboarding/utils/onboarding.enum";
+import { LanguageEnum } from "@/enums/language.enum";
 
 export enum CurrencyEnum {
   USD = "usd",

@@ -1,10 +1,15 @@
 import CustomSelect from "@/components/custom-select.component";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
-import { LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
-import { LanguageEnum } from "../utils/onboarding.enum";
+import { CurrencyEnum, LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
+import { LanguageEnum } from "@/enums/language.enum";
 
 const languageOptions = [
   { label: "English", value: LanguageEnum.EN },
@@ -35,14 +40,15 @@ export default function Welcome({
 
   const handleLanguageChange = (value: LanguageEnum) => {
     setFieldValue("language", value);
-    setFieldValue("currency", LANGUAGE_CURRENCY_OPTIONS[value]?.[0] ?? "usd");
+    setFieldValue(
+      "currency",
+      LANGUAGE_CURRENCY_OPTIONS[value]?.[0] ?? CurrencyEnum.USD,
+    );
     i18n.changeLanguage(value);
-    document.documentElement.dir = value === LanguageEnum.AR ? "rtl" : "ltr";
-    document.documentElement.lang = value;
   };
 
   const currencyOptions = (
-    LANGUAGE_CURRENCY_OPTIONS[values.language] ?? ["usd"]
+    LANGUAGE_CURRENCY_OPTIONS[values.language] ?? [CurrencyEnum.USD]
   ).map((code) => ({
     value: code,
     label: tCommon(`currencies.${code}`),
@@ -60,7 +66,9 @@ export default function Welcome({
             label={tOnboarding("welcome.languageLabel")}
             value={values.language}
             options={languageOptions}
-            onValueChange={(value) => handleLanguageChange(value as LanguageEnum)}
+            onValueChange={(value) =>
+              handleLanguageChange(value as LanguageEnum)
+            }
           />
           {touched.language && errors.language && (
             <FieldError>{errors.language}</FieldError>

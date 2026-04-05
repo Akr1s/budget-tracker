@@ -2,7 +2,8 @@ import * as Yup from "yup";
 import type { TFunction } from "i18next";
 import { CurrencyEnum } from "@/utils/currency";
 import { CategoryEnum } from "@/enums/category.enum";
-import { IncomeSourceEnum, LanguageEnum } from "./onboarding.enum";
+import { LanguageEnum } from "@/enums/language.enum";
+import { IncomeSourceEnum } from "./onboarding.enum";
 
 type OnboardingTFunction = TFunction<"onboarding">;
 
