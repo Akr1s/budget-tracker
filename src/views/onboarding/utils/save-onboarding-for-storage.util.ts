@@ -1,7 +1,7 @@
 import {
   LocalStorageKeys,
-  LocalStorageService,
-} from "@/storage/local-storage.service";
+  localWebStorage,
+} from "@/storage/web-storage.constant";
 
 import type { IOnboardingForm } from "../onboarding.type";
 
@@ -10,8 +10,5 @@ export function saveOnboardingDataToStorage(values: IOnboardingForm): void {
   void language;
   void currency;
 
-  LocalStorageService.setItem(
-    LocalStorageKeys.ONBOARDING_DATA,
-    JSON.stringify(rest),
-  );
+  localWebStorage.set(LocalStorageKeys.ONBOARDING_DATA, rest);
 }

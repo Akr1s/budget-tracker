@@ -17,6 +17,7 @@ import { RoutesEnum } from "@/routes/routes.enum";
 import { DEFAULT_SETTINGS } from "@/settings/settings.constant";
 import { useSettings } from "@/settings/use-settings.hook";
 import { IndexedDBService } from "@/storage/index-db.service";
+import { clearAllBrowserStorage } from "@/storage/web-storage.constant";
 
 interface ClearAllDialogProps {
   open: boolean;
@@ -34,7 +35,7 @@ export default function ClearAllDialog({
   const [confirmText, setConfirmText] = useState("");
 
   async function handleClearAll() {
-    localStorage.clear();
+    clearAllBrowserStorage();
     await IndexedDBService.clearAll();
     updateSettings(DEFAULT_SETTINGS);
     navigate(`/${RoutesEnum.ONBOARDING}`, { replace: true });

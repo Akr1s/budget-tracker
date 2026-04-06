@@ -28,12 +28,12 @@ import { useTranslation } from "react-i18next";
 import { saveLanguageAndCurrency } from "@/storage/app-preferences.util";
 import {
   LocalStorageKeys,
-  LocalStorageService,
-} from "@/storage/local-storage.service";
+  localWebStorage,
+} from "@/storage/web-storage.constant";
 import { saveOnboardingDataToStorage } from "./utils/save-onboarding-for-storage.util";
 
 export default function Onboarding() {
-  const isSetupCompleted = LocalStorageService.checkIfItemExists(
+  const isSetupCompleted = localWebStorage.has(
     LocalStorageKeys.ONBOARDING_DATA,
   );
 

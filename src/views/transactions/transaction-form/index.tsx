@@ -25,8 +25,8 @@ import { DateService } from "@/utils/date.service";
 import type { IOnboardingPersistedData } from "@/views/onboarding/onboarding.type";
 import {
   LocalStorageKeys,
-  LocalStorageService,
-} from "@/storage/local-storage.service";
+  localWebStorage,
+} from "@/storage/web-storage.constant";
 import { useFormik } from "formik";
 import { useTranslation } from "react-i18next";
 import type { ITransaction, ITransactionForm } from "../transactions.type";
@@ -61,7 +61,7 @@ export default function TransactionForm({
     value: c,
   }));
 
-  const onboardingData = LocalStorageService.getItem<IOnboardingPersistedData>(
+  const onboardingData: IOnboardingPersistedData = localWebStorage.get(
     LocalStorageKeys.ONBOARDING_DATA,
   );
 

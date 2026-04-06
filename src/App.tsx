@@ -2,12 +2,12 @@ import { Navigate } from "react-router";
 import { RoutesEnum } from "./routes/routes.enum";
 import {
   LocalStorageKeys,
-  LocalStorageService,
-} from "./storage/local-storage.service";
+  localWebStorage,
+} from "./storage/web-storage.constant";
 import Layout from "./views/layout";
 
 function App() {
-  const isSetupCompleted = LocalStorageService.checkIfItemExists(
+  const isSetupCompleted = localWebStorage.has(
     LocalStorageKeys.ONBOARDING_DATA,
   );
 

@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import {
   SessionStorageKeys,
-  SessionStorageService,
-} from "@/storage/session-storage.service";
+  sessionWebStorage,
+} from "@/storage/web-storage.constant";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import TransactionForm from "../transaction-form";
@@ -17,9 +17,7 @@ export default function CreateTransaction({ onCreated }: IProps) {
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [resumeDraft, setResumeDraft] = useState<ITransactionForm | null>(() =>
-    SessionStorageService.getItem<ITransactionForm>(
-      SessionStorageKeys.TRANSACTION_CREATE_DRAFT,
-    ),
+    sessionWebStorage.get(SessionStorageKeys.TRANSACTION_DRAFT),
   );
 
   const handleFormClose = (draft?: ITransactionForm) => {
@@ -27,21 +25,14 @@ export default function CreateTransaction({ onCreated }: IProps) {
     setResumeDraft(draft || null);
 
     if (draft) {
-      SessionStorageService.setItem(
-        SessionStorageKeys.TRANSACTION_CREATE_DRAFT,
-        JSON.stringify(draft),
-      );
+      sessionWebStorage.set(SessionStorageKeys.TRANSACTION_DRAFT, draft);
     } else {
-      SessionStorageService.removeItem(
-        SessionStorageKeys.TRANSACTION_CREATE_DRAFT,
-      );
+      sessionWebStorage.remove(SessionStorageKeys.TRANSACTION_DRAFT);
     }
   };
 
   const handleClearDraft = () => {
-    SessionStorageService.removeItem(
-      SessionStorageKeys.TRANSACTION_CREATE_DRAFT,
-    );
+    sessionWebStorage.remove(SessionStorageKeys.TRANSACTION_DRAFT);
     setResumeDraft(null);
   };
 
