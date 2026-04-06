@@ -4,11 +4,12 @@ import { useTranslation } from "react-i18next";
 import { applyDocumentLanguage } from "@/i18n/apply-document-language.util";
 import { ensureLanguageLoaded } from "@/i18n/locale-loader.util";
 import {
-  LocalStorageKeys,
-  LocalStorageService,
-} from "@/storage/local-storage.service";
-import type { IOnboardingForm } from "@/views/onboarding/onboarding.type";
-import { DEFAULT_SETTINGS, SettingsContext } from "./settings.constant";
+  getSavedDisplayCurrency,
+  getSavedLanguage,
+  saveLanguageAndCurrency,
+} from "@/storage/app-preferences.util";
+
+import { SettingsContext } from "./settings.constant";
 import type { ISettings } from "./settings.type";
 
 interface IProps {
@@ -16,14 +17,9 @@ interface IProps {
 }
 
 function loadInitialSettings(): ISettings {
-  const onboardingData = LocalStorageService.getItem<IOnboardingForm>(
-    LocalStorageKeys.ONBOARDING_DATA,
-  );
-
   return {
-    displayCurrency:
-      onboardingData?.currency ?? DEFAULT_SETTINGS.displayCurrency,
-    language: onboardingData?.language ?? DEFAULT_SETTINGS.language,
+    displayCurrency: getSavedDisplayCurrency(),
+    language: getSavedLanguage(),
   };
 }
 
@@ -35,20 +31,20 @@ export function SettingsProvider({ children }: IProps) {
   useEffect(() => {
     let cancelled = false;
 
-    const handleLanguageChange = async (language: string): Promise<void> => {
+    const applyLanguage = async (language: string): Promise<void> => {
       await ensureLanguageLoaded(language);
 
       if (!cancelled) {
-        i18n.changeLanguage(language);
+        await i18n.changeLanguage(language);
       }
     };
 
-    handleLanguageChange(settings.language);
+    void applyLanguage(settings.language);
 
     return () => {
       cancelled = true;
     };
-  }, [settings.language, i18n]);
+  }, [settings.language]);
 
   useEffect(() => {
     applyDocumentLanguage(i18n.language);
@@ -57,21 +53,7 @@ export function SettingsProvider({ children }: IProps) {
   function updateSettings(updates: Partial<ISettings>) {
     setSettings((prev) => {
       const next = { ...prev, ...updates };
-
-      const onboardingData = LocalStorageService.getItem<IOnboardingForm>(
-        LocalStorageKeys.ONBOARDING_DATA,
-      );
-      if (onboardingData) {
-        const updated: IOnboardingForm = {
-          ...onboardingData,
-          currency: next.displayCurrency,
-          language: next.language,
-        };
-        LocalStorageService.setItem(
-          LocalStorageKeys.ONBOARDING_DATA,
-          JSON.stringify(updated),
-        );
-      }
+      saveLanguageAndCurrency(next.language, next.displayCurrency);
 
       return next;
     });

@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Welcome from "./component/welcome.component";
 import { useNavigate } from "react-router";
 import { RoutesEnum } from "@/routes/routes.enum";
@@ -16,7 +16,7 @@ import Summary from "./component/summary.component";
 import BudgetGoals from "./component/budget-goals.component";
 import { useFormik } from "formik";
 import type { IOnboardingForm } from "./onboarding.type";
-import { initialValues } from "./utils/initial-values.constant";
+import { getOnboardingInitialValues } from "./utils/initial-values.constant";
 import { createValidationSchema } from "./utils/validation-schema.constant";
 import Footer from "./component/footer.component";
 import {
@@ -25,10 +25,12 @@ import {
 } from "./utils/onboarding.constant";
 import { formatNumber } from "@/utils/format-number.util";
 import { useTranslation } from "react-i18next";
+import { saveLanguageAndCurrency } from "@/storage/app-preferences.util";
 import {
   LocalStorageKeys,
   LocalStorageService,
 } from "@/storage/local-storage.service";
+import { saveOnboardingDataToStorage } from "./utils/save-onboarding-for-storage.util";
 
 export default function Onboarding() {
   const isSetupCompleted = LocalStorageService.checkIfItemExists(
@@ -38,16 +40,16 @@ export default function Onboarding() {
   const navigate = useNavigate();
   const { t: tOnboarding, i18n } = useTranslation("onboarding");
 
+  const formInitialValues = useMemo(() => getOnboardingInitialValues(), []);
+
   const { values, errors, touched, setFieldValue, handleSubmit } =
     useFormik<IOnboardingForm>({
-      initialValues,
+      initialValues: formInitialValues,
       validationSchema: createValidationSchema(tOnboarding),
       validateOnMount: true,
       onSubmit: (formValues) => {
-        LocalStorageService.setItem(
-          LocalStorageKeys.ONBOARDING_DATA,
-          JSON.stringify(formValues),
-        );
+        saveLanguageAndCurrency(formValues.language, formValues.currency);
+        saveOnboardingDataToStorage(formValues);
         navigate(`/${RoutesEnum.DASHBOARD}`, { replace: true });
       },
     });

@@ -2,14 +2,14 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { LanguageEnum } from "@/enums/language.enum";
+import { getSavedLanguage } from "@/storage/app-preferences.util";
 
-import { getPersistedLanguage } from "./get-persisted-language.util";
 import { buildResourcesForLanguages, NAMESPACES } from "./locale-loader.util";
 
 const isDev = import.meta.env.DEV;
 
 export async function bootstrapI18n(): Promise<void> {
-  const selectedLanguage = getPersistedLanguage();
+  const selectedLanguage = getSavedLanguage();
   const preloadLanguages =
     selectedLanguage === LanguageEnum.EN
       ? [LanguageEnum.EN]

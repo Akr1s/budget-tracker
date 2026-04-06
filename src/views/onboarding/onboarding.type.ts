@@ -13,3 +13,8 @@ export interface IOnboardingForm {
   startingDate: string;
   budgetGoals: Partial<Record<CategoryEnum, number>>;
 }
+
+export type IOnboardingPersistedData = Omit<
+  IOnboardingForm,
+  "language" | "currency"
+>;

@@ -1,50 +1,54 @@
-import { ThemeProviderContext, type Theme } from '@/theme/provider.constant';
-import { useEffect, useState } from 'react';
+import { ThemeProviderContext, type ITheme } from "@/theme/provider.constant";
+import {
+  LocalStorageKeys,
+  LocalStorageService,
+} from "@/storage/local-storage.service";
+import { useEffect, useState } from "react";
 
-type ThemeProviderProps = {
-    children: React.ReactNode;
-    defaultTheme?: Theme;
-    storageKey?: string;
+type IThemeProviderProps = {
+  children: React.ReactNode;
 };
 
-export function ThemeProvider({
-    children,
-    defaultTheme = 'system',
-    storageKey = 'vite-ui-theme',
-    ...props
-}: ThemeProviderProps) {
-    const [theme, setTheme] = useState<Theme>(
-        () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
-    );
+const defaultTheme: ITheme = "system";
 
-    useEffect(() => {
-        const root = window.document.documentElement;
+function readInitialTheme(): ITheme {
+  const savedTheme = LocalStorageService.getPlainString(LocalStorageKeys.THEME);
 
-        root.classList.remove('light', 'dark');
+  return (savedTheme ?? defaultTheme) as ITheme;
+}
 
-        if (theme === 'system') {
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light';
+export function ThemeProvider({ children }: IThemeProviderProps) {
+  const [theme, setTheme] = useState<ITheme>(readInitialTheme);
 
-            root.classList.add(systemTheme);
-            return;
-        }
+  useEffect(() => {
+    const root = window.document.documentElement;
 
-        root.classList.add(theme);
-    }, [theme]);
+    root.classList.remove("light", "dark");
 
-    const value = {
-        theme,
-        setTheme: (theme: Theme) => {
-            localStorage.setItem(storageKey, theme);
-            setTheme(theme);
-        },
-    };
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+        .matches
+        ? "dark"
+        : "light";
 
-    return (
-        <ThemeProviderContext.Provider {...props} value={value}>
-            {children}
-        </ThemeProviderContext.Provider>
-    );
+      root.classList.add(systemTheme);
+      return;
+    }
+
+    root.classList.add(theme);
+  }, [theme]);
+
+  const value = {
+    theme,
+    setTheme: (next: ITheme) => {
+      LocalStorageService.setItem(LocalStorageKeys.THEME, next);
+      setTheme(next);
+    },
+  };
+
+  return (
+    <ThemeProviderContext.Provider value={value}>
+      {children}
+    </ThemeProviderContext.Provider>
+  );
 }

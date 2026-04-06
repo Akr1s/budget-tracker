@@ -22,7 +22,7 @@ import { useSettings } from "@/settings/use-settings.hook";
 import { IndexedDBService } from "@/storage/index-db.service";
 import { CurrencyEnum } from "@/utils/currency";
 import { DateService } from "@/utils/date.service";
-import type { IOnboardingForm } from "@/views/onboarding/onboarding.type";
+import type { IOnboardingPersistedData } from "@/views/onboarding/onboarding.type";
 import {
   LocalStorageKeys,
   LocalStorageService,
@@ -59,7 +59,7 @@ export default function TransactionForm({
     value: c,
   }));
 
-  const onboardingData = LocalStorageService.getItem<IOnboardingForm>(
+  const onboardingData = LocalStorageService.getItem<IOnboardingPersistedData>(
     LocalStorageKeys.ONBOARDING_DATA,
   );
 

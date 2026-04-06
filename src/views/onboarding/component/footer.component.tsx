@@ -7,10 +7,8 @@ import {
 } from "../utils/onboarding.constant";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
-import {
-  LocalStorageKeys,
-  LocalStorageService,
-} from "@/storage/local-storage.service";
+import { saveLanguageAndCurrency } from "@/storage/app-preferences.util";
+import { saveOnboardingDataToStorage } from "../utils/save-onboarding-for-storage.util";
 
 interface IProps {
   handleSubmit: () => void;
@@ -29,10 +27,11 @@ export default function Footer({
   const { t: tOnboarding } = useTranslation("onboarding");
 
   const handleSkipSetup = () => {
-    LocalStorageService.setItem(
-      LocalStorageKeys.ONBOARDING_DATA,
-      JSON.stringify(defaultOnboardingData),
+    saveLanguageAndCurrency(
+      defaultOnboardingData.language,
+      defaultOnboardingData.currency,
     );
+    saveOnboardingDataToStorage(defaultOnboardingData);
     navigate(`/${RoutesEnum.DASHBOARD}`, { replace: true });
   };
 

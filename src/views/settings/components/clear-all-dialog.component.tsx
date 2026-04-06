@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { RoutesEnum } from "@/routes/routes.enum";
+import { DEFAULT_SETTINGS } from "@/settings/settings.constant";
+import { useSettings } from "@/settings/use-settings.hook";
 import { IndexedDBService } from "@/storage/index-db.service";
 
 interface ClearAllDialogProps {
@@ -27,11 +29,14 @@ export default function ClearAllDialog({
 }: ClearAllDialogProps) {
   const { t: tSettings } = useTranslation("settings");
   const navigate = useNavigate();
+  const { updateSettings } = useSettings();
+
   const [confirmText, setConfirmText] = useState("");
 
   async function handleClearAll() {
     localStorage.clear();
     await IndexedDBService.clearAll();
+    updateSettings(DEFAULT_SETTINGS);
     navigate(`/${RoutesEnum.ONBOARDING}`, { replace: true });
   }
 

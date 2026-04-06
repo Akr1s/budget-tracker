@@ -1,7 +1,11 @@
+import { LanguageEnum } from "@/enums/language.enum";
+import {
+  getSavedDisplayCurrency,
+  getSavedLanguage,
+} from "@/storage/app-preferences.util";
 import { CurrencyEnum } from "@/utils/currency";
 import { DateService } from "@/utils/date.service";
 import type { IOnboardingForm } from "../onboarding.type";
-import { LanguageEnum } from "@/enums/language.enum";
 import { IncomeSourceEnum } from "./onboarding.enum";
 
 export const initialValues: IOnboardingForm = {
@@ -14,3 +18,11 @@ export const initialValues: IOnboardingForm = {
   startingDate: DateService.getToday(),
   budgetGoals: {},
 };
+
+export function getOnboardingInitialValues(): IOnboardingForm {
+  return {
+    ...initialValues,
+    language: getSavedLanguage(),
+    currency: getSavedDisplayCurrency(),
+  };
+}

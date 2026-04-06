@@ -8,6 +8,7 @@ import {
 import type { IOnboardingForm } from "../onboarding.type";
 import type { FormikErrors, FormikTouched } from "formik";
 import { useTranslation } from "react-i18next";
+import { useSettings } from "@/settings/use-settings.hook";
 import { CurrencyEnum, LANGUAGE_CURRENCY_OPTIONS } from "@/utils/currency";
 import { LanguageEnum } from "@/enums/language.enum";
 
@@ -35,16 +36,23 @@ export default function Welcome({
   errors,
   touched,
 }: IProps) {
-  const { t: tOnboarding, i18n } = useTranslation("onboarding");
+  const { updateSettings } = useSettings();
+  const { t: tOnboarding } = useTranslation("onboarding");
   const { t: tCommon } = useTranslation("common");
 
   const handleLanguageChange = (value: LanguageEnum) => {
+    const nextCurrency =
+      LANGUAGE_CURRENCY_OPTIONS[value]?.[0] ?? CurrencyEnum.USD;
+
     setFieldValue("language", value);
-    setFieldValue(
-      "currency",
-      LANGUAGE_CURRENCY_OPTIONS[value]?.[0] ?? CurrencyEnum.USD,
-    );
-    i18n.changeLanguage(value);
+    setFieldValue("currency", nextCurrency);
+    updateSettings({ language: value, displayCurrency: nextCurrency });
+  };
+
+  const handleCurrencyChange = (value: string) => {
+    const code = value as CurrencyEnum;
+    setFieldValue("currency", code);
+    updateSettings({ displayCurrency: code });
   };
 
   const currencyOptions = (
@@ -81,7 +89,7 @@ export default function Welcome({
             label={tOnboarding("welcome.currencyLabel")}
             value={values.currency}
             options={currencyOptions}
-            onValueChange={(value) => setFieldValue("currency", value)}
+            onValueChange={handleCurrencyChange}
           />
           {touched.currency && errors.currency && (
             <FieldError>{errors.currency}</FieldError>

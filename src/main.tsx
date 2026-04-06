@@ -11,7 +11,7 @@ import { ThemeProvider } from "./theme/theme-provider.component";
 bootstrapI18n().then(() => {
   createRoot(document.getElementById("root")!).render(
     <StrictMode>
-      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <ThemeProvider>
         <SettingsProvider>
           <RouterProvider router={router} />
         </SettingsProvider>

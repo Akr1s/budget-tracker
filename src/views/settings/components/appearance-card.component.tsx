@@ -5,7 +5,7 @@ import CustomSelect from "@/components/custom-select.component";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { useSettings } from "@/settings/use-settings.hook";
-import type { Theme } from "@/theme/provider.constant";
+import type { ITheme } from "@/theme/provider.constant";
 import { useTheme } from "@/theme/use-theme.hook";
 import { LanguageEnum } from "@/enums/language.enum";
 
@@ -20,7 +20,7 @@ export default function AppearanceCard() {
     value: lang,
   }));
 
-  const themeOptions: { label: string; value: Theme }[] = [
+  const themeOptions: { label: string; value: ITheme }[] = [
     { label: tCommon("themeLight"), value: "light" },
     { label: tCommon("themeDark"), value: "dark" },
     { label: tCommon("themeSystem"), value: "system" },
@@ -52,7 +52,7 @@ export default function AppearanceCard() {
             <CustomRadioGroup
               className="flex flex-row gap-4"
               value={theme}
-              onValueChange={(value) => setTheme(value as Theme)}
+              onValueChange={(value) => setTheme(value as ITheme)}
               items={themeOptions}
             />
           </Field>
