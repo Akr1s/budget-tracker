@@ -1,5 +1,10 @@
 {
   "createButton": "取引を作成",
+  "draftBanner": {
+    "message": "未保存の取引下書きがあります。",
+    "resume": "編集を続ける",
+    "dismiss": "下書きを破棄"
+  },
   "table": {
     "columns": {
       "id": "ID",

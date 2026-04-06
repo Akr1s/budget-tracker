@@ -1,5 +1,10 @@
 {
   "createButton": "Create Transaction",
+  "draftBanner": {
+    "message": "You have an unsaved transaction draft.",
+    "resume": "Continue editing",
+    "dismiss": "Discard draft"
+  },
   "table": {
     "columns": {
       "id": "ID",

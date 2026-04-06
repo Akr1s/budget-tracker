@@ -36,12 +36,14 @@ import { TransactionTypeEnum } from "../utils/transaction.enum";
 
 interface IProps {
   transaction?: ITransaction;
-  onClose: () => void;
+  resumeDraft?: ITransactionForm | null;
+  onClose: (draft?: ITransactionForm) => void;
   onSuccess: (transaction: ITransaction) => void;
 }
 
 export default function TransactionForm({
   transaction,
+  resumeDraft,
   onClose,
   onSuccess,
 }: IProps) {
@@ -70,14 +72,16 @@ export default function TransactionForm({
 
   const isEditMode = !!transaction;
 
-  const formInitialValues: ITransactionForm = transaction
+  const savedData = transaction || resumeDraft;
+
+  const formInitialValues: ITransactionForm = savedData
     ? {
-        type: transaction.type,
-        amount: transaction.amount,
-        currency: transaction.currency,
-        category: transaction.category,
-        description: transaction.description,
-        date: transaction.date,
+        type: savedData.type,
+        amount: savedData.amount,
+        currency: savedData.currency,
+        category: savedData.category,
+        description: savedData.description,
+        date: savedData.date,
       }
     : {
         ...initialValues,
@@ -90,6 +94,7 @@ export default function TransactionForm({
     values,
     errors,
     touched,
+    dirty,
     setFieldValue,
     handleChange,
     handleBlur,
@@ -101,6 +106,11 @@ export default function TransactionForm({
     validateOnMount: true,
     onSubmit,
   });
+
+  const closeDialog = () => {
+    const shouldSaveDraft = !isEditMode && (dirty || resumeDraft);
+    onClose(shouldSaveDraft ? values : undefined);
+  };
 
   async function onSubmit(formValues: ITransactionForm) {
     const action = isEditMode
@@ -116,7 +126,7 @@ export default function TransactionForm({
   }
 
   return (
-    <Dialog open onOpenChange={onClose}>
+    <Dialog open onOpenChange={closeDialog}>
       <DialogContent className="sm:max-w-md">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
@@ -220,7 +230,7 @@ export default function TransactionForm({
           </FieldGroup>
 
           <DialogFooter className="mt-6">
-            <Button type="button" variant="outline" onClick={onClose}>
+            <Button type="button" variant="outline" onClick={closeDialog}>
               {tTransactions("form.actions.cancel")}
             </Button>
             <Button type="submit" disabled={!isValid}>

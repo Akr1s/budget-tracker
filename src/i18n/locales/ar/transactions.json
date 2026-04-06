@@ -1,5 +1,10 @@
 {
   "createButton": "إنشاء معاملة",
+  "draftBanner": {
+    "message": "لديك مسودة معاملة غير محفوظة.",
+    "resume": "متابعة التحرير",
+    "dismiss": "تجاهل المسودة"
+  },
   "table": {
     "columns": {
       "id": "المعرّف",

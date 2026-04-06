@@ -1,5 +1,10 @@
 {
   "createButton": "Transaktion erstellen",
+  "draftBanner": {
+    "message": "Sie haben einen nicht gespeicherten Entwurf.",
+    "resume": "Weiter bearbeiten",
+    "dismiss": "Entwurf verwerfen"
+  },
   "table": {
     "columns": {
       "id": "ID",
