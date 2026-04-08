@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
+import { useLiveQuery } from "dexie-react-hooks";
 import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CategoryEnum } from "@/enums/category.enum";
-import { IndexedDBService } from "@/storage/index-db.service";
+import { db } from "@/storage/index-db.service";
 import { formatNumber } from "@/utils/format-number.util";
 
 export default function AboutCard() {
   const { t: tSettings, i18n } = useTranslation("settings");
-  const [transactionCount, setTransactionCount] = useState(0);
 
-  useEffect(() => {
-    IndexedDBService.getAllTransactions().then((txs) =>
-      setTransactionCount(txs.length),
-    );
-  }, []);
+  const transactionCount = useLiveQuery(() => db.transactions.count()) ?? 0;
 
   const categoryCount = Object.keys(CategoryEnum).length;
 

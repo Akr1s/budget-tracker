@@ -62,21 +62,16 @@ export default function IncomeVsExpenses({ currency }: IProps) {
   const { t: tDashboard, i18n } = useTranslation("dashboard");
   const { transactions, isLoading } = useYearlyTransactions();
 
-  const converted = useMemo(
-    () => convertTransactions(transactions, currency),
-    [transactions, currency],
-  );
+  const data = useMemo(() => {
+    const converted = convertTransactions(transactions, currency);
 
-  const data = useMemo(
-    () =>
-      buildMonthlyTrend(converted, (date) =>
-        date.toLocaleDateString(i18n.language, {
-          month: "short",
-          year: "2-digit",
-        }),
-      ),
-    [converted, i18n.language],
-  );
+    return buildMonthlyTrend(converted, (date) =>
+      date.toLocaleDateString(i18n.language, {
+        month: "short",
+        year: "2-digit",
+      }),
+    );
+  }, [transactions, currency, i18n.language]);
 
   const hasData = data.some((d) => d.income > 0 || d.expenses > 0);
 

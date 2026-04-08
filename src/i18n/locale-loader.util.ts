@@ -18,35 +18,33 @@ function createNamespacePath(lng: string, ns: ILocaleNamespace): string {
   return `./locales/${lng}/${ns}.json`;
 }
 
-export async function buildResourcesForLanguages(
-  languages: readonly string[],
-): Promise<Record<string, Record<ILocaleNamespace, Record<string, unknown>>>> {
-  const resources: Record<
-    string,
-    Partial<Record<ILocaleNamespace, Record<string, unknown>>>
-  > = {};
+async function loadNamespacesForLanguage(
+  lng: string,
+): Promise<[string, Record<ILocaleNamespace, Record<string, unknown>>]> {
+  const namespaceEntries = await Promise.all(
+    NAMESPACES.map(async (ns) => {
+      const loader = localeJson[createNamespacePath(lng, ns)];
 
-  await Promise.all(
-    languages.map(async (lng) => {
-      const entry: Partial<Record<ILocaleNamespace, Record<string, unknown>>> =
-        {};
-      await Promise.all(
-        NAMESPACES.map(async (ns) => {
-          const loader = localeJson[createNamespacePath(lng, ns)];
+      if (!loader) {
+        throw new Error(`Missing locale: ${lng}/${ns}`);
+      }
 
-          if (!loader) {
-            throw new Error(`Missing locale: ${lng}/${ns}`);
-          }
-
-          const module = await loader();
-          entry[ns] = module.default;
-        }),
-      );
-      resources[lng] = entry;
+      const module = await loader();
+      return [ns, module.default] as const;
     }),
   );
 
-  return resources as Record<
+  return [lng, Object.fromEntries(namespaceEntries) as Record<ILocaleNamespace, Record<string, unknown>>];
+}
+
+export async function buildResourcesForLanguages(
+  languages: readonly string[],
+): Promise<Record<string, Record<ILocaleNamespace, Record<string, unknown>>>> {
+  const languageEntries = await Promise.all(
+    languages.map(loadNamespacesForLanguage),
+  );
+
+  return Object.fromEntries(languageEntries) as Record<
     string,
     Record<ILocaleNamespace, Record<string, unknown>>
   >;

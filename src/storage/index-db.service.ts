@@ -19,7 +19,7 @@ class BudgetTrackerDB extends Dexie {
   }
 }
 
-const db = new BudgetTrackerDB();
+export const db = new BudgetTrackerDB();
 
 export const IndexedDBService = {
   async addTransaction(formValues: ITransactionForm): Promise<ITransaction> {

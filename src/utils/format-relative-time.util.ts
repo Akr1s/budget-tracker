@@ -3,9 +3,6 @@ import { DateService } from "@/utils/date.service";
 export function formatRelativeTime(isoDate: string, locale: string): string {
   const date = new Date(isoDate);
   const time = date.getTime();
-  if (Number.isNaN(time)) {
-    return isoDate;
-  }
 
   const diffMs = Date.now() - time;
   if (diffMs < 0) {
