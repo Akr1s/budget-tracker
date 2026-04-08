@@ -18,7 +18,7 @@
   "recentTransactions": {
     "title": "المعاملات الأخيرة",
     "noData": "لا توجد معاملات هذا الشهر",
-    "viewAll": "عرض جميع المعاملات"
+    "viewAll": "عرض جميع المعاملات <arrow/>"
   },
   "incomeVsExpenses": {
     "title": "الدخل مقابل المصروفات",

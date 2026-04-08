@@ -24,6 +24,7 @@
     "savings": "المدخرات",
     "education": "التعليم"
   },
+  "transactionSubtitle": "{{category}} · {{time}}",
   "currencies": {
     "usd": "USD - دولار أمريكي",
     "eur": "EUR - يورو",

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router";
 import { ArrowRight } from "lucide-react";
 
@@ -66,8 +66,11 @@ export default function RecentTransactions({
             to={`/${RoutesEnum.TRANSACTIONS}`}
             className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
           >
-            {tDashboard("recentTransactions.viewAll")}
-            <ArrowRight className="h-4 w-4" />
+            <Trans
+              t={tDashboard}
+              i18nKey="recentTransactions.viewAll"
+              components={{ arrow: <ArrowRight className="h-4 w-4" /> }}
+            />
           </Link>
         </CardFooter>
       )}

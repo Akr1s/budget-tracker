@@ -24,6 +24,7 @@
     "savings": "貯蓄",
     "education": "教育"
   },
+  "transactionSubtitle": "{{category}} · {{time}}",
   "currencies": {
     "usd": "USD - 米ドル",
     "eur": "EUR - ユーロ",

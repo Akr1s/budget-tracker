@@ -24,6 +24,7 @@
     "savings": "Sparen",
     "education": "Bildung"
   },
+  "transactionSubtitle": "{{category}} · {{time}}",
   "currencies": {
     "usd": "USD - US-Dollar",
     "eur": "EUR - Euro",

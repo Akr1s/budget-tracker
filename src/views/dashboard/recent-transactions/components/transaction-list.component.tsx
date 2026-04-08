@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { TrendingDown, TrendingUp } from "lucide-react";
 
 import { CATEGORY_COLORS } from "@/constants/category-colors.config";
@@ -42,9 +42,14 @@ export default function TransactionList({ transactions, currency }: IProps) {
                 {tx.description || tCommon(`categories.${tx.category}`)}
               </p>
               <p className="text-xs text-muted-foreground">
-                {tCommon(`categories.${tx.category}`)}
-                {" · "}
-                {formatRelativeTime(tx.date, i18n.language)}
+                <Trans
+                  t={tCommon}
+                  i18nKey="transactionSubtitle"
+                  values={{
+                    category: tCommon(`categories.${tx.category}`),
+                    time: formatRelativeTime(tx.date, i18n.language),
+                  }}
+                />
               </p>
             </div>
 

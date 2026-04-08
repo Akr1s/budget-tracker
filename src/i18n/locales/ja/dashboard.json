@@ -18,7 +18,7 @@
   "recentTransactions": {
     "title": "最近の取引",
     "noData": "今月の取引はありません",
-    "viewAll": "すべての取引を表示"
+    "viewAll": "すべての取引を表示 <arrow/>"
   },
   "incomeVsExpenses": {
     "title": "収入と支出の推移",

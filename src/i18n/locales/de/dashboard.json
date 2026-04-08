@@ -18,7 +18,7 @@
   "recentTransactions": {
     "title": "Letzte Transaktionen",
     "noData": "Keine Transaktionen in diesem Monat",
-    "viewAll": "Alle Transaktionen anzeigen"
+    "viewAll": "Alle Transaktionen anzeigen <arrow/>"
   },
   "incomeVsExpenses": {
     "title": "Einnahmen vs. Ausgaben",
